@@ -1,0 +1,102 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="THIS IS SLY"><meta property="og:type" content="article"><meta property="og:image" content="https://sunlongyu.github.io/img/home-bg-jeep.jpg"><meta property="twitter:image" content="https://sunlongyu.github.io/img/home-bg-jeep.jpg"><meta name=title content="Take you through Ethereum"><meta property="og:title" content="Take you through Ethereum"><meta property="twitter:title" content="Take you through Ethereum"><meta name=description content="我的描述。"><meta property="og:description" content="我的描述。"><meta property="twitter:description" content="我的描述。"><meta property="twitter:card" content="summary"><meta name=keyword content="my keywords"><link rel="shortcut icon" href=/img/favicon.ico><title>Take you through Ethereum | SLY | THIS IS SLY</title><link rel=canonical href=/post/2023-09-03-take-you-through-ethereum/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link rel=stylesheet href=/css/font-awesome.all.min.css><script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js></script>
+<script src=/js/hux-blog.min.js></script>
+<script src=/js/lazysizes.min.js></script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=/>THIS IS SLY</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>All Posts</a></li><li><a href=/categories/blockchain/>blockchain</a></li><li><a href=/categories/other/>other</a></li><li><a href=/categories/secruity/>secruity</a></li><li><a href=/search><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(/img/home-bg-jeep.jpg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=/tags/smart-contract title="smart contract">smart contract</a>
+<a class=tag href=/tags/eth title=eth>eth</a>
+<a class=tag href=/tags/gosht title=gosht>gosht</a>
+<a class=tag href=/tags/evm title=EVM>EVM</a>
+<a class=tag href=/tags/account title=Account>Account</a></div><h1>Take you through Ethereum</h1><h2 class=subheading>start ethereum</h2><span class=meta>Posted by
+    "SLY"
+on
+Sunday, September 3, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><h3 id=intro--overview>Intro— Overview</h3><h4 id=blockchain-development>·blockchain development：</h4><p><img src=/mdimg/image-20230618152900230.png alt></p><h4 id=ethereum-development>·ethereum development：</h4><p><img src=/mdimg/image-20230618153540809.png alt=image-20230618153540809></p><h4 id=eth-component>·eth component：</h4><p><img src=/mdimg/image-20230618160139866.png alt=image-20230618160139866></p><h4 id=以太币发行规则>·以太币发行规则：</h4><p><strong>矿前众筹的以太币还是占供应量的大多数</strong>
+<img src=/mdimg/image-20230621145407749.png alt></p><p>1）block rewards：每产生一个新的区块就会有一笔固定的奖励给矿工</p><p>2）uncle rewards：某些较晚被挖出来的区块，不能成为主区块链的组成部分，因此在比特币中这些区块叫做孤块，从而被完全舍弃；但在以太币中这些被叫做叔块，并且可以被引用。若该叔块在之后的区块链中作为叔块被引用则挖出叔块的挖矿者可以得到7/8的奖励</p><p>3）uncle referencing rewards：矿工每引用一个叔块可以得到区块奖励的1/32（但最多引用2个叔块）</p><p>——这样的一套基于pow的奖励机制，叫做以太坊的GOSHT协议</p><h4 id=gosht协议>·GOSHT协议：</h4><p>原由：比特币出块时间一般为10min，以太坊出块时间设计为12s左右，这种快速确认会带来区块的高作废率，链的安全性也随之降低</p><p>理解：
+<img src=/mdimg/image-20230619120524911.png alt></p><h4 id=图灵完备>·图灵完备：</h4><h4 id=去中心化应用dapp>·去中心化应用DApp：</h4><p>基于以太坊可创建smart contract 来构建DApp，组成部分至少为区块链上的智能合约以及web前端用户界面</p><h4 id=代币token>·代币token：</h4><h3 id=no-1-started-with-ethereum>No .1 Started with Ethereum</h3><h4 id=1-ethereum-definition>1. Ethereum definition</h4><p>Ethereum是一个建立在区块链技术之上的<strong>去中心化应用平台</strong>。它允许任何人在平台上建立和使用通过区块链技术运行的去中心化应用（DApp）。</p><p>DApp和现在互联网C/S架构的应用不同，其后端是一个有N个节点计算机（矿工）组成的网络，</p><p>在前端，用户通过自己的钱包处理自己的数据，在后端核心逻辑使用智能合约运行在区块链上，实现去中心。</p><p>Dapp与客户端连接的节点，只是网络中的一份子，它不单独处理来自用户的请求（这个请求通常称之为“交易”），而是要把用户的请求广播到整个网络，待整个网络达成共识之后，整个请求才算处理完成</p><p><img src=/mdimg/image-20230628153531046.png alt></p><h4 id=2-smart-contract>2. smart contract</h4><p>智能合约是以太坊上运行的程序，和其他程序一样，它由代码和数据组成的。智能合约中的数据也称为“状态”，因为整个区块链就是由所有数据的确定的一个状态机。一旦部署到区块链上，智能合约就成为一个不可更改和可执行的程序，可以被网络上的节点共享和执行。</p><p>以太坊智能合约是 “图灵完备”的，因此理论上我们可以用它来编写能做任何事情的程序。 以下为一个简单的计数器合约</p><pre><code>pragma solidity ^0.8.0;
+contract Counter {
+    uint counter;
+    constructor() {
+        counter = 0;
+    }
+
+    function count() public {
+        counter = counter + 1;
+    }
+}
+</code></pre><h4 id=3-ethereum-accounts>3. Ethereum Accounts</h4><p>在比特币中运用的是基于交易的账户模型，使用UTXO的结构存储有关用户余额的数据，这种模式下并没有显式的记录每个账户的资金， 其余额需自行计算用户具有私钥的UTXO的总值。（隐私性强，但实用性不佳）</p><p>以太坊中基于账户的模式，每个账户都包括了一个余额balance和以太坊特殊定义的数据（代码和内部存储），以太坊中有两类账户：</p><h4 id=1外部用户账户eoa>1）外部用户账户EOA</h4><p>该类账户被公钥-私钥对控制（由人控制），可用来进行交易的发送（转币或触发合约调用代码）其中主要包含有对应的以太币余额，但没有关联代码</p><h4 id=2合约账户>2）合约账户</h4><p>该类账户被存储在账户中的代码控制，有对应的以太币balance和关联代码和自己存储空间，可通过交易或来自其他合约的调用消息来触发代码执行，并且可以操作自己的存储空间
+<img src=/mdimg/image-20230628161048096.png alt></p><p>【注】：<strong>只有外部用户账户可以发起交易（主动行为），合约账户只能被动地响应动作，并且所有的手续费 Gas 只能由外部账号支付</strong>
+<img src=/mdimg/image-20230629173146637.png alt></p><p><strong>账户状态</strong></p><p>账户状态有4个基本组成部分
+<img src=/mdimg/image-20230629174719123.png alt></p><p>外部用户账户和合约账户，它们都是用同样的地址形式来表示，在 EVM 层面是一样的，地址形式是一个20字节的16进制数。</p><p>外部用户账户的地址是由私钥推倒出来的，合约账户的地址则由创建者的地址和nonce计算得到</p><p><strong>nonce</strong></p><p>如果账户是一个外部用户账户，nonce代表从此账户地址发送的交易序号。如果账户是一个合约账户，nonce代表此账户创建的合约序号</p><p>【注】：以太坊中有两种nonce ， 一种是账号nonce——表示一个账号的交易数量；一种是工作量证明nonce——一个用于计算满足工作量证明的随机数。</p><h4 id=4-evm>4. EVM</h4><h4 id=1def>1）def</h4><p>以太坊虚拟机（Ethereum Virtual Machine），是智能合约的运行环境， 用来执行以太坊上的交易。 可以把EVM当做JVM来理解，EVM 同样是一个程序运行的容器，合约通常以solidity语言编写后，通过EVM编译器编译为字节码，最终通过客户端部署到区块链网络中</p><p>以太坊虚拟机是一个被沙箱封装起来、完全隔离的运行环境，在EVM中运行的代码无法访问网络、文件系统和其他进程， 只能访问内部信息</p><h4 id=2evm兼容链>2）EVM兼容链</h4><p>繁荣的以太坊生态导致各大公链意识到与其开发自己特色的虚拟机，不如主动兼容以太坊虚拟机，从而可快速的承接以太坊应用</p><p>目前比较流行的 EVM 兼容链有：Polygon 链、BNB 链（BSC）、OK链、Avalanche C 链、Fantom 等。他们和以太坊链一样，使用相同的地址格式，使用相同的 EVM 代码，支持以太坊开发工具及钱包，但是这些 EVM 链各自定义了自己的共识机制，并且使用自己的原生币支付 Gas 手续费，因此手续费更低。</p><p>每一个链有自己的chainId 和 相应的节点 RPC， 我们可以在 MetaMask 等钱包通过添加自定义网络 RPC（<code>Custom RPC</code>） 来添加</p><h4 id=5-ethereum-client>5. Ethereum Client</h4><p>以太坊客户端是一个软件应用程序，是以太坊网络中的节点程序，运行节点程序就可以加入的区块链网络中，成为一个节点。这个节点程序可以完成如创建账号、发起交易、部署合约、执行合约、挖掘区块等工作。</p><p>常见的以太坊客户端有：
+<img src=/mdimg/image-20230624102009505.png alt></p><p>以太坊虚拟机本身运行在以太坊节点客户端上
+<img src=/mdimg/image-0230629193456052.png alt></p><h4 id=6ethereum-wallet>6.Ethereum wallet</h4><p>以太坊钱包是进入以太坊系统的门户，它包含了私钥，可以代表我们创建和广播交易，常见的wallet有：</p><p>1）metamask 一种浏览器扩展钱包，可在浏览器上运行，可以和Remix配合使用，用来部署和执行智能合约</p><p>2）jaxx 可在各种操作系统上运行的多平台、多币种的钱包</p><p>3）myetherwallet 基于web的钱包，可在任何浏览器中运行</p><h4 id=7-gas>7. Gas</h4><p>前面提到，在EVM上运行的智能合约是 “图灵完备”的，理论上可以编写能做任何事情的程序。既然如此，恶意的执行者就可以通过执行一个包含无限循环的交易轻易地让网络瘫痪。</p><p>以太坊通过每笔交易收取一定的费用来保护网络不受蓄意攻击，这一套收费的机制称为 Gas 机制</p><p>Gas 是衡量一个操作或一组操作需要执行多少” 工作量” 单位。例如，计算一个Keccak256加密哈希函数，每次计算哈希时需要30个 Gas ，再加上每256位被哈希的数据要花费6个 Gas 。EVM上执行的每个操作都会消耗一定数量的 Gas ，而需要更多计算资源的操作也会消耗更多的 Gas 。</p><blockquote><p>理解：可以把 Gas 看做是以太坊虚拟机的运行燃料，它在每执行一步的时候消耗一定的 Gas ， 如果给定的 Gas 不够，无论执行到什么位置，，将会触发一个 out-of- gas 异常，当前交易所作的所有状态修改都将被还原。</p></blockquote><p><strong>Gas price</strong>&<strong>Gas limit</strong></p><p>如果 Gas 仅仅是一个“工作量”单位，那怎么支付费用呢？还有另一个概念—— Gas price。其实每笔交易都要指定Gas limit及愿意为单位 Gas 支付的 Gas 价格，这是两者的结合， <code>Gas 预算</code> * <code>Gas 价格</code> = 交易预算。</p><p><code>gas limit</code> > <code>实际使用的 gas</code> ， 交易才能顺利执行， 否则触发<code>out of gas</code> 交易回滚， 如果执行结束还有Gas剩余，这些Gas将被返还给发送交易账户。这也是称为交易预算的原因，由于链上状态的不断更新，很多时候无法完全准确测算交易费用，在实际提交交易时， <code>gas limit</code> 通常开发工具估算，<code>gas price</code> 用户指定（钱包提供参考值）， 矿工通过gas price 对交易排序。</p><h4 id=8-ethereum-transaction>8. Ethereum Transaction</h4><p>比特币交易非常简单，就是进行货币的转移。归纳为交易TO谁，FROM谁和 AMOUNT（多少钱）。而以太坊与之很大的不同在于其交易还有一个DATA字段。DATA字段适用于三种类型的交易：</p><p><strong>1）普通交易</strong></p><p>TO ：收款地址</p><p>FROM ：谁发出</p><p>AMOUNT ：发送多少</p><p>DATA ：留空或留言信息</p><p>eg：</p><pre tabindex=0><code>{
+to: &#39;0x687422eEA2cB73B5d3e242bA5456b782919AFc85&#39;,
+value: 0.0005,
+data: &#34;0x&#34; // 也可以附加消息
+}
+</code></pre><p><strong>2）创建合约</strong></p><p>TO ：留空（这就是触发创建智能合约的原因）</p><p>FROM ：谁创建</p><p>AMOUNT ：可以是0或任何数量的以太币，它是我们想要给合约的存款</p><p>DATA ：包含编译为字节码的智能合约代码</p><p>eg：</p><pre tabindex=0><code>{
+  to: &#39;&#39;,
+  value: 0.0,
+  data: &#34;0x6060604052341561000c57xlb60405160c0806……………&#34;
+}
+</code></pre><p><strong>3）调用合约</strong></p><p>TO： 目标合约账户地址</p><p>DATA： 包含函数名称和参数——标识如何调用智能合约函数</p><p>FROM ：谁调用</p><p>AMOUNT ： 可以是0或任意数量的以太币，例如可以支付给合约的服务费用</p><p>eg：</p><pre tabindex=0><code>{
+  to: &#39;0x687422eEA2cB73B5d3e242bA5456b782919AFc85’, //合约地址
+  value: 0.0,
+  data: &#34;0x06661abd&#34;
+}
+</code></pre><p>函数调用信息封装在DATA字段中，把这个交易信息发送到要调用的智能合约的地址</p><p><strong>具体交易数据结构</strong></p><p>交易是包含以下数据的序列化二进制消息：
+<img src=/mdimg/image-20230629201118717.png alt></p><h4 id=9-ether>9. Ether</h4><p>以太坊的货币叫做以太币ETH，对于用户来讲，最常用的是ether，1个ether就是我们常说的一个以太币（通常也简称为以太），对于开发者来说可能最常用的是wei, 它是以太币的最小单位， 其他的单位包括finney、szabo，其中wei还有几个衍生的单位：Kwei、Mwei以及Gwei</p><p>1 ether == 10^3 finney（即1000 finney）
+1 ether == 10^6 szabo
+1 ether == 10^18 wei
+1 Gwei == 10^9 wei
+1 Mwei == 10^6 wei</p><h4 id=10-ethereum--network>10. Ethereum Network</h4><p>以太坊中有不同的网络，平常我们所说的以太坊一般是它的主网络，它是真正的以太坊区块链，<strong>主网网络</strong>是真正的价值网络，我们需要使用真实的以太币、BNB 等原生币进行交易。</p><p>而我们为了进行测试等工作还可以使用<strong>测试网络</strong>，测试网络会提供水龙头让开发者可以领取免费测试币。例如以太坊提供了<code>Goerli</code> 和 <code>Sepolia</code> 测试网 ， <code>Polygon</code> 提供了 <code>Mumbai</code> 测试网</p><h4 id=11-ethereum-key>11. Ethereum key</h4><p>1）private key 以太坊私钥是一个256位的随机数，用于发送以太的交易中创建签名来证明资金的所有权</p><p>2）public key 以太坊公钥是由私钥通过椭圆加密曲线secp256k1算法单向生成的512位数</p><p>3）address 地址是由公钥的keccak256单向哈希取最后20个字节派生出的标识符</p><h3 id=no2-contract-development-basic>No.2 Contract development basic</h3><h4 id=1-remix-ide>1. Remix IDE</h4><p>Remix 是在以太坊上构建的最简单的开发工具，它无需安装，可以直接快速上手。并且拥有大量插件来扩展其体验；Remix 可帮助我们直接在浏览器中编写 Solidity 代码，并提供用于测试、调试和将智能合约部署到区块链的工具。
+<img src=/mdimg/image-20230629202630714..png alt></p><h4 id=1new-contract>1）new contract</h4><p>新建合约文件可以点击新建文件、也可以从本机或 GitHub 加载文件
+<img src=/mdimg/image-20230630151919050.png alt></p><h4 id=2contract-coding>2）contract coding</h4><p>新建一个counter.sol计数器合约，在文件编辑区域输入counter合约代码：</p><pre><code>pragma solidity ^0.8.0;
+
+contract Counter {
+    uint counter;
+    constructor() {
+       counter = 0;
+    }
+
+    function count() public {
+       counter = counter + 1;
+    }
+
+    function get() public view returns (uint) {
+       return counter;
+    }
+}
+</code></pre><p>该合约会区块链上存储一个计数器变量 <code>counter</code>， <code>counter</code> 值将会被永久保存在区块链上。<code>count()</code>函数让计数器加1，<code>get()</code>函数用来获取计数器值。这里不需要编写入口方法（如main方法），每一个函数都可以被单独调用，编译器会帮助合约生成main入口函数，EVM 在入口函数里用函数选择器去匹配调用的函数。</p><h4 id=3contract-compile>3）contract compile</h4><p>代码编写之后进行编译，切换到<code>编译</code>功能， 选择编译器版本，进行编译
+<img src=/mdimg/image-20230630155855981.png alt></p><p>合约编译成功后，会输出两个重要的内容： ABI 和 Bytecode 字节码</p><p>·ABI： Application Binary Interface，即应用程序二进制接口，ABI 用来描述当前合约的所有接口，当我们与合约交互时，就需要使用 ABI</p><p>·Bytecode： 部署合约所需的字节码（也称为创建时字节码），部署合约时，就是把该字节码作为交易的输入数据发送链上</p><h4 id=4contract-deploy>4）contract deploy</h4><p>编译之后就可以将合约部署到区块链网络上，部署的流程一般为：</p><ol><li>在本地的开发者网络（模拟网络）进行部署，测试及验证代码逻辑的正确性</li><li>在测试网络进行灰度发布</li><li>一切成功后部署在主网</li></ol><p>Remix中 提供模拟网络环境， 可以通过如下图方式选择不同的环境，也可以通过 Metamask 连接到真实的区块链网络进行部署
+<img src=/mdimg/image-20230630162114169.png alt></p><h4 id=deploy-to-vm>·deploy to VM</h4><p>选择 <code>Remix VM(Merge)</code> ，它与当前以太坊主网（以太坊合并之后）运行的虚拟机功能一样，然后点击“Deploy” 部署：</p><p>选择使用账号、设置交易 <a href=https://decert.me/tutorial/solidity/ethereum/evm_core#gas>GasLimit</a>、选择发送到合约金额、选择要部署的合约（默认选择当前编辑的合约文件）。</p><p>使用默认值即可
+<img src=/mdimg/image-20230630193350498.png alt></p><p>点击部署时，会发起一笔 <a href=https://decert.me/tutorial/solidity/ethereum/evm_core#%E8%B0%83%E7%94%A8%E5%90%88%E7%BA%A6%E6%96%B9%E6%B3%95>创建合约交易</a>， 交易完成后，会在链上生成一个<a href=https://decert.me/tutorial/solidity/ethereum/evm_core#%E8%B4%A6%E6%88%B7>合约地址</a>， 同时在右下方<code>控制台/日志区</code>看到交易详情。
+<img src=/mdimg/0230630194237703.png alt></p><h4 id=deploy-to-net>·deploy to net</h4><p>在 Remix 的环境里选择<code>Injected Provider - MetaMask</code>,Remix 会加载我们在 MetaMask 中选择的网络.</p><p>部署到真实的网络时，需要一个有余额的账号，否则就没办法发起交易。 如果是测试网络，则可以通过水龙头获取测试币</p><p>点击“Deploy” 部署合约，例如把合约部署到 Goerli 测试网络上， MetaMask 会弹出一个交易确认对话框，让我们确认交易费用，点击“确认”时，同时会对这笔交易签名，并发送到 Goerli 网络中
+<img src=/mdimg/image-20230630194610737.png alt></p><h4 id=5use-contract>5）use contract</h4><p>合约部署后，在功能区的下方会出现智能合约部署后的地址以及合约所有可以调用的函数，</p><p>点击count和get两个按钮，就可以调用对应的合约函数，点击count时，会发起一笔交易，交易打包后，计数器变量加1，点击get可以获得当前计数器的值
+<img src=/mdimg/image-20230630200110794.png alt></p><h4 id=2-metamask>2. MetaMask</h4><p>详细添加创建等操作：https://decert.me/tutorial/solidity/tools/metamask</p><h3 id=heading></h3><div class="entry-shang text-center"><p>「如果这篇文章对你有用,请随意打赏」</p><button class="zs show-zs btn btn-bred">赞赏支持</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+<span class=author><a href=https://sunlongyu.github.io><img src=/img/favicon.png>THIS IS SLY</a></span><p class=tip><i></i><span>如果这篇文章对你有用,请随意打赏</span></p></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>2元</button>
+<button class="btn btn-blink" data-num=5>5元</button>
+<button class="btn btn-blink" data-num=10>10元</button>
+<button class="btn btn-blink" data-num=50>50元</button>
+<button class="btn btn-blink" data-num=100>100元</button>
+<button class="btn btn-blink" data-num=1>任意金额</button></div><div class=zs-modal-pay><button class="btn btn-bred" id=pay-text>2元</button><p>使用<span id=pay-type>微信</span>扫描二维码完成支付</p><img src=/img/reward/wechat-2.png id=pay-image></div></div><div class=zs-modal-footer><label><input type=radio name=zs-type value=wechat class=zs-type checked><span><span class=zs-wechat><img src=/img/reward/wechat-btn.png></span></label>
+<label><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img src=/img/reward/alipay-btn.png></span></label></div></div><script type=text/javascript src=/js/reward.js></script><hr><ul class=pager><li class=previous><a href=/post/2023-09-05-welcome-to-solidity/ data-toggle=tooltip data-placement=top title="Welcome to Solidity">&larr;
+Previous Post</a></li><li class=next><a href=/post/2023-09-03-take-you-through-blockchain/ data-toggle=tooltip data-placement=top title="Take you through Blockchain">Next
+Post &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>FEATURED TAGS</a></h5><div class=tags></div></section><section><hr><h5>FRIENDS</h5><ul class=list-inline><li><a target=_blank href=https://friend-blog-url.com></a></li></ul></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"><li><a href=mailto:longyusun913@gmail.com><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=#ZgotmplZ><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-stack-1x fa-inverse">知</i></span></a></li><li><a target=_blank href=https://weibo.com/u/5782286452><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-weibo fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href="https://www.facebook.com/profile.php?id=100080134944989"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=/img/wechat.png><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-weixin fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://github.com/sunlongyu><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://www.instagram.com/sunlyuers/><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-instagram fa-stack-1x fa-inverse"></i></span></a></li><li><a href rel=alternate type=application/rss+xml title="THIS IS SLY"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="copyright text-muted">Copyright &copy; THIS IS SLY 2025</p></div></div></div></footer><script>function loadAsync(e,t){var s=document,o="script",n=s.createElement(o),i=s.getElementsByTagName(o)[0];n.src=e,t&&n.addEventListener("load",function(e){t(null,e)},!1),i.parentNode.insertBefore(n,i)}</script><script>$("#tag_cloud").length!==0&&loadAsync("/js/jquery.tagcloud.js",function(){$.fn.tagcloud.defaults={color:{start:"#bbbbee",end:"#0085a1"}},$("#tag_cloud a").tagcloud()})</script><script>loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js",function(){var e=document.querySelector("nav");e&&FastClick.attach(e)})</script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4,h5,h6");return $(e).html(""),r.each(function(){n=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),t=$(this).text(),i=$('<a href="'+o+'" rel="nofollow" title="'+t+'">'+t+"</a>"),s=$('<li class="'+n+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")}),loadAsync("/js/jquery.nav.js",function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script></body></html>

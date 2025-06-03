@@ -1,0 +1,224 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="THIS IS SLY"><meta property="og:type" content="article"><meta property="og:image" content="https://sunlongyu.github.io/img/home-bg-jeep.jpg"><meta property="twitter:image" content="https://sunlongyu.github.io/img/home-bg-jeep.jpg"><meta name=title content="Welcome to Solidity"><meta property="og:title" content="Welcome to Solidity"><meta property="twitter:title" content="Welcome to Solidity"><meta name=description content="我的描述。"><meta property="og:description" content="我的描述。"><meta property="twitter:description" content="我的描述。"><meta property="twitter:card" content="summary"><meta name=keyword content="my keywords"><link rel="shortcut icon" href=/img/favicon.ico><title>Welcome to Solidity | SLY | THIS IS SLY</title><link rel=canonical href=/post/2023-09-05-welcome-to-solidity/><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link rel=stylesheet href=/css/font-awesome.all.min.css><script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js></script>
+<script src=/js/hux-blog.min.js></script>
+<script src=/js/lazysizes.min.js></script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=/>THIS IS SLY</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>All Posts</a></li><li><a href=/categories/blockchain/>blockchain</a></li><li><a href=/categories/other/>other</a></li><li><a href=/categories/secruity/>secruity</a></li><li><a href=/search><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse");$toggle.addEventListener("click",handleMagic);function handleMagic(){$navbar.className.indexOf("in")>0?($navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)):($collapse.style.height="auto",$navbar.className+=" in")}</script><style type=text/css>header.intro-header{background-image:url(/img/home-bg-jeep.jpg)}</style><header class=intro-header><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=/tags/solidity title=solidity>solidity</a>
+<a class=tag href=/tags/contract title=contract>contract</a>
+<a class=tag href=/tags/tool title=tool>tool</a></div><h1>Welcome to Solidity</h1><h2 class=subheading>start to learn solidity</h2><span class=meta>Posted by
+    "SLY"
+on
+Sunday, September 3, 2023</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><h2 id=no1-solidity-basic>No.1 Solidity basic</h2><p>Solidity是一种用于编写智能合约的编程语言。智能合约是在区块链平台上执行的自动化合约，它们定义了参与方之间的规则和条件，并确保这些规则在合约中被执行。</p><p>Solidity最初是为以太坊区块链平台设计的，但也被其他以太坊虚拟机（EVM）兼容的区块链平台广泛采用。它提供了一套丰富的库和功能，使开发者能够在智能合约中实现复杂的逻辑和业务流程。</p><p>使用Solidity编写的智能合约可以实现多种功能，包括创建和管理数字资产（如代币）、实施多方签名、执行投票和选举、创建去中心化应用程序（DApps）等。</p><h3 id=1first-contract>1.first contract</h3><p>一个合约通常由<strong>状态变量（合约数据）<strong>和</strong>合约函数</strong>组成。我们以最简单的Counter 计数器作为入门合约</p><h4 id=1申明编译器版本>1）申明编译器版本</h4><p>编写合约首先要做的是声明编译器版本， 告诉编译器使用什么版本的编译器来编译</p><pre tabindex=0><code>pragma solidity &gt;=0.8.0;  //使用大于等于0.8.0 版本的编译编译 Counter 合约
+</code></pre><h4 id=2定义合约>2）定义合约</h4><p>Solidity 使用 <code>contract</code> 定义合约，和其他语言的类（<code>class</code>）很类似，合约本身也是一个数据类型， 称为合约类型，除此之外合约还可以定义事件、自定义类型等。</p><pre tabindex=0><code>contract Counter {   //定义了一个名为 Counter 的合约
+}
+</code></pre><h4 id=3合约构造函数>3）合约构造函数</h4><p>构造函数是在创建合约时执行的一个特殊函数，用来初始化合约， <code>constructor</code> 关键字声明的一个构造函数。</p><p>如果没有初始化代码编译器会添加一个默认的构造函数<code>constructor() public {}</code>。</p><p>状态变量的初始化，也可以在声明时进行指定，未指定时，<strong>默认为0。</strong></p><pre tabindex=0><code>contract Base {
+    uint x;
+    address owner;
+    constructor(uint _x) public {
+       x = _x;
+       owner = msg.sender;
+    }
+}
+</code></pre><h4 id=4定义变量>4）定义变量</h4><p>Solidity 是一个静态类型语言，在定义每个变量时需要声明该变量的类型，定义变量按格式： <code>变量类型</code> <code>变量可见性</code> <code>变量名</code>。变量可见性是可选的，没有显示申明可见性时，会使用缺省值 <code>internal</code>。</p><pre tabindex=0><code>uint public counter;     //声明了一个变量名为 counter，类型为 uint（256位无符号整数）
+</code></pre><p>合约中的变量会在区块链上分配一个存储单元。在以太坊中，所有的变量构成了整个区块链网络的状态，所以合约中变量通常称为<strong>状态变量</strong>。</p><p>但有两个特殊的“变量“， 他们不在链上分配存储单元：</p><h4 id=常量>·常量</h4><p><code>constant</code> 用来声明一个常量，不占用合约的存储空间，在编译时使用对应的表达式值替换常量名，即使用<code>constant</code>修饰的状态变量，只能使用在编译时有确定值的表达式来给变量赋值。</p><pre tabindex=0><code>contract C {
+    uint constant x = 32**22 + 8;
+    string constant text = &#34;abc&#34;;
+}
+</code></pre><h4 id=不可变量>·不可变量</h4><p>不可变量在构造函数中进行赋值，构造函数是在部署的时候执行，因此这是运行时赋值。</p><p>Solidity 中使用 <code>immutable</code> 来定义一个不可变量，它不会占用状态变量存储空间，在部署时，变量的值会被追加的运行时字节码中，因此它比使用状态变量便宜的多，同样带来了更多的安全性（确保了这个值无法再修改），因此不可变量在很多时候非常有用，比如保存创建者地址、关联合约地址等。</p><pre tabindex=0><code>contract Example {    
+    uint immutable decimals;
+    uint immutable maxBalance;
+    constructor(uint _decimals, address _reference) public {
+       decimals = _decimals;
+       maxBalance = _reference.balance; 
+    }
+
+}
+</code></pre><h4 id=5定义函数>5）定义函数</h4><p>function关键字用来定于函数</p><pre tabindex=0><code>  function count() public {   //名为 count() 函数，对counter状态变量加 1
+        counter = counter + 1;
+    }
+</code></pre><p>由于状态变量的改变，因此调用这个函数会修改区块链状态，这时我们就需要<a href=https://decert.me/tutorial/solidity/tools/remix#%E8%B0%83%E7%94%A8%E5%90%88%E7%BA%A6%E5%87%BD%E6%95%B0>通过一个交易来调用该函数</a>，调用者为交易提供 Gas，验证者（矿工）收取 Gas 打包交易，经过区块链共识后，<code>counter</code>变量才真正算完成加1 ；</p><p>我们还可以根据需要定义函数的参数与返回值以及指定该函数是否要修改状态，一个函数定义形式可以这样表示：</p><pre tabindex=0><code>function 函数名(&lt;参数类型&gt; &lt;参数名&gt;) &lt;可见性&gt; &lt;状态可变性&gt; [returns(&lt;返回类型&gt;)]{ 
+}
+</code></pre><h4 id=函数返回值>·函数返回值</h4><p>在Solidity 中，返回值与参数的处理方式是一样的，代码中 返回值 <code>result</code> 也称为输出参数，我们可以在函数体里直接为它赋值，或直接在 <code>return</code> 语句中提供返回，返回值可以仅指定其类型，省略名称：</p><pre tabindex=0><code>function addAB(uint a, uint b) public returns (uint) {
+      ....
+    return counter + a + b;
+}
+</code></pre><p>同时，Solidity 支持函数有多个返回值：</p><pre tabindex=0><code>function f() public pure returns (uint, bool, uint) {
+        return (7, true, 2);
+    }
+     function g() public {
+        *// 获取返回值*
+        (uint x, bool b, uint y) = f();
+     }    
+}
+</code></pre><h4 id=视图函数>·视图函数</h4><p>用 view 修饰的函数， 称为视图函数， 它只能读取状态，而不能修改状态，调用视图函数时，只需要当前链接的节点执行，就可返回结果</p><pre><code>function cal(uint a, uint b) public view returns (uint) {
+    return a * (b + 42) + now;
+}//cal() 函数不修改状态，它不需要提交交易，也不需要花费交易费
+</code></pre><p>如果视图函数在一个会修改状态的函数中调用，那么视图函数会消耗 Gas，如：</p><pre tabindex=0><code> function set(uint a, uint b) public returns (uint) {
+            return cal(a, b);
+    }
+</code></pre><p>因为外部调用视图函数时 Gas 价格为0， 而在修改状态的函数中，Gas 价格随交易设定</p><h4 id=纯函数>·纯函数</h4><p>用 pure 修饰的函数， 称为纯函数， 它既不能读取也不能修改状态，仅用作计算</p><pre tabindex=0><code>function f(uint a, uint b) public pure returns (uint) {
+        return a * (b + 42);
+    }
+</code></pre><h3 id=2data-type>2.Data Type</h3><h4 id=1值类型value-types>1）值类型（Value Types）</h4><p>值类型变量表示可以用32个字节表示的数据，包含以下类型，在赋值或传参时，总是进行拷贝。</p><h4 id=整型integers>·整型Integers</h4><p>当要表示一个数值时，通常用整型来表达</p><p><strong>int/unit</strong></p><p>int/uint 表示有符号和无符号不同位数整数。支持关键字<code>uint8</code>到<code>uint256</code>（以8步进） ，<code>uint</code>和<code>int</code>默认对应的是<code>uint256</code> 和<code>int256</code>。</p><p>关键字末尾的数字表示变量所占空间大小，整数取值范围跟空间有关， <code>uint32</code>类型的取值范围是 0 到 <code>2^32-1</code>，当没有为整型变量赋值时，会使用默认值 0。</p><p>整型支持的运算符包括以下几种：</p><ul><li>比较运算符： <code>&lt;=</code>、&lt; 、<code>==</code>、!=、<code>>=</code>、></li><li>位操作符： <code>&</code>、|、<code>^</code>（异或）、<code>~</code>（位取反）</li><li>算术操作符：<code>+</code>、<code>-</code>、-，<code>*</code>，<code>/</code>, %, <code>**</code>（幂）</li><li>移位： <code>&lt;&lt;</code>（左移位）、 <code>>></code>（右移位）</li></ul><h4 id=定长字节数组fixed-size-byte-arrays>·定长字节数组Fixed-size byte arrays</h4><p>关键字为bytes1, bytes2, &mldr;, bytes32（以1步进），byte代表bytes1；</p><p>进行下标访问时，若x为bytesI，0 &lt;= k &lt; I ，则x[k]返回第k个字节</p><h4 id=字符串常量>·字符串常量</h4><p>字符串常量是指由单引号，或双引号引起来的字符串 (&ldquo;foo&rdquo; or &lsquo;bar&rsquo;)；</p><p>字符串的长度类型是变长的，并且可以隐式的转换为byte1,&mldr;byte32 或string</p><h4 id=十六进制常量hexadecimal-literals>·十六进制常量Hexadecimal literals</h4><p>以关键字hex打头，后面紧跟用单或双引号包裹的字符串，也可以转换为字节数组；内容是十六进制字符串，如hex"001122ff"，它的值会用二进制来表示</p><h4 id=地址类型address>·地址类型address**</h4><p>Solidity 合约程序里，使用<strong>地址类型</strong>来表示我们的账号，另外合约和普通地址，都可以用<code>address</code> 类型表示，地址类型有两种：</p><ul><li><p><code>address</code>：保存一个20字节的值（以太坊地址的大小）。</p></li><li><p><code>address payable</code>：表示可支付地址，在地址格式上，其实与<code>address</code> 完全相同，也是20字节，拥有两个成员函数<code>transfer</code>和<code>send</code> ，可以向该地址转账。当需要向地址转账时，可以使用以下代码把<code>address</code> 转换为<code>address payable</code> ：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>address payable ap = payable(addr);
+</span></span></code></pre></div></li></ul><p>【注】：做此区分，显示的表达，一个地址可以接受ETH， 表示其有处理ETH的逻辑(EOA 账户本身可转账ETH)；如果不做区分，当我们把 ETH 转到一个地址上时，恰巧如果后者是一个合约地址又没有处理ETH的逻辑，那么 ETH 将永远锁死在该合约地址上，任何人都无法提取和使用它。</p><p><strong>地址类型的属性和成员函数</strong>：</p><p><code>&lt;address>.balance</code> : 返回地址的余额， 余额以wei为单位 (uint256)。</p><p><code>&lt;address payable>.transfer(uint256 amount)</code> : 用来向地址发送数值为<code>amount</code>的以太币(wei)，transfer ()函数只使用固定的 2300 gas , 发送失败时会抛出异常。</p><p>【注】：若addr为合约地址，合约的fallback()函数会随transfer一起执行</p><p><code>&lt;address payable>.send(uint256 amount) returns (bool)</code>: <code>send</code> 和<code>transfer</code> 函数一样，同样使用固定的 2300 gas , 但在发送失败时返回<code>false</code>，不抛出异常。</p><p>【注】：使用send如果调用栈的深度超过1024或gas耗光，交易都会失败，建议使用transfer</p><p><code>&lt;address>.call()</code>:为了和非ABI协议的合约进行交互，可以使用call() 函数, 用来向另一个合约发送原始数据，支持任何类型任意数量的参数，每个参数会按ABI协议打包成32字节拼接到一起。但例外是：如果第一个参数恰好4个字节，会被认为根据ABI协议定义的函数器指定的函数签名而直接使用。如果仅想发送消息体，需要避免第一个参数是4个字节 。函数正常结束返回true，异常终止返回false，但无法获取到结果数据：</p><pre tabindex=0><code>address nameReg = 0x72ba7d8e73fe8eb666ea66babc8116a41bfb10e2; nameReg.call(&#34;register&#34;, &#34;MyName&#34;);
+nameReg.call(bytes4(keccak256(&#34;fun(uint256)&#34;)), a);
+</code></pre><p>还可以使用delegatecall()，与call的区别在于，仅仅执行代码，而其它方面如（存储，余额等）都是用的当前的合约的数据。delegatecall()方法的目的是用来执行另一个合约中的库代码，这时需要保证两个合约中的存储变量能兼容，保证delegatecall()能执行。</p><p>在homestead阶段前，仅有一个受限的callcode()方法可用，但callcode未提供对msg.sender，msg.value的访问权限，不鼓励使用。</p><p>eg：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-solidity data-lang=solidity><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>contract</span> <span style=color:#50fa7b>testAddr</span> {
+</span></span><span style=display:flex><span>   
+</span></span><span style=display:flex><span>   <span style=color:#6272a4>// 如果合约的余额大于等于10，而x小于10,则给x转10 wei
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#8be9fd;font-style:italic>function</span> <span style=color:#50fa7b>testTrasfer</span>(<span style=color:#8be9fd>address</span> <span style=color:#ff79c6>payable</span> x) <span style=color:#ff79c6>public</span> {
+</span></span><span style=display:flex><span>       <span style=color:#8be9fd>address</span> myAddress <span style=color:#ff79c6>=</span> <span style=color:#8be9fd>address</span>(<span style=color:#8be9fd;font-style:italic>this</span>);<span style=color:#6272a4>//把合约转换为地址类型
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>       <span style=color:#ff79c6>if</span> (x.<span style=color:#8be9fd;font-style:italic>balance</span> <span style=color:#ff79c6>&lt;</span> <span style=color:#bd93f9>10</span> <span style=color:#ff79c6>&amp;&amp;</span> myAddress.<span style=color:#8be9fd;font-style:italic>balance</span> <span style=color:#ff79c6>&gt;=</span> <span style=color:#bd93f9>10</span>) {  <span style=color:#6272a4>//balance获取余额
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>           x.<span style=color:#8be9fd;font-style:italic>transfer</span>(<span style=color:#bd93f9>10</span>);  <span style=color:#6272a4>//转账
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>       }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h4 id=函数类型function-types>·函数类型Function Types</h4><p>函数类型有两类：</p><p><strong>内部(internal)函数</strong>只能在当前合约内被调用（在当前的代码块内，包括内部库函数，和继承的函数中）。
+<strong>外部(external)函数</strong>由地址和函数方法签名两部分组成，可作为外部函数调用的参数，或返回值。</p><p>【注】：函数类型仅是当作类型名使用时默认是internal，因此可以省略，但合约中函数本身默认是public</p><p>函数可见性：</p><ul><li>public - 任意访问</li><li>private - 仅当前合约内</li><li>internal - 仅当前合约及所继承的合约</li><li>external - 仅外部访问（在内部也只能用外部访问方式访问）</li></ul><h4 id=合约类型>·合约类型</h4><p>合约是一个类型，我们可以通过这个合约类型来创建合约（即部署合约），然后与合约里的函数交互，比如调用一个合约的函数可以创建一个另一个合约：</p><pre tabindex=0><code>pragma solidity ^0.8.0;
+
+contract Hello {
+  function sayHi() public view returns  (uint) {
+      return 10;
+  }
+}
+
+contract HelloCreator {
+    uint public x;
+    Hello public h;
+
+  function createHello() public returns (address) {
+    h = new Hello();
+    return address(h);
+  }
+}
+</code></pre><p><strong>合约类型数据成员：</strong></p><p>对于某个合约c有</p><p>（1）<code>type(C).name</code> ：获得合约的名字。</p><p>（2）<code>type(C).creationCode</code>：获得创建合约的字节码。</p><p>（3）<code>type(C).runtimeCode</code>：获得合约运行时的字节码。</p><p>【问】<strong>：如何区分合约和外部地址</strong></p><p>答：经常需要区分一个地址是合约地址还是外部账号地址，区分的关键是看这个地址有没有与之相关联的代码。EVM提供了一个操作码<code>EXTCODESIZE</code>，用来获取地址相关联的代码大小（长度），如果是外部账号地址，则没有代码返回。因此我们可以使用以下方法判断合约地址及外部账号地址。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>function isContract(address addr) internal view returns (bool) {
+</span></span><span style=display:flex><span>  uint256 size;
+</span></span><span style=display:flex><span>  assembly { size := extcodesize(addr) }
+</span></span><span style=display:flex><span>  return size &gt; 0;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>如果是在合约外部判断，则可以使用<code>web3.eth.getCode()</code>（一个Web3的API），或者是对应的JSON-RPC方法——eth_getcode。getCode()用来获取参数地址所对应合约的代码，如果参数是一个外部账号地址，则返回“0x”；如果参数是合约，则返回对应的字节码，下面两行代码分别对应无代码和有代码的输出。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>&gt;web3.eth.getCode(“0xa5Acc472597C1e1651270da9081Cc5a0b38258E3”) 
+</span></span><span style=display:flex><span>“0x”
+</span></span><span style=display:flex><span>&gt;web3.eth.getCode(“0xd5677cf67b5aa051bb40496e68ad359eb97cfbf8”) “0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056” 
+</span></span></code></pre></div><p>这时候，通过对比<code>getCode()</code>的输出内容，就可以很容易判断出是哪一种地址。</p><h4 id=2引用类型reference-types>2）引用类型（Reference Types）</h4><p>引用类型用来表示复杂类型，占用的空间超过32字节，在申明一个引用类型的变量，需要指定该变量的位置，拷贝时开销很大，因此我们需要考虑将它们存储在什么位置,在定义引用类型arrays和struct时，有一个额外属性来标识数据的存储位置：</p><p>memory（内存）： 变量在运行时存在，其生命周期只存在于函数调用期间，函数参数默认是memory，gas开销较小。</p><p>storage（存储）：只要合约存在就一直保存在区块链中，局部复杂类型变量（local variables）和状态变量（state variables） 默认是stroage，gas开销最大。</p><p>calldata（调用数据）：一般用来存储函数参数的特殊数据位置，用来接收外部数据，是一个<strong>不可修改的、非持久</strong>的函数参数存储区域，gas开销最小。</p><p>【注】：<strong>不同引用类型在进行赋值的时候，只有在不同的数据位置赋值时会进行一份拷贝，而在同一数据位置内通常是增加一个引用</strong>。</p><h4 id=数组>·数组</h4><p><strong>def</strong>：</p><p>数组和大多数语言一样， 在一个类型后面加上一个<code>[]</code>，表示可以存储一组该类型的值。数组类型有两种：固定长度和动态长度</p><pre tabindex=0><code>    // 状态变量缺省位置为 storage 
+    uint [10] tens; // 固定长度的数组
+    uint [] numbers;  // 动态长度的数组
+    address [10] admins；  //admins最多有10个地址
+    
+    // 作为参数，使用 calldata 
+    function copy(uint[] calldata arrs) public {
+        numbers = arrs;  //  赋值时，不同的数据位置的变量会进行拷贝。 
+    }
+    
+    // 作为参数，使用 memory 
+    function handle(uint[] memory arrs) internal {
+    }
+}
+</code></pre><p>数组的初始化可以在声明时进行，还可以用new关键字进行声明，创建基于运行时长度的memory数组，使用 new 创建内存数组时，会根据长度在内存中分配相应的空间；如果变量是在stroage中，则表示分配一个起始空间，在之后运行过程中可以扩展该空间</p><p><strong>数组成员：</strong></p><ul><li><code>length</code>：表示当前数组的长度（只读）。</li><li><code>push()</code>：用来添加新的零初始化元素到数组末尾，并返回元素的引用，以便修改元素的内容，如：<code>x.push().t = 2</code>或<code>x.push() = b</code>，只对存储（storage）中的动态数组有效。</li><li>push(x)：添加给定元素到数组末尾。 没有返回值，只对存储（storage）中的动态数组有效</li><li><code>pop()</code>：从数组末尾删除元素，数组的长度减1，会在移除的元素上隐含调用delete，及时释放不使用的空间，节约gas。pop()没有返回值，只对存储（storage）中的动态数组有效。</li></ul><p><strong>特殊的数组类型：</strong></p><p>string：一个字符串也可以是一个字符数组，但不支持数组的push&amp;pop方法</p><p>bytes：动态分配大小字节的数组，类似于byte[]，但是bytes的gas费用更低。bytes 也可以用来表达字符串， 但通常用于原始字节数据；支持push&amp;pop</p><pre tabindex=0><code>    //声明
+    bytes bs;
+    bytes bs0 = &#34;12abcd&#34;;
+
+    string str1 = &#34;TinyXiong&#34;;
+    string name;
+</code></pre><p>【注】：字符串s通过<code>bytes(s)</code>转为一个bytes，通过下标访问<code>bytes(s)[i]</code>获取到的不是对应字符，而是获取对应的UTF-8编码；Solidity 语言本身提供的<code>string</code>功能比较弱，并没有提供一些实用函数</p><p><strong>数组gas消耗</strong>：</p><pre tabindex=0><code>function sum() public {
+        uint len = numbers.length;
+        for (uint i = 0; i &lt; len; i++) {
+            total += numbers[i];
+        }
+</code></pre><p>分析上述sum()函数可以看出gas消耗是随着<code>numbers</code> 元素线性增长的，如果<code>numbers</code> 元素非常多，<code>sum()</code> 消耗 gas 会超过区块 gas 限制而无法执行，常见的解决方案：</p><ol><li>将非必要的计算转移到链下进行。</li><li>想办法控制数组的长度。</li><li>想方法分段计算，让每段的计算工作量 Gas 可控。</li></ol><h4 id=结构体>·结构体</h4><p>Solidity 使用 <code>struct</code> 关键字来定义一个自定义组合类型</p><p>同时需要为每个成员定义其类型，除可以使用基本类型作为成员以外，还可以使用<a href=https://decert.me/tutorial/solidity/solidity-basic/array>数组</a>、结构体、<a href=https://decert.me/tutorial/solidity/solidity-basic/mapping>映射</a>作为成员：</p><pre tabindex=0><code>struct Student {
+    string name;
+    mapping(string=&gt;uint) score;
+    int age;
+}
+</code></pre><p><strong>结构体的声明赋值</strong></p><pre tabindex=0><code>// 声明变量而不初始化
+  Person person;
+
+// 只能作为状态变量这样使用，按成员顺序（结构体声明时的顺序）赋值
+Person person = Person(address(0x0), false, 18) ;
+// 在函数内声明
+Person memory person = Person(address(0x0), false, 18) ;
+
+// 使用具名变量初始化，可不按成员定义的顺序赋值
+Person person = Person({account: address(0x0), gender: false, age: 18}) ;
+
+//在函数内声明
+Person memory person =  Person({account: address(0x0), gender: false, age: 18}) ;
+</code></pre><h4 id=3映射类型mapping-types>3）映射类型（Mapping Types）</h4><p>一种键值对的映射关系存储结构，定义方式为mapping，和Java的Map、Python的Dict在功能上类似。仅能用来作为状态变量，或在内部函数中作为storage类型的引用。</p><p>定义方式为<strong>mapping(_KeyType => _KeyValue)</strong>。键类型允许除映射、变长数组、合约、枚举、结构体外的几乎所有类型；值类型没有任何限制，可以为任何类型。</p><p><strong>映射</strong>可以被视作为一个哈希表，所有可能的键会被虚拟化的创建，映射到一个类型的默认值（二进制的全零表示）。在映射表中，并不存储键的数据，仅仅存储它的keccak256哈希值，这个哈希值在查找值时需要用到。正因为此，<strong>映射</strong>是没有长度的，也没有键集合或值集合的概念。</p><h2 id=no2-solidity-advanced>No.2 Solidity advanced</h2><h3 id=1-solidity-api>1. Solidity API</h3><p><a href=https://learnblockchain.cn/docs/solidity/>Solidity</a> API 主要表现为Solidity 内置的特殊的变量及函数，他们存在于全局命名空间里，主要分为以下几类：</p><h4 id=1区块和交易的属性>1）区块和交易的属性</h4><p>提供一些区块链当前的信息</p><ul><li>blockhash(uint blockNumber) returns (bytes32)：返回给定区块号的哈希值，只支持最近256个区块，且不包含当前区块。</li><li>block.coinbase (address): 当前块矿工的地址。</li><li>block.difficulty (uint):当前块的难度。</li><li>block.gaslimit (uint):当前块的gaslimit。</li><li>block.number (uint):当前区块的块号。</li><li>block.timestamp (uint): 当前块的Unix时间戳</li><li>gasleft() (uint256): 获取剩余gas。</li><li>msg.data (bytes): 完整的调用数据（calldata）。</li><li>msg.gas (uint): 当前还剩的gas（弃用）。</li><li>msg.sender (address): 当前调用发起人的地址。</li><li>msg.sig (bytes4):调用数据(calldata)的前四个字节（例如为：函数标识符）。</li><li>msg.value (uint): 这个消息所附带的以太币，单位为wei。</li><li>now (uint): 当前块的时间戳(block.timestamp的别名)</li><li>tx.gasprice (uint) : 交易的gas价格。</li><li>tx.origin (address): 交易的发送者（全调用链）</li></ul><p>【注】：msg的所有成员值，如msg.sender,msg.value的值可以因为每一次外部函数调用，或库函数调用发生变化（因为msg就是和调用相关的全局变量）</p><h4 id=2错误处理>2）错误处理</h4><p>Solidity是通过回退状态的方式来处理错误。发生异常时会撤消当前调用（及其所有子调用）所改变的状态，同时给调用者返回一个错误标识。</p><ul><li><p>assert(bool condition)：用于判断内部错误，条件不满足时抛出异常</p></li><li><p>require(bool condition, string message)：用于判断输入或外部组件错误，条件不满足时抛出错误信息。</p></li><li><p>revert(string reason)：终止执行并还原改变的状态，并提供一个错误信息。</p><p>老的throw 的方式已经被弃用</p></li></ul><h4 id=3合约相关>3）合约相关</h4><ul><li>this（当前合约的类型）:表示当前合约，可以显式的转换为Address</li><li>selfdestruct(address recipient)：销毁当前合约，并把它所有资金发送到给定的地址别名为：suicide(address recipient)</li></ul><p>当前合约里的所有函数均可支持调用，包括当前函数本身。</p><h4 id=4加密功能>4）加密功能</h4><ul><li>keccak256(&mldr;) returns (bytes32)：使用以太坊（Keccak-256）计算HASH值，紧密打包参数。</li><li>sha256(&mldr;) returns (bytes32)：使用SHA-256计算hash值，紧密打包参数。</li><li>sha3(&mldr;) returns (bytes32)：keccak256的别名</li><li>ripemd160(&mldr;) returns (bytes20)：使用RIPEMD-160计算HASH值。紧密打包参数。</li><li>ecrecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) returns (address)：通过椭圆曲线签名来恢复与公钥关联的地址，或者在错误时返回零。可用于签名数据的校验，如果返回结果是签名者的公匙地址，那么说明数据是正确的。</li></ul><p>紧密打包参数（tightly packed）指参数不会补位，是直接连接在一起的，eg：</p><pre tabindex=0><code>keccak256(&#34;ab&#34;, &#34;c&#34;)
+keccak256(&#34;abc&#34;)
+</code></pre><h3 id=2函数调用>2.函数调用</h3><h4 id=1内部函数调用internal-function-calls>1）内部函数调用（Internal Function Calls）</h4><p>内部调用，不会创建一个EVM消息调用。而是直接调用或者递归调用当前合约的函数。</p><p>这些函数调用被转换为EVM内部的简单指令跳转（jumps）。 这样使得当前的内存不会被回收，在一个内部调用时传递一个内存型引用效率将非常高。当然，仅仅是同一个合约的函数之间才可通过内部的方式进行调用。</p><pre tabindex=0><code>pragma solidity ^0.4.16;
+
+contract C {
+    function g(uint a) public pure returns (uint ret) {
+      return f();       // 直接调用
+    }
+    
+
+    function f() internal pure returns (uint ret) {
+     return g(7) + f();    // 直接调用及递归调用
+    }
+
+}
+</code></pre><h4 id=2外部函数调用external-function-calls>2）外部函数调用（External Function Calls）</h4><p>外部调用，不是EVM的指令跳转，而是发起EVM消息调用。例如表达式this.g(8);和c.g(2)（c是一个合约实例）是外部调用函数的方式。但在合约的构造器中，不能使用this调用函数，因为当前合约还没有创建完成。其它合约的函数必须通过外部的方式调用。</p><p>对于一个外部调用，所有函数的参数必须要拷贝到内存中。</p><p>当调用其它合约的函数时，还可以通过选项**.value()<strong>，和</strong>.gas()**来分别指定要发送的以太币和gas值：</p><pre tabindex=0><code>pragma solidity ^0.4.0;
+
+contract InfoFeed {
+    function info() public payable returns (uint ret) { return 42; }
+}   //必须使用payable关键字，否则不能通过value()来接收以太币。
+
+contract Consumer {
+    InfoFeed feed;
+    
+    function setFeed(address addr) public {
+      feed = InfoFeed(addr);//进行显示的类型转换，表示给定地址是合约InfoFeed类型，这里并不执行构造器的初始化；也可以使用function setFeed(InfoFeed _feed) { feed = _feed; }来直接进行赋值。
+    }
+    
+    function callFeed() public {
+      feed.info.value(10).gas(800)();  // 设置附加以太币及gas来调用info，真正的调用是后面的括号()，调用callFeed时，需要预先存入一定量的以太币，要不能会因余额不足报错
+    }
+}
+</code></pre><h3 id=3以太坊abi>3.以太坊ABI</h3><p>Application Binary Interface，应用程序二进制接口，就是以太坊的调用合约时的接口说明，要想和合约交互，就离不开ABI数据</p><p>eg：以下面合约为例，查看用参数 1 调用<code>set(uint x)</code>这个交易附带的数据是什么？</p><pre tabindex=0><code>pragma solidity ^0.4.0;
+
+contract SimpleStorage {
+    uint storedData;
+    
+    function set(uint x) public {
+        storedData = x;
+    }
+    
+    function get() public constant returns (uint) {
+        return storedData;
+    }
+
+}
+</code></pre><p>先把合约部署到以太坊网络上，然后用 “1” 作为参数调用set，然后我们打开etherscan查看<a href=https://ropsten.etherscan.io/tx/0xd773a6909808f99c5a26c0c890af8b0bb6d784f29a3af55e04fa35d44d7716e2>交易详情数据</a>, 看到其附加数据：</p><p>ABI的编码数据就是：</p><pre tabindex=0><code class=language-undefined data-lang=undefined>0x60fe47b10000000000000000000000000000000000000000000000000000000000000001
+</code></pre><p>这个数据可以分成两个子部分：</p><ul><li><p>函数选择器(4字节)0x60fe47b1，即对函数签名字符串进行sha3（keccak256）哈希运算之后，取前4个字节：</p><pre tabindex=0><code> bytes4(sha3(“set(uint256)”)) == 0x60fe47b1
+</code></pre></li><li><p>第一个参数(32字节)，使用对应的16进制数
+00000000000000000000000000000000000000000000000000000000000000001</p></li></ul><p>获得函数对应的ABI 数据有两种方法：</p><p>一个是 solidity 提供了ABI的相关<a href=https://learnblockchain.cn/2018/03/14/solidity-api/>API</a>， 通过ABI编码函数可以在不用调用函数的情况下，获得ABI编码值：</p><ul><li>abi.encode(&mldr;) returns (bytes)：计算参数的ABI编码。</li><li>abi.encodePacked(&mldr;) returns (bytes)：计算参数的紧密打包编码</li><li>abi. encodeWithSelector(bytes4 selector, &mldr;) returns (bytes)： 计算函数选择器和参数的ABI编码</li><li>abi.encodeWithSignature(string signature, &mldr;) returns (bytes): 等价于 abi.encodeWithSelector(bytes4(keccak256(signature), &mldr;)</li></ul><p>eg：</p><pre tabindex=0><code>   function abiEncode() public constant returns (bytes) {        
+      abi.encode(1);  // 计算1的ABI编码
+      return abi.encodeWithSignature(&#34;set(uint256)&#34;, 1); //计算函数set(uint256) 及参数1 的ABI 编码   
+    }
+</code></pre><p>另一个web3提供相应的API，如使用web3计算函数选择器的方式：</p><pre tabindex=0><code>web3.eth.abi.encodeFunctionSignature(&#39;myMethod(uint256,string)&#39;);
+</code></pre><h3 id=4function-modifers>4.Function Modifers</h3><p>Modifiers可以用来改变一个函数的行为，如用于在函数执行前检查某种前置条件。</p><p>修改器是一种可被继承合约属性，同时还可被继承的合约重写(override)</p><h3 id=heading></h3><div class="entry-shang text-center"><p>「如果这篇文章对你有用,请随意打赏」</p><button class="zs show-zs btn btn-bred">赞赏支持</button></div><div class=zs-modal-bg></div><div class=zs-modal-box><div class=zs-modal-head><button type=button class=close>×</button>
+<span class=author><a href=https://sunlongyu.github.io><img src=/img/favicon.png>THIS IS SLY</a></span><p class=tip><i></i><span>如果这篇文章对你有用,请随意打赏</span></p></div><div class=zs-modal-body><div class=zs-modal-btns><button class="btn btn-blink" data-num=2>2元</button>
+<button class="btn btn-blink" data-num=5>5元</button>
+<button class="btn btn-blink" data-num=10>10元</button>
+<button class="btn btn-blink" data-num=50>50元</button>
+<button class="btn btn-blink" data-num=100>100元</button>
+<button class="btn btn-blink" data-num=1>任意金额</button></div><div class=zs-modal-pay><button class="btn btn-bred" id=pay-text>2元</button><p>使用<span id=pay-type>微信</span>扫描二维码完成支付</p><img src=/img/reward/wechat-2.png id=pay-image></div></div><div class=zs-modal-footer><label><input type=radio name=zs-type value=wechat class=zs-type checked><span><span class=zs-wechat><img src=/img/reward/wechat-btn.png></span></label>
+<label><input type=radio name=zs-type value=alipay class=zs-type class=zs-alipay><img src=/img/reward/alipay-btn.png></span></label></div></div><script type=text/javascript src=/js/reward.js></script><hr><ul class=pager><li class=next><a href=/post/2023-09-03-take-you-through-ethereum/ data-toggle=tooltip data-placement=top title="Take you through Ethereum">Next
+Post &rarr;</a></li></ul></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5><a href=/tags/>FEATURED TAGS</a></h5><div class=tags></div></section><section><hr><h5>FRIENDS</h5><ul class=list-inline><li><a target=_blank href=https://friend-blog-url.com></a></li></ul></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"><li><a href=mailto:longyusun913@gmail.com><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-envelope fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=#ZgotmplZ><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-stack-1x fa-inverse">知</i></span></a></li><li><a target=_blank href=https://weibo.com/u/5782286452><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-weibo fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href="https://www.facebook.com/profile.php?id=100080134944989"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=/img/wechat.png><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-weixin fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://github.com/sunlongyu><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target=_blank href=https://www.instagram.com/sunlyuers/><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-instagram fa-stack-1x fa-inverse"></i></span></a></li><li><a href rel=alternate type=application/rss+xml title="THIS IS SLY"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="copyright text-muted">Copyright &copy; THIS IS SLY 2025</p></div></div></div></footer><script>function loadAsync(e,t){var s=document,o="script",n=s.createElement(o),i=s.getElementsByTagName(o)[0];n.src=e,t&&n.addEventListener("load",function(e){t(null,e)},!1),i.parentNode.insertBefore(n,i)}</script><script>$("#tag_cloud").length!==0&&loadAsync("/js/jquery.tagcloud.js",function(){$.fn.tagcloud.defaults={color:{start:"#bbbbee",end:"#0085a1"}},$("#tag_cloud a").tagcloud()})</script><script>loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js",function(){var e=document.querySelector("nav");e&&FastClick.attach(e)})</script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4,h5,h6");return $(e).html(""),r.each(function(){n=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),t=$(this).text(),i=$('<a href="'+o+'" rel="nofollow" title="'+t+'">'+t+"</a>"),s=$('<li class="'+n+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")}),loadAsync("/js/jquery.nav.js",function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script></body></html>
