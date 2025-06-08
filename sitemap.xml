@@ -2,55 +2,159 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blogs/</loc>
+    <loc>https://sunlongyu.github.io/blogs/</loc>
+    <lastmod>2025-02-01T04:55:54+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/</loc>
+    <lastmod>2025-02-01T04:55:54+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/llm/</loc>
+    <lastmod>2025-02-01T04:55:54+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/blogs/llm-pre-training/</loc>
+    <lastmod>2025-02-01T04:55:54+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/</loc>
+    <lastmod>2025-02-01T04:55:54+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/blogs/llm%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2025-01-14T07:07:07+01:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/</loc>
+    <lastmod>2024-12-15T12:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/%E6%91%84%E5%BD%B1/</loc>
+    <lastmod>2024-12-15T12:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E6%91%84%E5%BD%B1%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2024-12-15T12:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E6%97%85%E6%B8%B8/</loc>
+    <lastmod>2024-12-15T12:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/%E6%97%85%E8%A1%8C/</loc>
+    <lastmod>2024-12-15T12:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/blogs/travel-photography-tips/</loc>
+    <lastmod>2024-12-15T12:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E7%9B%B8%E6%9C%BA/</loc>
+    <lastmod>2024-12-15T12:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E9%A3%8E%E6%99%AF%E6%91%84%E5%BD%B1/</loc>
+    <lastmod>2024-12-15T12:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/ai/</loc>
+    <lastmod>2024-12-15T11:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/python/</loc>
+    <lastmod>2024-12-15T11:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</loc>
+    <lastmod>2024-12-15T11:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/</loc>
+    <lastmod>2024-12-15T11:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-12-15T11:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/blogs/machine-learning-intro/</loc>
+    <lastmod>2024-12-15T11:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2024-12-15T11:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/css/</loc>
+    <lastmod>2024-12-15T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/html/</loc>
+    <lastmod>2024-12-15T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/javascript/</loc>
+    <lastmod>2024-12-15T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/web%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2024-12-15T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/blogs/web-development-basics/</loc>
+    <lastmod>2024-12-15T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2024-12-15T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2024-12-15T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/%E5%A8%B1%E4%B9%90/</loc>
     <lastmod>2024-02-01T04:56:02+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/fourth/</loc>
+    <loc>https://sunlongyu.github.io/blogs/fourth/</loc>
     <lastmod>2024-02-01T04:56:02+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://sunlongyu.github.io/categories/%E6%96%87%E5%8C%96/</loc>
     <lastmod>2024-02-01T04:56:02+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/third/</loc>
+    <loc>https://sunlongyu.github.io/tags/%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98/</loc>
+    <lastmod>2024-02-01T04:56:02+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E6%B5%81%E8%A1%8C%E6%96%87%E5%8C%96/</loc>
+    <lastmod>2024-02-01T04:56:02+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
+    <lastmod>2024-02-01T04:56:02+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E8%8A%82%E6%97%A5/</loc>
+    <lastmod>2024-02-01T04:56:02+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/blogs/third/</loc>
     <lastmod>2024-02-01T04:55:59+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blogs/second/</loc>
-    <lastmod>2024-02-01T04:55:54+05:30</lastmod>
+    <loc>https://sunlongyu.github.io/tags/%E5%8D%A1%E5%B0%94%E8%90%A8%E6%A0%B9/</loc>
+    <lastmod>2024-02-01T04:55:59+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://sunlongyu.github.io/categories/%E5%93%B2%E5%AD%A6/</loc>
+    <lastmod>2024-02-01T04:55:59+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E5%A4%A9%E6%96%87%E5%AD%A6/</loc>
+    <lastmod>2024-02-01T04:55:59+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E5%AE%87%E5%AE%99/</loc>
+    <lastmod>2024-02-01T04:55:59+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/%E7%8E%AF%E4%BF%9D/</loc>
+    <lastmod>2024-02-01T04:55:59+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/categories/%E7%A7%91%E5%AD%A6/</loc>
+    <lastmod>2024-02-01T04:55:59+05:30</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/about/</loc>
     <lastmod>2024-01-14T07:07:07+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/about/</loc>
+    <loc>https://sunlongyu.github.io/categories/about/</loc>
     <lastmod>2024-01-14T07:07:07+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/about/</loc>
+    <loc>https://sunlongyu.github.io/tags/about/</loc>
     <lastmod>2024-01-14T07:07:07+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-01-14T07:07:07+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blogs/first/</loc>
-    <lastmod>2024-01-14T07:07:07+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-01-14T07:07:07+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/goatech/</loc>
+    <loc>https://sunlongyu.github.io/tags/goatech/</loc>
     <lastmod>2016-10-02T22:55:05-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/music/</loc>
+    <loc>https://sunlongyu.github.io/music/</loc>
     <lastmod>2016-10-02T22:55:05-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/vlogs/</loc>
+    <loc>https://sunlongyu.github.io/vlogs/</loc>
     <lastmod>2016-10-02T22:55:05-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/innovation/</loc>
+    <loc>https://sunlongyu.github.io/tags/innovation/</loc>
     <lastmod>2016-10-02T22:55:05-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/panjim-goa/</loc>
+    <loc>https://sunlongyu.github.io/tags/panjim-goa/</loc>
     <lastmod>2016-10-02T22:55:05-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/projects/</loc>
+    <loc>https://sunlongyu.github.io/categories/projects/</loc>
     <lastmod>2016-10-02T22:55:05-04:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/true/</loc>
   </url>
 </urlset>

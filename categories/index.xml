@@ -2,24 +2,101 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Sun longyu</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://sunlongyu.github.io/categories/</link>
     <description>Recent content in Categories on Sun longyu</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 14 Jan 2024 07:07:07 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Feb 2025 04:55:54 +0530</lastBuildDate>
+    <atom:link href="https://sunlongyu.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM</title>
+      <link>https://sunlongyu.github.io/categories/llm/</link>
+      <pubDate>Sat, 01 Feb 2025 04:55:54 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/categories/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>摄影</title>
+      <link>https://sunlongyu.github.io/categories/%E6%91%84%E5%BD%B1/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E6%91%84%E5%BD%B1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>旅行</title>
+      <link>https://sunlongyu.github.io/categories/%E6%97%85%E8%A1%8C/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E6%97%85%E8%A1%8C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>人工智能</title>
+      <link>https://sunlongyu.github.io/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</link>
+      <pubDate>Sun, 15 Dec 2024 11:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>机器学习</title>
+      <link>https://sunlongyu.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sun, 15 Dec 2024 11:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web开发</title>
+      <link>https://sunlongyu.github.io/categories/web%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Sun, 15 Dec 2024 10:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/categories/web%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>编程</title>
+      <link>https://sunlongyu.github.io/categories/%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Sun, 15 Dec 2024 10:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E7%BC%96%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>娱乐</title>
+      <link>https://sunlongyu.github.io/categories/%E5%A8%B1%E4%B9%90/</link>
+      <pubDate>Thu, 01 Feb 2024 04:56:02 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E5%A8%B1%E4%B9%90/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>文化</title>
+      <link>https://sunlongyu.github.io/categories/%E6%96%87%E5%8C%96/</link>
+      <pubDate>Thu, 01 Feb 2024 04:56:02 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E6%96%87%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>哲学</title>
+      <link>https://sunlongyu.github.io/categories/%E5%93%B2%E5%AD%A6/</link>
+      <pubDate>Thu, 01 Feb 2024 04:55:59 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E5%93%B2%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>科学</title>
+      <link>https://sunlongyu.github.io/categories/%E7%A7%91%E5%AD%A6/</link>
+      <pubDate>Thu, 01 Feb 2024 04:55:59 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E7%A7%91%E5%AD%A6/</guid>
+      <description></description>
+    </item>
     <item>
       <title>About</title>
-      <link>http://localhost:1313/categories/about/</link>
+      <link>https://sunlongyu.github.io/categories/about/</link>
       <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <guid>http://localhost:1313/categories/about/</guid>
+      <guid>https://sunlongyu.github.io/categories/about/</guid>
       <description></description>
     </item>
     <item>
       <title>Projects</title>
-      <link>http://localhost:1313/categories/projects/</link>
+      <link>https://sunlongyu.github.io/categories/projects/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
-      <guid>http://localhost:1313/categories/projects/</guid>
+      <guid>https://sunlongyu.github.io/categories/projects/</guid>
       <description></description>
     </item>
   </channel>

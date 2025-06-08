@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        
+        <meta name="description" content="Simple minimalist theme">
+        
+        <meta name="keywords" content="minimalist,blog,goa,hugo,developer">
+
+        <title>
+              Sun longyu - LLM入门 
+        </title>
+
+        <meta name="generator" content="Hugo 0.147.8">
+
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+        
+
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto+Slab:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/main.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/custom.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="theme-color" content="#ffffff"></head>
+
+    <body lang="zh-cn">
+        <div class="container my-auto">
+
+<header class="text-start title">
+  <h1 class="title">LLM入门</h1>
+</header>
+
+<section id="category-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-start meta">
+       PUBLISHED ON JAN 14, 2025
+      
+      / 12 MIN READ
+      
+      
+      
+      —
+      
+      
+      <a class="meta"
+        href="/categories/llm">LLM</a>
+      
+      
+      
+    </h6>
+  </div>
+  
+</section>
+
+<section id="content-pane">
+  <div class="text-justify content">
+    
+    <h1 id="一大模型概述">一、大模型概述</h1>
+<h2 id="1大模型概念">1、大模型概念</h2>
+<p>LLM 是指用有大量参数的大型预训练语言模型，在解决各种自然语言处理任务方面表现出强大的能力，甚至可以展现出一些小规模语言模型所不具备的特殊能力。</p>
+<h2 id="2语言模型-language-model">2、语言模型 language model</h2>
+<p>语言建模旨在对词序列的生成概率进行建模，以预测未来 tokens 的概率，语言模型的发展：</p>
+<ul>
+<li><strong>统计语言模型 SLM</strong> ：统计语言模型使用马尔可夫假设（Markov Assumption）来建立语言序列的预测模型，通常是根据词序列中若干个连续的上下文单词来预测下一个词的出现概率，经典的例子是 n - gram 模型，在此模型中一个词出现的概率只依赖于前面的 n - 1 个词，比如一个 3gram 模型只考虑前两个词对第三个词出现概率的影响。</li>
+<li><strong>神经语言模型 NLM</strong> ：使用神经网络来预测词序列的概率分布，如 RNN 包括 LSTM 和 GRU 等变体，这样 NLM 就可以考虑更长的上下文或整个句子的信息，而传统的统计语言模型使用固定窗口大小的词来预测；在该模型中引入分布式词表示，每个单词被编码为实数值向量，即词嵌入（word embeddings）用来捕捉词与词之间的语法关系。</li>
+<li><strong>预训练语言模型 PLM</strong> ：PLM 开始在规模无标签语料库上进行预训练任务，学习语言规律知识，并且针对特定任务进行微调（fine - tuning）来适应不同应用场景；而对于大规模的长文本，谷歌提出了 transformer，通过自注意力机制（self - attention）和高度并行化能力，可以在处理序列数据时捕捉全局依赖关系，极大提高序列处理任务的效率。</li>
+<li><strong>大语言模型 LLM</strong> ：当一些研究工作尝试训练更大的预训练语言模型（例如 175B 参数的 GPT - 3 和 540B 参数的 PaLM）来探索扩展语言模型所带来的性能极限。这些大规模的预训练语言模型在解决复杂任务时表现出了与小型预训练语言模型（如 330M 参数的 BERT 和 1.5B 参数的 GPT2）不同的行为，这种大模型具有但小模型不具备的能力通常被称为 “涌现能力”（Emergent Abilities），这些大型的预训练模型就是 LLM。</li>
+</ul>
+<h2 id="3大模型特点">3、大模型特点</h2>
+<ul>
+<li><strong>参数数量庞大，数据需求巨大</strong></li>
+<li><strong>计算资源密集</strong></li>
+<li><strong>泛化能力强</strong></li>
+<li><strong>迁移学习效果佳</strong></li>
+</ul>
+<h2 id="4小模型-vs-大模型">4、小模型 vs 大模型</h2>
+<h2 id="5大模型企业应用">5、大模型企业应用</h2>
+<ul>
+<li><strong>通用大模型</strong></li>
+<li><strong>行业大模型</strong></li>
+<li><strong>产业大模型</strong></li>
+</ul>
+<h1 id="二大模型基础">二、大模型基础</h1>
+<h2 id="1大模型构建过程">1、大模型构建过程</h2>
+<h3 id="1大规模预训练large---scale-pre---training">（1）大规模预训练（Large - Scale Pre - training）</h3>
+<ul>
+<li><strong>目标</strong> ：为模型参数找到好的 “初值点”，使其编码世界知识，具备通用的语言理解和生成能力。可以看作是世界知识的压缩。</li>
+<li><strong>方法</strong> ：使用海量（当前普遍 2 - 3T tokens 规模，并有扩大趋势）的无标注文本数据，通过自监督学习任务（当前主流是 “预测下一个词”）训练解码器架构（Decoder Architecture）模型。</li>
+<li><strong>关键要素</strong> ：
+<ul>
+<li><strong>数据</strong> ：高质量、多源化数据的收集与严格清洗至关重要，直接影响模型能力。</li>
+<li><strong>算力</strong> ：需求极高（百亿模型需数百卡，千亿模型需数千甚至万卡集群），训练时间长。</li>
+<li><strong>技术与人才</strong> ：涉及大量经验性技术（数据配比、学习率调整、异常检测等），高度依赖研发人员的经验和能力。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2指令微调与人类对齐instruction-fine---tuning--human-alignment">（2）指令微调与人类对齐（Instruction Fine - tuning &amp; Human Alignment）</h3>
+<ul>
+<li>
+<p><strong>动机</strong> ：预训练模型虽有知识，但不擅长直接按指令解决任务。需要进一步训练以适应人类的使用方式和价值观。</p>
+</li>
+<li>
+<p><strong>指令微调</strong> ：</p>
+<ul>
+<li><strong>目标</strong> ：使模型学会通过问答形式解决任务。</li>
+<li><strong>方法</strong> ：使用 “任务输入 - 输出” 配对数据进行有监督的模仿学习（Imitation Learning）。</li>
+<li><strong>作用</strong> ：主要在于激发模型在预训练阶段学到的能力，而非注入新知识。</li>
+<li><strong>资源</strong> ：所需数据量（数十万到百万级）和算力远小于预训练。</li>
+</ul>
+</li>
+<li>
+<p><strong>人类对齐</strong> ：</p>
+<ul>
+<li><strong>目标</strong> ：使模型行为符合人类的期望、需求和价值观（如 “有用、诚实、无害”）。</li>
+<li><strong>主流方法</strong> ：RLHF（基于人类反馈的强化学习）。</li>
+<li><strong>RLHF 过程</strong> ：标注员对模型输出进行偏好排序 -&gt; 训练奖励模型（Reward Model）-&gt; 使用强化学习根据奖励模型优化语言模型。</li>
+<li><strong>资源</strong> ：通常比 SFT 消耗多，但远小于预训练。也在探索更简化的对齐方法。</li>
+</ul>
+</li>
+<li>
+<p><strong>产出</strong> ：一个能够进行良好人机交互，能按指令解决问题，并且行为更符合人类期望的最终模型。</p>
+</li>
+</ul>
+<h2 id="2扩展法则">2、扩展法则</h2>
+<p>通过增大模型参数量、训练数据量和计算量来提升模型能力，而且这种提升往往比改进模型架构或算法本身带来的提升更显著。为了量化研究这种规模扩展带来的性能提升，研究人员提出了扩展法则来研究规模扩展与模型性能（通常用损失函数 Loss 来衡量）的关系，可以帮助预测不同资源投入下的模型性能：</p>
+<h3 id="1km-扩展法则">（1）KM 扩展法则</h3>
+<ul>
+<li>建立模型性能与三个主要因素模型规模 N（参数量）、数据规模 D（token 数量）、计算算力 C（通常指训练期间的总计算量）之间的幂律关系。</li>
+<li><strong>推论</strong> ：为了达到最低的 Loss，增大模型规模 N 比增大训练数据量 D 更有效。也就是说，分配更多计算资源给模型参数增长，带来的收益更大。</li>
+</ul>
+<h3 id="2chinchilla-扩展法则">（2）Chinchilla 扩展法则</h3>
+<ul>
+<li>该法则认为 KM 法则可能低估了数据规模 D 的重要性。他们在给定计算预算 C 下，同时调整 N 和 D 提出了新的扩展法则。</li>
+<li><strong>推论</strong> ：对于给定的计算预算 C，要达到最优性能（最低 Loss），模型规模 N 和数据规模 D 应该按比例同步扩展。他们的研究表明，最优的 N 和 D 大约与 C 的平方根成正比，意味着计算预算应该大致平均分配给模型规模增长和数据规模增长。</li>
+</ul>
+<h3 id="3局限性">（3）局限性</h3>
+<h2 id="3涌现能力">3、涌现能力</h2>
+<ul>
+<li>
+<p><strong>特征</strong> ：特定任务的性能在模型规模达到某个阈值后，出现突然的、远超随机水平的性能跃升。</p>
+</li>
+<li>
+<p><strong>上下文学习（In - context Learning, ICL）</strong></p>
+<ul>
+<li>模型能根据提示中给出的少量任务示例（Demonstrations）来完成新任务，无需进行模型参数的更新（梯度下降）。</li>
+<li><strong>例子</strong> ：GPT - 3（175B）展现出强大的 ICL 能力，而 GPT - 1/2 则不具备。能力也与任务相关，例如 13B 的 GPT - 3 在简单算术上可以 ICL，但 175B 在波斯语问答上效果不佳。</li>
+</ul>
+</li>
+<li>
+<p><strong>指令遵循（Instruction Following）</strong></p>
+<ul>
+<li>模型能理解并执行自然语言指令来完成任务，即使没有在提示中给出具体示例（零样本泛化）。通常通过指令微调（Instruction Tuning），使用大量（任务指令，任务输出）的数据对进行训练。</li>
+<li><strong>例子</strong> ：FLAN - PaLM 在规模达到 62B 及以上时，才在复杂的 BBH 推理基准上展现出较好的零样本能力。但较小模型（如 2B）用高质量数据微调也能掌握一定（尤其是简单任务）指令遵循能力。</li>
+</ul>
+</li>
+<li>
+<p><strong>逐步推理（Step - by - step Reasoning）</strong></p>
+<ul>
+<li>模型能解决需要多个推理步骤的复杂任务（如数学应用题），特别是利用思维链（Chain - of - Thought, CoT）提示策略时，即在提示中引导模型生成中间的推理步骤，从而得到更可靠的答案。</li>
+<li><strong>例子</strong> ：CoT 对 PaLM 的 62B 和 540B 模型在算术推理上有提升，但对 8B 模型效果不明显，且在 540B 上提升更显著。提升效果也因任务而异。</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</section>
+
+<section id="tag-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-end meta">
+      
+    </h6>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+<section id="menu-pane" class="menu text-center">
+  
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      
+      
+      <li class="menu-item">
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/travel-photography-tips/">&lt; prev</a>
+      </li>
+      
+
+      <li class="menu-item">
+        
+        <span class="menu-item">&nbsp;|&nbsp;</span>
+        
+        <a class="menu-item" href="/blogs">blogs</a>
+        
+        <span class="menu-item">&nbsp;|&nbsp;</span>
+        
+      </li>
+
+      
+      <li class="menu-item">
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/llm-pre-training/">next &gt;</a>
+      </li>
+      
+      
+    </ul>
+  </nav>
+  
+  <h4 class="text-center mt-3"><a class="menu-item" href="https://sunlongyu.github.io/">home</a></h4>
+</section>
+
+<footer class="text-center footer">
+  <hr />
+  
+  <h6 class="text-center copyright">© 2024. SLY. <a href="http://creativecommons.org/licenses/by/3.0/">Some Rights Reserved</a>.</h6>
+  
+  <h6 class="text-center powered"><a href="https://gohugo.io/">Hugo</a> <a
+      href="https://github.com/shenoydotme/hugo-goa">Goa</a> by <a href="https://shenoy.me">shenoydotme</a> and <a
+      href="https://incirclemedia.com">Incircle Media</a></h6>
+  
+  
+  <h6>
+    <a href="https://sunlongyu.github.io/index.xml" aria-label="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+  </h6>
+  
+  
+
+</footer>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+
+<script>hljs.highlightAll();</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/js/custom.js"></script>
+</body>
+
+</html>
+

@@ -2,38 +2,178 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Sun longyu</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://sunlongyu.github.io/tags/</link>
     <description>Recent content in Tags on Sun longyu</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 14 Jan 2024 07:07:07 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Dec 2024 12:00:00 +0800</lastBuildDate>
+    <atom:link href="https://sunlongyu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>摄影技巧</title>
+      <link>https://sunlongyu.github.io/tags/%E6%91%84%E5%BD%B1%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E6%91%84%E5%BD%B1%E6%8A%80%E5%B7%A7/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>旅游</title>
+      <link>https://sunlongyu.github.io/tags/%E6%97%85%E6%B8%B8/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E6%97%85%E6%B8%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>相机</title>
+      <link>https://sunlongyu.github.io/tags/%E7%9B%B8%E6%9C%BA/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E7%9B%B8%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>风景摄影</title>
+      <link>https://sunlongyu.github.io/tags/%E9%A3%8E%E6%99%AF%E6%91%84%E5%BD%B1/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E9%A3%8E%E6%99%AF%E6%91%84%E5%BD%B1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI</title>
+      <link>https://sunlongyu.github.io/tags/ai/</link>
+      <pubDate>Sun, 15 Dec 2024 11:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://sunlongyu.github.io/tags/python/</link>
+      <pubDate>Sun, 15 Dec 2024 11:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>数据科学</title>
+      <link>https://sunlongyu.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/</link>
+      <pubDate>Sun, 15 Dec 2024 11:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>算法</title>
+      <link>https://sunlongyu.github.io/tags/%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Sun, 15 Dec 2024 11:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CSS</title>
+      <link>https://sunlongyu.github.io/tags/css/</link>
+      <pubDate>Sun, 15 Dec 2024 10:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HTML</title>
+      <link>https://sunlongyu.github.io/tags/html/</link>
+      <pubDate>Sun, 15 Dec 2024 10:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/html/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JavaScript</title>
+      <link>https://sunlongyu.github.io/tags/javascript/</link>
+      <pubDate>Sun, 15 Dec 2024 10:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>前端</title>
+      <link>https://sunlongyu.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
+      <pubDate>Sun, 15 Dec 2024 10:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E5%89%8D%E7%AB%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>星球大战</title>
+      <link>https://sunlongyu.github.io/tags/%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98/</link>
+      <pubDate>Thu, 01 Feb 2024 04:56:02 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>流行文化</title>
+      <link>https://sunlongyu.github.io/tags/%E6%B5%81%E8%A1%8C%E6%96%87%E5%8C%96/</link>
+      <pubDate>Thu, 01 Feb 2024 04:56:02 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E6%B5%81%E8%A1%8C%E6%96%87%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>电影</title>
+      <link>https://sunlongyu.github.io/tags/%E7%94%B5%E5%BD%B1/</link>
+      <pubDate>Thu, 01 Feb 2024 04:56:02 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E7%94%B5%E5%BD%B1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>节日</title>
+      <link>https://sunlongyu.github.io/tags/%E8%8A%82%E6%97%A5/</link>
+      <pubDate>Thu, 01 Feb 2024 04:56:02 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E8%8A%82%E6%97%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>卡尔萨根</title>
+      <link>https://sunlongyu.github.io/tags/%E5%8D%A1%E5%B0%94%E8%90%A8%E6%A0%B9/</link>
+      <pubDate>Thu, 01 Feb 2024 04:55:59 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E5%8D%A1%E5%B0%94%E8%90%A8%E6%A0%B9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>天文学</title>
+      <link>https://sunlongyu.github.io/tags/%E5%A4%A9%E6%96%87%E5%AD%A6/</link>
+      <pubDate>Thu, 01 Feb 2024 04:55:59 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E5%A4%A9%E6%96%87%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>宇宙</title>
+      <link>https://sunlongyu.github.io/tags/%E5%AE%87%E5%AE%99/</link>
+      <pubDate>Thu, 01 Feb 2024 04:55:59 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E5%AE%87%E5%AE%99/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>环保</title>
+      <link>https://sunlongyu.github.io/tags/%E7%8E%AF%E4%BF%9D/</link>
+      <pubDate>Thu, 01 Feb 2024 04:55:59 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/tags/%E7%8E%AF%E4%BF%9D/</guid>
+      <description></description>
+    </item>
     <item>
       <title>About</title>
-      <link>http://localhost:1313/tags/about/</link>
+      <link>https://sunlongyu.github.io/tags/about/</link>
       <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <guid>http://localhost:1313/tags/about/</guid>
+      <guid>https://sunlongyu.github.io/tags/about/</guid>
       <description></description>
     </item>
     <item>
       <title>GoaTech</title>
-      <link>http://localhost:1313/tags/goatech/</link>
+      <link>https://sunlongyu.github.io/tags/goatech/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
-      <guid>http://localhost:1313/tags/goatech/</guid>
+      <guid>https://sunlongyu.github.io/tags/goatech/</guid>
       <description></description>
     </item>
     <item>
       <title>Innovation</title>
-      <link>http://localhost:1313/tags/innovation/</link>
+      <link>https://sunlongyu.github.io/tags/innovation/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
-      <guid>http://localhost:1313/tags/innovation/</guid>
+      <guid>https://sunlongyu.github.io/tags/innovation/</guid>
       <description></description>
     </item>
     <item>
       <title>Panjim Goa</title>
-      <link>http://localhost:1313/tags/panjim-goa/</link>
+      <link>https://sunlongyu.github.io/tags/panjim-goa/</link>
       <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
-      <guid>http://localhost:1313/tags/panjim-goa/</guid>
+      <guid>https://sunlongyu.github.io/tags/panjim-goa/</guid>
       <description></description>
     </item>
   </channel>

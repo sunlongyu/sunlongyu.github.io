@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        
+        <meta name="description" content="Simple minimalist theme">
+        
+        <meta name="keywords" content="minimalist,blog,goa,hugo,developer">
+
+        <title>
+              Sun longyu - LLM Pre-Training 
+        </title>
+
+        <meta name="generator" content="Hugo 0.147.8">
+
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+        
+
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto+Slab:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/main.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/custom.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="theme-color" content="#ffffff"></head>
+
+    <body lang="zh-cn">
+        <div class="container my-auto">
+
+<header class="text-start title">
+  <h1 class="title">LLM Pre-Training</h1>
+</header>
+
+<section id="category-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-start meta">
+       PUBLISHED ON FEB 1, 2025
+      
+      / 15 MIN READ
+      
+      
+      
+      —
+      
+      
+      <a class="meta"
+        href="/categories/llm">LLM</a>
+      
+      
+      
+    </h6>
+  </div>
+  
+</section>
+
+<section id="content-pane">
+  <div class="text-justify content">
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一数据预处理">一、数据预处理</a>
+      <ul>
+        <li><a href="#一数据的收集">（一）数据的收集</a></li>
+        <li><a href="#二数据预处理">（二）数据预处理</a></li>
+        <li><a href="#三数据调度-data-scheduling">（三）数据调度 Data Scheduling</a></li>
+      </ul>
+    </li>
+    <li><a href="#二预训练过程">二、预训练过程</a>
+      <ul>
+        <li><a href="#一预训练任务">（一）预训练任务</a></li>
+        <li><a href="#二优化参数设置">（二）优化参数设置</a></li>
+        <li><a href="#三可扩展的高效训练技术">（三）可扩展的高效训练技术</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+    <h1 id="预训练---研发大语言模型的第一个训练阶段">预训练 - 研发大语言模型的第一个训练阶段</h1>
+<p>预训练是研发大语言模型的第一个训练阶段，通过在大规模语料上进行预训练，大语言模型可以获得通用的语言理解与生成能力，掌握较为广泛的世界知识，具备解决众多下游任务的性能潜力。</p>
+<h2 id="一数据预处理">一、数据预处理</h2>
+<h3 id="一数据的收集">（一）数据的收集</h3>
+<ol>
+<li>
+<p><strong>通用文本数据（“主食”）</strong></p>
+<ul>
+<li><strong>来源</strong> ：网页（C4 、RefinedWeb、CC-Stories 等）；书籍（Books3 、Bookcorpus2 等）。</li>
+<li><strong>特点</strong> ：量大；多样；需要清洗；注意搭配。</li>
+</ul>
+</li>
+<li>
+<p><strong>专用文本数据（“特色”）</strong></p>
+<ul>
+<li><strong>多语言文本</strong> ：加入大量非英语的文本数据，加强多语言任务的同时，还能促进不同语言的知识迁移，提升模型泛化能力（BLOOM 和 PaLM 模型使用了百种语言进行训练）。</li>
+<li><strong>科学文本</strong> ：加入大量科学文献、论文（比如 ArXiv 数据集）、教科书等，提升模型在专业领域的问答、推理和信息抽取能力（注意公式等符号需要采用特定的分词和预处理技术）。</li>
+<li><strong>代码</strong> ：加入海量来自 Stack Exchange、GitHub 等的代码数据，提升编程能力。</li>
+</ul>
+</li>
+</ol>
+<h3 id="二数据预处理">（二）数据预处理</h3>
+<ol>
+<li>
+<p><strong>质量过滤 - 去除低质量</strong></p>
+<ul>
+<li><strong>基于启发式规则</strong> ：以精心设计的规则（基于语种、统计指标、关键词）识别和剔除低质量文本。</li>
+<li><strong>基于分类器</strong> ：用人工标注的高质量和低质量数据训练模型来判断文本质量，实现方法包括轻量级模型（如 FastText）、可微调的预训练语言模型（如 BERT、BART 或者 LLaMA 等）以及闭源大语言模型 API（如 GPT - 4）。</li>
+</ul>
+</li>
+<li>
+<p><strong>敏感内容过滤 - 去除敏感</strong></p>
+<ul>
+<li><strong>有毒内容</strong> ：采用基于分类器的过滤方法（Jigsaw 评论数据集可用于训练毒性分类器），通过设置合理的分类阈值，识别并过滤掉有毒内容。</li>
+<li><strong>隐私内容</strong> ：使用启发式方法（关键字识别）检测和删除私人信息。</li>
+</ul>
+</li>
+<li>
+<p><strong>去重</strong></p>
+<ul>
+<li><strong>基于计算粒度</strong> ：在句子级别、文档级别和数据集级别等多种粒度上进行去重，采用多阶段、多粒度的方式实现高效去重。</li>
+<li><strong>基于匹配算法</strong> ：文档层面使用开销较小的近似匹配（局部敏感哈希：minhash），句子层面使用精确匹配算法（后缀数组匹配最小长度的完全相同子串）。</li>
+</ul>
+</li>
+<li>
+<p><strong>数据词元化（Tokenization）</strong></p>
+<ul>
+<li><strong>BPE</strong> ：统计文本里最常相邻出现的组合，不断合并，直到达到预设的词库大小；字节级 BPE 可表示任何字符。</li>
+<li><strong>WordPiece</strong> ：选择能让整个文本可能性提升最大的词元对合并，合并前会训练语言模型对词元对进行评分。</li>
+<li><strong>Unigram</strong> ：从初始集合开始，迭代删除词元，采用期望最大化 EM 算法，逐步缩减零件库直到目标大小。</li>
+<li><strong>分词器 Tokenizer</strong> ：对于混合多领域多种格式的语料，制定具备无损重构、高压缩率、高适应性的分词器。</li>
+<li><strong>流行的分词库 SentencePiece</strong> ：Google 开源的库，支持 BPE 和 Unigram，很多大模型用它定制分词器。</li>
+</ul>
+</li>
+</ol>
+<h3 id="三数据调度-data-scheduling">（三）数据调度 Data Scheduling</h3>
+<ol>
+<li>
+<p><strong>数据混合配比</strong></p>
+<ul>
+<li><strong>设定整体比例</strong> ：预训练开始前定好各种数据源总量占比，训练时按比例随机采样。</li>
+<li><strong>分阶段调整比例</strong> ：不同训练阶段使用不同混合比例。</li>
+<li><strong>上 / 下采样</strong> ：对某些数据源进行“上采样”或“下采样”以达到目标比例。</li>
+<li><strong>怎么定比例</strong> ：
+<ul>
+<li><strong>经验为主 + 增加多样性</strong> ：基于经验设定，增加数据源多样性有助于提升综合能力和下游任务表现，可通过消融实验研究不同数据源的重要性。</li>
+<li><strong>可学习的优化方法（如 DoReMi）</strong> ：先用初始比例训练小模型，根据损失调整采样权重，再训练小模型，迭代得到优化的权重比例。</li>
+<li><strong>针对特定能力优化</strong> ：想提升模型某方面能力，就增加对应的数据比例。</li>
+<li><strong>LLaMA 的配比</strong> ：网页数据占大头（超 80%），辅以代码（6.5%）、书籍（4.5%）和科学文献（2.5%）。</li>
+<li><strong>专业模型</strong> ：如 CodeGen 大幅增加代码比例，但仍保留通用网页数据。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>数据安排 Data Curriculum</strong></p>
+<ul>
+<li><strong>核心思想</strong> ：先易后难，先广后专，让模型先学基础通用知识，再接触复杂专业内容。</li>
+<li><strong>实践方法</strong> ：通过评测基准监控模型学习进展，动态调整数据混合比例或引入新数据类型。</li>
+<li><strong>主要应用场景</strong> ：继续预训练（Continual Pre-training），基于已训练好的通用大模型，喂食特定数据增强特定能力或适应新任务。</li>
+<li><strong>应用实例</strong> ：
+<ul>
+<li><strong>提升代码能力（CodeLLaMA）</strong> ：先用通用数据训练基础模型 → 再用大量代码数据继续训练 → 针对特定语言（如 Python）继续训练。</li>
+<li><strong>提升数学能力（Llemma）</strong> ：基于代码能力不错的模型 → 再用包含科学论文、数学、代码的混合数据继续训练，仍保留少量通用数据防止“偏科”。</li>
+<li><strong>提升长文本能力（CodeLLaMA / LongLLaMA）</strong> ：先用短上下文窗口训练 → 再用长序列数据和长上下文窗口继续训练少量数据。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="二预训练过程">二、预训练过程</h2>
+<h3 id="一预训练任务">（一）预训练任务</h3>
+<p>在大规模预训练时，需设计合适的自监督预训练任务，使模型从海量无标注数据中学习广泛语义和世界知识，常用预训练任务分为以下三类：</p>
+<ol>
+<li>
+<p><strong>语言建模 - 文本预测</strong></p>
+<ul>
+<li><strong>任务核心</strong> ：预测序列中的下一个词元（token）。</li>
+<li><strong>方法</strong> ：利用自回归，预测第 t 个词元 ut 时，仅使用前 t−1 个词元 u&lt;t 作为输入，并根据似然函数最大化正确猜中每个词 ut 概率的总和。</li>
+<li><strong>扩展</strong> ：
+<ul>
+<li><strong>前缀语言建模（用于对话、续写）</strong> ：输入序列 u 随机切分为前缀 uprefix 和后缀 usuffix，仅计算后缀部分损失。</li>
+<li><strong>中间任务填充（用于代码补全）</strong> ：输入序列分为前缀 uprefix、中间 umiddle、后缀 usuffix，将中间部分移至末尾，模型需自回归预测新序列并恢复中间缺失内容。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>去噪自编码 - 文本修复</strong>
+输入文本经随机替换或删除形成损坏文本，模型需恢复被替换或删除的词元片段，实现时需精心设计“损坏策略”。</p>
+</li>
+<li>
+<p><strong>混合去噪器（UL2）- 全能去噪</strong></p>
+<ul>
+<li><strong>S-denoiser (序列去噪 / 前缀挑战)</strong> ：与前缀语言建模目标相同，给模型一段开头文本补后续内容。</li>
+<li><strong>R-denoiser (常规去噪 / 跨度修复)</strong> ：与去噪自编码任务目标相似，屏蔽序列中约 15% 的词元，每个被屏蔽片段含 3 到 5 个词元。</li>
+<li><strong>X-denoiser (极限去噪 / 深度修复)</strong> ：采用更长片段（12 个词元以上）或更高损坏比例（约 50%），增加任务难度，迫使模型学习更全面文本表示。</li>
+</ul>
+</li>
+</ol>
+<h3 id="二优化参数设置">（二）优化参数设置</h3>
+<p>核心目标：确保训练过程稳定、高效，模型充分学习知识，达到良好泛化能力，同时避免过拟合。主要调校手段：</p>
+<ol>
+<li>
+<p><strong>批次数据训练</strong>
+动态调整批次大小，如 PaLM - 540B 在训练初期用较小批次，后逐渐增大，以适应不同阶段的训练需求。</p>
+</li>
+<li>
+<p><strong>学习率</strong>
+学习率是关键超参数，初期大学习率加快学习速度，后期小学习率稳定收敛，避免错过最优解。</p>
+</li>
+<li>
+<p><strong>优化器</strong>
+选择合适的优化器，如 AdamW 和 Adafactor，根据梯度更新模型参数。</p>
+</li>
+</ol>
+<h3 id="三可扩展的高效训练技术">（三）可扩展的高效训练技术</h3>
+<p>如何在有限计算资源下高效训练模型是关键挑战，主要面临提高训练效率和有效加载庞大模型到不同处理器的问题。</p>
+<ol>
+<li>
+<p><strong>3D 并行训练 - 三维协同作战</strong></p>
+<ul>
+<li>
+<p><strong>数据并行 (Data Parallelism, DP)</strong> ：</p>
+<ul>
+<li><strong>模型复制</strong> ：把完整模型参数和优化器状态复制到每个 GPU。</li>
+<li><strong>数据分片</strong> ：大批次数据平均分配给 GPU。</li>
+<li><strong>独立计算梯度</strong> ：每个 GPU 处理分到的数据，独立前向和反向传播算梯度。</li>
+<li><strong>梯度同步与更新</strong> ：聚合 GPU 的梯度后更新每个 GPU 的模型参数。</li>
+<li><strong>优点</strong> ：实现简单，提高训练吞吐量。</li>
+<li><strong>缺点</strong> ：模型大时单 GPU 存不下。</li>
+</ul>
+</li>
+<li>
+<p><strong>流水线并行 (Pipeline Parallelism, PP)</strong> ：</p>
+<ul>
+<li>将模型不同层分配到不同 GPU，数据像流水线一样流过 GPU，各 GPU 负责自己工序的计算。</li>
+<li><strong>优点</strong> ：解决模型层数多时单 GPU 存不下的问题。</li>
+<li><strong>缺点</strong> ：实现复杂，通信开销大。</li>
+</ul>
+</li>
+<li>
+<p><strong>张量并行 (Tensor Parallelism, TP)</strong> ：</p>
+<ul>
+<li>对单个大操作（如矩阵乘法）在张量维度上切分，分配给 GPU 并行计算后合并结果。</li>
+<li><strong>实现方式（如 Megatron-LM）</strong> ：以 Transformer 的 Self-Attention 层为例，将 Q、K、V 矩阵在序列长度维度切分，不同 GPU 计算不同部分，再通过 all-gather 操作合并结果进行后续计算；对于 FFN 层，将输入序列在特征维度切分，不同 GPU 计算各自的权重矩阵乘法，最后通过 all-reduce 操作汇总输出。</li>
+<li><strong>优点</strong> ：解决层内参数过大问题，减少单 GPU 存储压力。</li>
+<li><strong>缺点</strong> ：实现复杂，通信开销大。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>零冗余优化器 ZeRO</strong></p>
+<ul>
+<li>在数据并行中，消除优化器状态、梯度和模型参数的冗余存储，将它们分片，每个 GPU 只存完整状态的一部分。</li>
+<li><strong>优点</strong> ：降低数据并行显存占用，可训练更大模型或用更大批次。</li>
+<li><strong>缺点</strong> ：增加通信开销。</li>
+</ul>
+</li>
+<li>
+<p><strong>激活重计算</strong></p>
+<ul>
+<li><strong>核心思想</strong> ：不存所有中间层激活值，反向传播需用时，从检查点重新局部前向计算得到。</li>
+<li><strong>优点</strong> ：减少显存占用，可训练更深或更大模型。</li>
+<li><strong>缺点</strong> ：增加计算时间。</li>
+</ul>
+</li>
+<li>
+<p><strong>混合精度训练</strong></p>
+<ul>
+<li><strong>核心思想</strong> ：训练时同时用高精度和低精度浮点数。</li>
+<li><strong>实施方式</strong> ：用 FP16/BF16 进行前向和反向传播计算，用 FP32 保存 master 参数用于优化；在梯度算出来后，用 loss scale（损失缩放）来避免 gradient underflow（梯度下溢），最后用 FP32 的 master 参数更新模型。</li>
+<li><strong>优点</strong> ：提升训练速度，减少显存占用。</li>
+<li><strong>缺点</strong> ：需处理数值精度问题，防止训练不稳定。</li>
+</ul>
+</li>
+</ol>
+
+  </div>
+</section>
+
+<section id="tag-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-end meta">
+      
+    </h6>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+<section id="menu-pane" class="menu text-center">
+  
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      
+      
+      <li class="menu-item">
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/llm%E5%85%A5%E9%97%A8/">&lt; prev</a>
+      </li>
+      
+
+      <li class="menu-item">
+        
+        <span class="menu-item">&nbsp;|&nbsp;</span>
+        
+        <a class="menu-item" href="/blogs">blogs</a>
+        
+      </li>
+
+      
+      
+    </ul>
+  </nav>
+  
+  <h4 class="text-center mt-3"><a class="menu-item" href="https://sunlongyu.github.io/">home</a></h4>
+</section>
+
+<footer class="text-center footer">
+  <hr />
+  
+  <h6 class="text-center copyright">© 2024. SLY. <a href="http://creativecommons.org/licenses/by/3.0/">Some Rights Reserved</a>.</h6>
+  
+  <h6 class="text-center powered"><a href="https://gohugo.io/">Hugo</a> <a
+      href="https://github.com/shenoydotme/hugo-goa">Goa</a> by <a href="https://shenoy.me">shenoydotme</a> and <a
+      href="https://incirclemedia.com">Incircle Media</a></h6>
+  
+  
+  <h6>
+    <a href="https://sunlongyu.github.io/index.xml" aria-label="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+  </h6>
+  
+  
+
+</footer>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+
+<script>hljs.highlightAll();</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/js/custom.js"></script>
+</body>
+
+</html>
+
