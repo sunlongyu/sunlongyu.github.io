@@ -16,6 +16,20 @@
       <description></description>
     </item>
     <item>
+      <title>视频</title>
+      <link>https://sunlongyu.github.io/categories/%E8%A7%86%E9%A2%91/</link>
+      <pubDate>Sun, 15 Dec 2024 16:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E8%A7%86%E9%A2%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>音乐</title>
+      <link>https://sunlongyu.github.io/categories/%E9%9F%B3%E4%B9%90/</link>
+      <pubDate>Sun, 15 Dec 2024 15:00:00 +0800</pubDate>
+      <guid>https://sunlongyu.github.io/categories/%E9%9F%B3%E4%B9%90/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>摄影</title>
       <link>https://sunlongyu.github.io/categories/%E6%91%84%E5%BD%B1/</link>
       <pubDate>Sun, 15 Dec 2024 12:00:00 +0800</pubDate>
@@ -90,13 +104,6 @@
       <link>https://sunlongyu.github.io/categories/about/</link>
       <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
       <guid>https://sunlongyu.github.io/categories/about/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Projects</title>
-      <link>https://sunlongyu.github.io/categories/projects/</link>
-      <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
-      <guid>https://sunlongyu.github.io/categories/projects/</guid>
       <description></description>
     </item>
   </channel>

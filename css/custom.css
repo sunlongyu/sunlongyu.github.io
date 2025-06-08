@@ -1,1 +1,769 @@
 /* Add custom CSS here. */
+
+/* 音乐播放器样式 */
+.music-player-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.playlist-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.playlist-description {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.music-item {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.music-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: #667eea;
+}
+
+.music-cover {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-right: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.music-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.music-cover:hover img {
+  transform: scale(1.05);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.music-cover:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-btn {
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+}
+
+.music-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.song-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+.artist-name {
+  margin: 0 0 0.8rem 0;
+  color: #667eea;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.song-description {
+  margin: 0 0 1rem 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.song-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.duration, .release-date {
+  display: flex;
+  align-items: center;
+}
+
+.duration::before {
+  content: "⏱️";
+  margin-right: 0.3rem;
+}
+
+.release-date::before {
+  content: "📅";
+  margin-right: 0.3rem;
+}
+
+.music-actions {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 280px;
+}
+
+.netease-player-inline {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #f5f5f5;
+}
+
+.netease-player-inline iframe {
+  width: 100%;
+  min-height: 86px;
+  border: none;
+  display: block;
+}
+
+.netease-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #d33a31;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.netease-link:hover {
+  background: #b8302a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(211, 58, 49, 0.3);
+}
+
+.netease-link-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  background: #f0f0f0;
+  color: #666 !important;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.netease-link-small:hover {
+  background: #d33a31;
+  color: white !important;
+  border-color: #d33a31;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(211, 58, 49, 0.3);
+}
+
+/* 网易云音乐播放器区域 */
+.netease-player-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.netease-player-section h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.netease-player-section p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.netease-player-section iframe {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.featured-song {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.featured-song h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.featured-song iframe {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Shortcode 样式 */
+.netease-player-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #f5f5f5;
+}
+
+.netease-player-wrapper iframe {
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+.netease-player-error {
+  padding: 1rem;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  color: #856404;
+  text-align: center;
+}
+
+/* ===== 视频页面样式 ===== */
+.video-player-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.video-player-container::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #00a1d6, #0084c7, #00a1d6);
+  border-radius: 2px;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  position: relative;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.video-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00a1d6, #0084c7, #00a1d6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-item:hover::before {
+  opacity: 1;
+}
+
+.video-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 161, 214, 0.15);
+  border-color: #00a1d6;
+}
+
+.video-info {
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #00a1d6 0%, #0084c7 50%, #006bb3 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.video-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: white;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.video-description {
+  margin: 0 0 1.5rem 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.video-meta {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.video-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.video-meta span:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.video-player-wrapper {
+  padding: 2.5rem;
+  background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+}
+
+.video-player-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(0, 161, 214, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(0, 132, 199, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.bilibili-player {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.bilibili-player:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 48px rgba(0, 161, 214, 0.2);
+}
+
+.bilibili-player iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.video-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bilibili-link-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #00a1d6 0%, #0084c7 100%);
+  color: white !important;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 16px rgba(0, 161, 214, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.bilibili-link-small::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.bilibili-link-small:hover::before {
+  left: 100%;
+}
+
+.bilibili-link-small:hover {
+  background: linear-gradient(135deg, #0084c7 0%, #006bb3 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 32px rgba(0, 161, 214, 0.5);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .music-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.2rem;
+  }
+
+  .music-cover {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    width: 100px;
+    height: 100px;
+  }
+
+  .music-actions {
+    margin-left: 0;
+    margin-top: 1rem;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .netease-player-inline {
+    width: 100%;
+  }
+
+  .playlist-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .song-meta {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .music-actions {
+    min-width: auto;
+  }
+
+  .netease-player-inline iframe {
+    min-height: 66px;
+  }
+}
+
+/* 视频加载动画 */
+.video-item {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.video-item:nth-child(1) { animation-delay: 0.1s; }
+.video-item:nth-child(2) { animation-delay: 0.2s; }
+.video-item:nth-child(3) { animation-delay: 0.3s; }
+.video-item:nth-child(4) { animation-delay: 0.4s; }
+.video-item:nth-child(5) { animation-delay: 0.5s; }
+.video-item:nth-child(6) { animation-delay: 0.6s; }
+.video-item:nth-child(7) { animation-delay: 0.7s; }
+.video-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 播放器加载状态 */
+.bilibili-player::after {
+  content: '🎬 正在加载播放器...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 161, 214, 0.9);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bilibili-player.loading::after {
+  opacity: 1;
+  z-index: 10;
+}
+
+/* 视频页面响应式设计 */
+@media (max-width: 768px) {
+  .video-player-container::before {
+    width: 60px;
+    top: -30px;
+  }
+
+  .video-list {
+    gap: 2.5rem;
+  }
+
+  .video-item {
+    margin: 0 -1rem;
+    border-radius: 0;
+  }
+
+  .video-item:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .video-info {
+    padding: 2rem 1.5rem;
+  }
+
+  .video-title {
+    font-size: 1.4rem;
+  }
+
+  .video-meta {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .video-meta span {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .video-player-wrapper {
+    padding: 2rem 1.5rem;
+  }
+
+  .bilibili-player iframe {
+    height: 280px;
+  }
+
+  .bilibili-link-small {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-player-container {
+    padding: 0;
+    margin: 1rem auto;
+  }
+
+  .video-player-container::before {
+    width: 50px;
+    top: -20px;
+  }
+
+  .video-list {
+    gap: 2rem;
+  }
+
+  .video-item {
+    border-radius: 12px;
+    margin: 0 0.5rem;
+  }
+
+  .video-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .video-info {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .video-title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .video-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .video-meta {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .video-meta span {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .video-player-wrapper {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .bilibili-player {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .bilibili-player iframe {
+    height: 220px;
+  }
+
+  .bilibili-player:hover {
+    transform: scale(1.01);
+  }
+
+  .video-actions {
+    gap: 1rem;
+  }
+
+  .bilibili-link-small {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.8rem;
+    border-radius: 10px;
+  }
+
+  .bilibili-link-small:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 360px) {
+  .video-info {
+    padding: 1.2rem 1rem;
+  }
+
+  .video-title {
+    font-size: 1.1rem;
+  }
+
+  .video-description {
+    font-size: 0.9rem;
+  }
+
+  .video-player-wrapper {
+    padding: 1.2rem 1rem;
+  }
+
+  .bilibili-player iframe {
+    height: 200px;
+  }
+
+  .bilibili-link-small {
+    padding: 0.7rem 1rem;
+    font-size: 0.75rem;
+  }
+}
