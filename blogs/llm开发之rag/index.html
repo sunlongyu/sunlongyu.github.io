@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        
+        <meta name="description" content="Simple minimalist theme">
+        
+        <meta name="keywords" content="minimalist,blog,goa,hugo,developer">
+
+        <title>
+              Sun longyu - LLM开发之RAG 
+        </title>
+
+        <meta name="generator" content="Hugo 0.147.8">
+
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+        
+
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto+Slab:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/main.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/custom.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="theme-color" content="#ffffff"></head>
+
+    <body lang="zh-cn">
+        <div class="container my-auto">
+
+<header class="text-start title">
+  <h1 class="title">LLM开发之RAG</h1>
+</header>
+
+<section id="category-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-start meta">
+       PUBLISHED ON DEC 15, 2024
+      
+      / 15 MIN READ
+      
+      
+      
+      —
+      
+      
+      <a class="meta"
+        href="/categories/llm">LLM</a>, 
+      
+      <a class="meta"
+        href="/categories/rag">RAG</a>
+      
+      
+      
+    </h6>
+  </div>
+  
+</section>
+
+<section id="content-pane">
+  <div class="text-justify content">
+    
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一llm-的缺陷">（一）LLM 的缺陷</a></li>
+    <li><a href="#二definition">（二）Definition</a></li>
+    <li><a href="#三组件">（三）组件</a></li>
+    <li><a href="#四常见应用领域">（四）常见应用领域</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#一数据处理">（一）数据处理</a>
+      <ul>
+        <li><a href="#1-数据清洗-cleaning">1. 数据清洗 cleaning</a></li>
+        <li><a href="#2-数据分片-chunking">2. 数据分片 chunking</a></li>
+        <li><a href="#3-数据嵌入-embedding">3. 数据嵌入 embedding</a></li>
+      </ul>
+    </li>
+    <li><a href="#二检索-retrieval">（二）检索 Retrieval</a>
+      <ul>
+        <li><a href="#1-检索流程">1. 检索流程</a></li>
+        <li><a href="#2-召回">2. 召回</a></li>
+        <li><a href="#3-重排序">3. 重排序</a></li>
+      </ul>
+    </li>
+    <li><a href="#三生成-generation">（三）生成 Generation</a>
+      <ul>
+        <li><a href="#1-生成策略流程">1. 生成策略流程</a></li>
+        <li><a href="#2-几种生成策略">2. 几种生成策略</a></li>
+        <li><a href="#3-生成策略优化">3. 生成策略优化</a></li>
+      </ul>
+    </li>
+    <li><a href="#四增强-augment">（四）增强 Augment</a>
+      <ul>
+        <li><a href="#1-预训练数据增强">1. 预训练数据增强</a></li>
+        <li><a href="#2-微调数据增强">2. 微调数据增强</a></li>
+        <li><a href="#3-推理数据增强">3. 推理数据增强</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#一评估方法">（一）评估方法</a>
+      <ul>
+        <li><a href="#1-检索评估">1. 检索评估</a></li>
+        <li><a href="#2-生成评估">2. 生成评估</a></li>
+      </ul>
+    </li>
+    <li><a href="#二评估框架">（二）评估框架</a></li>
+  </ul>
+</nav>
+    
+    <h1 id="一rag-概述">一、RAG 概述</h1>
+<h2 id="一llm-的缺陷">（一）LLM 的缺陷</h2>
+<ul>
+<li><strong>幻觉</strong> ：LLM 可能生成无事实依据、不与现实世界一致，甚至完全虚构的内容。</li>
+<li><strong>知识更新滞后</strong> ：LLM 知识的有效性取决于训练数据的时间，存在知识更新滞后问题。</li>
+<li><strong>回答缺乏透明度</strong> ：LLM 生成的回答通常缺乏引用来源，导致用户难以判断答案的真实性，降低模型可信度。</li>
+</ul>
+<h2 id="二definition">（二）Definition</h2>
+<p>为缓解上述问题，RAG 通过检索外部知识库相关信息，并将信息作为上下文输入语言模型，增强生成能力，减少幻觉、提供事实依据，借外部知识库实现实时更新，使生成结果带检索来源，提升专业领域表现。</p>
+<h2 id="三组件">（三）组件</h2>
+<ul>
+<li><strong>向量数据库 (Vector DB)</strong> ：存储和检索嵌入向量，如 FAISS、Pinecone、Weaviate。</li>
+<li><strong>嵌入模型 (Embedding Model)</strong> ：将文本转换为向量，如 OpenAI Embeddings、BERT。</li>
+<li><strong>检索模型 (Retriever)</strong> ：检索相关信息，可使用 BM25、Dense Retrieval (DPR) 等方法。</li>
+<li><strong>LLM (Large Language Model)</strong> ：如 GPT - 4 等，负责生成最终答案。</li>
+<li><strong>融合策略 (Fusion Strategy)</strong> ：结合检索信息与 LLM 结果，提高生成可信度。</li>
+</ul>
+<h2 id="四常见应用领域">（四）常见应用领域</h2>
+<ul>
+<li><strong>企业知识问答</strong></li>
+<li><strong>法律 / 医疗领域问答</strong></li>
+<li><strong>金融风控</strong></li>
+<li><strong>搜索增强对话</strong></li>
+</ul>
+<h1 id="二rag-实现">二、RAG 实现</h1>
+<h2 id="一数据处理">（一）数据处理</h2>
+<h3 id="1-数据清洗-cleaning">1. 数据清洗 cleaning</h3>
+<ul>
+<li><strong>去重 (Deduplication)</strong> ：去除重复文档或内容，提高存储效率，减少无效检索。</li>
+<li><strong>噪声过滤 (Noise Filtering)</strong> ：删除无关内容、广告、低质量文本，避免干扰 LLM 生成。</li>
+<li><strong>格式标准化 (Normalization)</strong> ：统一文本编码、标点符号、日期格式，保证数据一致性。</li>
+</ul>
+<h3 id="2-数据分片-chunking">2. 数据分片 chunking</h3>
+<h4 id="基于规则的-chunking">基于规则的 chunking</h4>
+<ul>
+<li><strong>固定长度分片</strong> ：按固定字符数或单词数切分，如每 512 词分为一个 Chunk。适合结构化文本（如 Wikipedia），但可能导致句子或段落拆散，影响语义完整性。</li>
+<li><strong>基于段落的 Chunking</strong> ：以自然语言逻辑单元（如句子、段落）进行分片，保持上下文完整性。适用于法律、医学文档，但 Chunk 长度不均匀，可能影响索引效率。</li>
+<li><strong>滑动窗口分片</strong> ：相邻 Chunk 之间有部分重叠，如窗口大小 256 词，滑动步长 128 词。可保证跨段落上下文信息，减少查询时信息丢失，但增加存储和计算开销。</li>
+</ul>
+<h4 id="基于模型的-chunking">基于模型的 chunking</h4>
+<ul>
+<li><strong>Transformer 句子分割</strong> ：用 Transformer 模型（如 BERT、RoBERTa）检测句子边界，以高语义相关性进行分片。适用于复杂文档（如法律、医学文本），避免破坏逻辑结构。</li>
+<li><strong>基于依存关系的 Chunking</strong> ：依存句法分析识别主谓宾结构，以语法结构为基础拆分 Chunk。适用于技术文档（如 API 说明书、论文摘要）。</li>
+<li><strong>基于 LLM 的 Chunking</strong> ：让 LLM 自适应判断 Chunk 切分点，根据上下文哪些部分应作为独立片段。适用于非结构化文本（如用户评论、社交媒体内容）。</li>
+</ul>
+<h4 id="small2big-chunking">Small2Big Chunking</h4>
+<ul>
+<li><strong>核心思想</strong> ：先生成较小 Chunk，再按语义相似度合并成较大 Chunk，形成合理文档分片结构，结合固定长度切分与语义分析，避免传统 Chunking 方法弊端。</li>
+<li><strong>初步切分小片段 (Small Chunks)</strong> ：用固定长度或自然段落切分，保持文本语义完整性。</li>
+<li><strong>计算 Chunk 之间语义相似度</strong> ：用 BERT/SBERT 向量嵌入将 Chunk 表示为向量；计算相邻 Chunk 余弦相似度 S_{i,i+1}；设相似度阈值 \tau ，若 S_{i,i+1} &gt; \tau 则合并。</li>
+<li><strong>相似度高的 Chunk 合并</strong> ：形成更大、更有信息密度的片段，逐步执行直至不满足合并条件。</li>
+<li><strong>存入向量数据库</strong> ：采用 FAISS/Pinecone 存储优化后的 Chunk。</li>
+</ul>
+<h3 id="3-数据嵌入-embedding">3. 数据嵌入 embedding</h3>
+<ul>
+<li>
+<p><strong>嵌入模型选择</strong> ：</p>
+<ul>
+<li><strong>OpenAI—text-embedding-ada-002</strong> ：输出 1536 维向量，适合通用任务，支持多种语言。</li>
+<li><strong>SBERT（Sentence-BERT）</strong> ：BERT 变体，专为句子级 Embedding 设计，适合语义匹配和问答任务。</li>
+<li><strong>BAAI（bge-base-zh）</strong> ：在中文任务上表现优异，适合中文 RAG 应用。</li>
+<li><strong>DistilBERT</strong> ：BERT 轻量级版本，计算效率高，适合资源受限环境。</li>
+<li><strong>自定义微调模型</strong> ：微调现有模型（如 BERT、RoBERTa）以适应特定专业领域或任务的 RAG 应用。</li>
+</ul>
+</li>
+<li>
+<p><strong>优化 query</strong> ：</p>
+<ul>
+<li><strong>Query Rewriting（查询重写）</strong> ：用语言模型（LLM）使用户查询更自然、易检索。</li>
+<li><strong>HyDE（假想文档嵌入）</strong> ：生成 “假想文档” 或 “假想答案”，以其向量匹配真实文档提升检索效果。</li>
+</ul>
+</li>
+<li>
+<p><strong>优化文档 Embedding</strong> ：</p>
+<ul>
+<li><strong>生成摘要</strong> ：为长文档（如论文）生成简短摘要，存储摘要与全文的 Embedding。</li>
+<li><strong>假想问题</strong> ：为每个文档生成可能回答的问题，存储问题的 Embedding。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二检索-retrieval">（二）检索 Retrieval</h2>
+<h3 id="1-检索流程">1. 检索流程</h3>
+<p>RAG 检索流程通常包括两个阶段：</p>
+<ul>
+<li><strong>召回 (Retrieval)</strong> ：基于关键词（如 BM25）或语义（Embedding ANN）快速检索出候选文档。</li>
+<li><strong>重排序 (Rerank)</strong> ：对初步召回文档进行精细语义相关度计算，得到精确排序结果。</li>
+</ul>
+<h3 id="2-召回">2. 召回</h3>
+<ul>
+<li><strong>关键词检索</strong> ：基于精确词汇匹配检索，典型代表是 BM25 算法。</li>
+<li><strong>语义检索</strong> ：利用向量空间模型表示文本语义，通过向量相似度检索，包括余弦相似度算法、FAISS、HNSW。</li>
+<li><strong>混合检索</strong> ：结合关键词检索和语义检索优势，采用多阶段检索策略，并行召回或串行召回。</li>
+</ul>
+<h3 id="3-重排序">3. 重排序</h3>
+<ul>
+<li><strong>Rerank 一般流程</strong> ：输入候选文档集合 {D1,…,Dn} 和查询文本 Q；利用 Cross-Encoder 模型分别计算每对 (Q,Di) 相关度评分（常见模型有基于 BERT 的 Cross-Encoder、领域特定 Finetuned Cross-Encoder）；按分数高低重新排序，取前 k 个文档作为最终结果。</li>
+<li><strong>提升 Rerank 算法效果的方法</strong> ：
+<ul>
+<li><strong>领域微调 (Finetune)</strong> ：用相关领域数据微调 Cross-Encoder 模型。</li>
+<li><strong>知识蒸馏 (Knowledge Distillation)</strong> ：训练轻量级模型，降低延迟。</li>
+<li><strong>难负例 (Hard Negative) 训练</strong> ：增强模型识别能力。</li>
+</ul>
+</li>
+</ul>
+<h2 id="三生成-generation">（三）生成 Generation</h2>
+<h3 id="1-生成策略流程">1. 生成策略流程</h3>
+<p>检索阶段获取与查询相关的文档或片段；将检索内容融入 Prompt 中；使用生成模型（如 GPT - 4）基于 Prompt 生成最终答案。</p>
+<h3 id="2-几种生成策略">2. 几种生成策略</h3>
+<ul>
+<li>
+<p><strong>Prompt-based 生成策略</strong> ：将检索到的文档直接放入 Prompt 中生成，简单高效易实现，但受限于模型最大上下文长度，可能产生幻觉问题。Prompt =[Instruction]+[Retrieved Docs]+[Query]</p>
+</li>
+<li>
+<p><strong>融合生成策略 (Fusion-in-Decoder)</strong> ：在 Decoder 阶段结合多个检索文档信息，增强答案精准度，减少幻觉问题，但推理速度较慢，实现成本高。</p>
+<ul>
+<li><strong>RAG-Sequence</strong> ：逐步选择合适文档生成答案，每一步动态选择上下文。</li>
+<li><strong>RAG-Token</strong> ：每生成一个词 (Token) 都动态选择不同文档的信息支持当前生成内容。</li>
+</ul>
+</li>
+<li>
+<p><strong>选代生成策略 (Iterative Generation)</strong> ：允许模型在多轮迭代中优化答案，用于需极高准确性的场景。根据初步答案再次检索相关文档；重新生成答案，迭代至达到期望质量。</p>
+</li>
+<li>
+<p><strong>自一致性生成策略 (Self-Consistency)</strong> ：多次生成并融合多个候选答案提高整体质量，提高结果稳定性，但计算成本高。对同一检索结果多次调用生成模型，得多个答案；用多数投票或评分融合机制选最优答案。</p>
+</li>
+</ul>
+<h3 id="3-生成策略优化">3. 生成策略优化</h3>
+<ul>
+<li><strong>Prompt 工程优化</strong> ：合理设计 Prompt 结构，提升生成质量。</li>
+<li><strong>领域特定模型微调 (Finetune)</strong> ：在专业领域内优化生成效果。</li>
+<li><strong>Temperature 和 Top-k 调整</strong> ：调低 temperature 参数提高生成稳定性和一致性。</li>
+</ul>
+<h2 id="四增强-augment">（四）增强 Augment</h2>
+<h3 id="1-预训练数据增强">1. 预训练数据增强</h3>
+<ul>
+<li><strong>随机掩蔽 (Random Masking)</strong> ：随机掩盖句子或文档中的词汇，让模型预测被掩盖内容，增强语言理解能力。</li>
+<li><strong>随机替换同义词 (Synonym Replacement)</strong> ：用 WordNet 或词典随机替换句子中的词汇，提升对同义表达的泛化能力。</li>
+<li><strong>上下文乱序 (Sentence Permutation)</strong> ：在段落级别随机打乱句子顺序，增强对整体语义的理解。</li>
+<li><strong>回译 (Back Translation)</strong> ：利用多语言模型，将文本翻译成另一种语言再回译，生成语义等价但表达不同的文本，提升语义泛化能力。</li>
+</ul>
+<h3 id="2-微调数据增强">2. 微调数据增强</h3>
+<ul>
+<li><strong>领域术语增强 (Domain-specific Term Replacement)</strong> ：在特定领域内用同领域同义术语替换，强化模型对领域术语的理解。</li>
+<li><strong>句子拼接与切分 (Sentence Concatenation and Splitting)</strong> ：将多个句子拼接或长句切分为短句，增加训练样本多样性，提高对复杂上下文的处理能力。</li>
+<li><strong>对比学习增强 (Contrastive Learning Augmentation)</strong> ：构造正负样本对（如问答对），采用对比学习提高检索精确度和生成连贯性。</li>
+<li><strong>知识注人 (Knowledge Injection)</strong> ：从知识图谱或百科知识库抽取相关知识，嵌入训练数据，提升对知识的捕获和利用能力。</li>
+</ul>
+<h3 id="3-推理数据增强">3. 推理数据增强</h3>
+<ul>
+<li><strong>Prompt 增强 (Prompt Augmentation)</strong> ：使用多样化的 Prompt 结构或模板，提高生成模型对问题的理解能力与稳定性。</li>
+<li><strong>上下文扩展与补充 (Context Expansion)</strong> ：在原始检索文档基础上，增加相关背景文档或扩展信息，降低生成幻觉风险。</li>
+<li><strong>多次推理融合 (Multi-sampling Generation)</strong> ：针对同一问题多次生成（不同 temperature 或 top-k），通过投票或打分机制选最优答案，提升答案质量和稳定性（Self-consistency 方法）。</li>
+<li><strong>迭代自问白答 (Iterative SelfAsk)</strong> ：利用生成结果多次检索和迭代生成，增强生成内容的深度与准确性。</li>
+</ul>
+<h1 id="三rag-评估">三、RAG 评估</h1>
+<h2 id="一评估方法">（一）评估方法</h2>
+<h3 id="1-检索评估">1. 检索评估</h3>
+<p>评估召回质量，即系统能否召回正确且相关的文档。关注检索阶段的准确性和召回率，特别是 context relevance 指标（检索到的 chunks 与 query 的相似度）。常用方法包括：MRR、Recall@k、NDCG、Hit rate 等。</p>
+<h3 id="2-生成评估">2. 生成评估</h3>
+<p>评估最终生成答案的质量，包括准确性、流畅性与一致性。一方面衡量生成答案能否忠实地反映检索到的上下文内容，避免幻觉或无根据答案，确保可信与基于事实；另一方面关注答案是否直接有效回答用户问题，体现准确性和有效性。</p>
+<h2 id="二评估框架">（二）评估框架</h2>
+<ul>
+<li><strong>LangChain Evaluation</strong> ：内置标准化评估流程，支持检索评估、生成评估及自动指标计算。</li>
+<li><strong>LlamaIndex Eval Framework</strong> ：专注 RAG 场景，提供综合检索与生成质量评估。</li>
+<li><strong>Haystack Eval Framework</strong> ：集成检索与问答场景评估能力，适用于工业级 RAG 系统。</li>
+<li><strong>RAGAS (Retrieval-Augmented Generation Assessment)</strong> ：专门用于 RAG 场景的评估框架，可同时评估检索与生成质量。</li>
+</ul>
+
+  </div>
+</section>
+
+
+
+<section id="csdn-link-pane" class="csdn-external-link">
+  <div class="csdn-link-container">
+    <div class="csdn-link-header">
+      <i class="fas fa-external-link-alt"></i>
+      <h6>在CSDN上阅读完整版</h6>
+    </div>
+    <div class="csdn-link-content">
+      <p>本文同时发布在CSDN博客，您可以在那里查看更多技术细节和讨论。</p>
+      <a href="https://blog.csdn.net/weixin_46516647/article/details/147849351" target="_blank" class="csdn-link-button">
+        <i class="fab fa-blogger"></i>
+        <span>访问CSDN文章</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section id="tag-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-end meta">
+      
+    </h6>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+<section id="menu-pane" class="menu text-center">
+  
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      
+      
+      <li class="menu-item">
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/machine-learning-intro/">&lt; prev</a>
+      </li>
+      
+
+      <li class="menu-item">
+        
+        <span class="menu-item">&nbsp;|&nbsp;</span>
+        
+        <a class="menu-item" href="/blogs">blogs</a>
+        
+        <span class="menu-item">&nbsp;|&nbsp;</span>
+        
+      </li>
+
+      
+      <li class="menu-item">
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/llm%E5%85%A5%E9%97%A8/">next &gt;</a>
+      </li>
+      
+      
+    </ul>
+  </nav>
+  
+  <h4 class="text-center mt-3"><a class="menu-item" href="https://sunlongyu.github.io/">home</a></h4>
+</section>
+
+<footer class="text-center footer">
+  <hr />
+  
+  <h6 class="text-center copyright">© 2025. SLY. <a href="http://creativecommons.org/licenses/by/3.0/">Some Rights Reserved</a>.</h6>
+  
+  <h6 class="text-center powered"><a href="https://gohugo.io/">Hugo</a> <a
+      href="https://github.com/shenoydotme/hugo-goa">Goa</a> by <a href="https://shenoy.me">shenoydotme</a> and <a
+      href="https://incirclemedia.com">Incircle Media</a></h6>
+  
+  
+  <h6>
+    <a href="https://sunlongyu.github.io/index.xml" aria-label="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+  </h6>
+  
+  
+
+</footer>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+
+<script>hljs.highlightAll();</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/js/custom.js"></script>
+</body>
+
+</html>
+

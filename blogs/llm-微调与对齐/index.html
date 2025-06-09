@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        
+        <meta name="description" content="Simple minimalist theme">
+        
+        <meta name="keywords" content="minimalist,blog,goa,hugo,developer">
+
+        <title>
+              Sun longyu - LLM 微调与对齐 
+        </title>
+
+        <meta name="generator" content="Hugo 0.147.8">
+
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+        
+
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto+Slab:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/main.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/custom.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="theme-color" content="#ffffff"></head>
+
+    <body lang="zh-cn">
+        <div class="container my-auto">
+
+<header class="text-start title">
+  <h1 class="title">LLM 微调与对齐</h1>
+</header>
+
+<section id="category-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-start meta">
+       PUBLISHED ON FEB 1, 2024
+      
+      / 7 MIN READ
+      
+      
+      
+      —
+      
+      
+      <a class="meta"
+        href="/categories/%E5%AF%B9%E9%BD%90">对齐</a>, 
+      
+      <a class="meta"
+        href="/categories/%E5%BE%AE%E8%B0%83">微调</a>
+      
+      
+      
+    </h6>
+  </div>
+  
+</section>
+
+<section id="content-pane">
+  <div class="text-justify content">
+    
+    <h1 id="一指令微调-instruction-tuning">一、指令微调 Instruction Tuning</h1>
+<h2 id="一指令数据">（一）指令数据</h2>
+<p>大模型如同天赋异禀的学生，预训练阶段通过大量阅读积累知识，但缺乏交流和答题能力，此时指令数据便充当“教材和老师”的角色。</p>
+<h3 id="1-指令数据组成">1. 指令数据组成</h3>
+<ul>
+<li><strong>指令 (Instruction / Prompt)</strong> ：清晰告知模型任务，如 “请回答法国的首都是哪里？”。</li>
+<li><strong>可选的示例 (Demonstration / Example Input)</strong> ：提供输入样例助模型理解格式，如问题 “巴西的首都是哪里？”。</li>
+<li><strong>输入 (Input)</strong> ：当前任务的具体输入，如 “中国的首都是哪里？”。</li>
+<li><strong>输出 (Output)</strong> ：模型应给出的正确答案或完成内容，如 “北京”。</li>
+</ul>
+<h3 id="2-指令数据构建方法">2. 指令数据构建方法</h3>
+<ul>
+<li><strong>基于现有 NLP 任务数据集</strong> ：利用学术界的高质量现成数据集，如机器翻译、文本摘要、文本分类等，为输入 - 输出对配上明确指令（PromptSource 平台是贡献和使用指令模板的平台）。</li>
+<li><strong>基于对话数据构建</strong> ：收集用户查询，由人类标注员编写高质量回答或从模型生成回答中挑选最佳，组成训练数据。</li>
+<li><strong>基于合成数据构建</strong> ：
+<ul>
+<li><strong>Self-Instruct - “自己出题自己做”</strong> ：准备少量种子指令，让种子模型生成更多指令及对应的输入和输出，过滤低质样本。</li>
+<li><strong>Evol-Instruct - “指令进化论”</strong> ：通过 “演化提示” 改写已有指令，让模型生成对应输出。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-指令数据构建考虑因素">3. 指令数据构建考虑因素</h3>
+<ul>
+<li><strong>指令格式</strong></li>
+<li><strong>指令数量</strong></li>
+<li><strong>指令数据质量</strong></li>
+<li><strong>任务多样性</strong></li>
+</ul>
+<h2 id="二指令微调训练策略">（二）指令微调训练策略</h2>
+<h3 id="1-训练参数优化">1. 训练参数优化</h3>
+<p>指令微调中的优化器设置、稳定训练技巧和训练技术与预训练阶段多数保持一致，不同之处如下：</p>
+<ul>
+<li><strong>目标函数</strong> ：作为有监督训练过程，通常采用序列到序列损失，仅计算输出部分损失。</li>
+<li><strong>批次大小和学习率</strong> ：此阶段使用较小批次大小和学习率对模型进行小幅调整。</li>
+<li><strong>多轮对话高效训练</strong> ：一次性将多轮对话内容输入模型，通过损失掩码实现仅对每轮对话输出部分计算损失，减少重复前缀计算开销。</li>
+</ul>
+<h3 id="2-指令数据规划">2. 指令数据规划</h3>
+<ul>
+<li><strong>平衡数据分布</strong> ：混合使用多个不同来源、类型的指令数据集。</li>
+<li><strong>多阶段指令数据微调</strong> ：先用大量通用 NLP 任务指令数据微调打基础，再用少量高质量对话指令数据进一步微调提升能力。</li>
+<li><strong>结合预训练数据与指令微调数据</strong> ：在指令微调阶段混合预训练数据，保持通用知识和语言建模能力，防止性能退化。</li>
+</ul>
+<h2 id="三参数高效微调--轻量化微调-peft">（三）参数高效微调 / 轻量化微调 (PEFT)</h2>
+<p>在微调时冻结大部分预训练模型参数，仅训练少量新增或选择参数，降低成本。</p>
+<h3 id="1-低秩适配微调方法-low-rank-adaptation-lora">1. 低秩适配微调方法 (Low-Rank Adaptation, LoRA)</h3>
+<p>核心思想：大语言模型适应新任务时参数改变量具低秩特性，可用两小矩阵相乘近似表示。</p>
+<h3 id="2-其他高效微调">2. 其他高效微调</h3>
+<ul>
+<li><strong>适配器微调 (Adapter Tuning)</strong> ：在 Transformer 模型各层插入小型可训练神经网络模块（适配器），微调时只训练适配器参数。</li>
+<li><strong>前缀微调 (Prefix Tuning)</strong> ：在输入序列前添加可训练向量序列（前缀），指导模型处理后续输入完成任务。</li>
+<li><strong>提示微调 (Prompt Tuning / P-Tuning)</strong> ：在输入前添加可学习提示，微调时只更新提示向量参数。</li>
+</ul>
+<h1 id="二人类对齐">二、人类对齐</h1>
+<p>大语言模型预训练和指令微调过程主要依据上下文预测词元，未充分考虑人类价值观和偏好，可能导致不良生成模式，人类对齐关键概念应运而生，旨在使模型行为契合人类期望和价值观。</p>
+<h2 id="一对齐标准">（一）对齐标准</h2>
+<p>引入全新评估标准，区别于预训练和指令微调。</p>
+<h2 id="二基于人类反馈的强化学习-rlhf">（二）基于人类反馈的强化学习 RLHF</h2>
+<p>鉴于对齐标准难形式化建模，研究提出 RLHF，引入人类反馈指导模型行为。</p>
+<h3 id="1-监督微调">1. 监督微调</h3>
+<ul>
+<li><strong>收集数据</strong> ：收集 “指令 - 优质回答” 高质量数据对。</li>
+<li><strong>微调模型</strong> ：用数据对预训练模型微调，类似指令微调，使模型学习模仿优质回答。</li>
+</ul>
+<h3 id="2-奖励模型训练">2. 奖励模型训练</h3>
+<ul>
+<li><strong>生成回答</strong> ：SFT 模型针对同一指令生成多个不同回答。</li>
+<li><strong>人类排序</strong> ：标注员对回答排序，体现偏好，据此训练奖励模型。</li>
+</ul>
+<h3 id="3-强化学习训练">3. 强化学习训练</h3>
+<p>基于训练好的奖励模型，通过强化学习优化语言模型，使其生成符合人类偏好的回答。</p>
+<h2 id="三非强化学习的对齐方法">（三）非强化学习的对齐方法</h2>
+<p>回归监督微调，关键在构建高质量对齐数据集和设计监督微调对齐算法。</p>
+<h3 id="1-对齐数据的收集">1. 对齐数据的收集</h3>
+<ul>
+<li><strong>基于奖励模型的方法</strong> ：用训练好的奖励模型为大量模型输出打分，筛选优质数据。</li>
+<li><strong>基于大语言模型的方法</strong> ：利用对齐较好或能力强的大语言模型生成或评价数据。</li>
+</ul>
+<h3 id="2-监督对齐算法-dpo-direct-preference-optimization">2. 监督对齐算法 DPO (Direct Preference Optimization)</h3>
+<ul>
+<li><strong>动机</strong> ：简化 RLHF 过程，直接从人类偏好数据学习，无需训练奖励模型和强化学习。</li>
+<li><strong>核心思想</strong> ：合并 “学习奖励模型” 和 “优化策略模型” 步骤，形成单一监督学习损失函数，优化语言模型生成偏好回答。</li>
+<li><strong>与 RLHF 的关系</strong> ：DPO 是 RLHF 目标等价的直接优化形式，利用强化学习理论推导出可直接用偏好数据训练的损失函数。</li>
+</ul>
+
+  </div>
+</section>
+
+
+
+<section id="csdn-link-pane" class="csdn-external-link">
+  <div class="csdn-link-container">
+    <div class="csdn-link-header">
+      <i class="fas fa-external-link-alt"></i>
+      <h6>在CSDN上阅读完整版</h6>
+    </div>
+    <div class="csdn-link-content">
+      <p>本文同时发布在CSDN博客，您可以在那里查看更多技术细节和讨论。</p>
+      <a href="https://blog.csdn.net/weixin_46516647/article/details/147539400" target="_blank" class="csdn-link-button">
+        <i class="fab fa-blogger"></i>
+        <span>访问CSDN文章</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section id="tag-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-end meta">
+      
+    </h6>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+<section id="menu-pane" class="menu text-center">
+  
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      
+      
+
+      <li class="menu-item">
+        
+        <a class="menu-item" href="/blogs">blogs</a>
+        
+        <span class="menu-item">&nbsp;|&nbsp;</span>
+        
+      </li>
+
+      
+      <li class="menu-item">
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/web-development-basics/">next &gt;</a>
+      </li>
+      
+      
+    </ul>
+  </nav>
+  
+  <h4 class="text-center mt-3"><a class="menu-item" href="https://sunlongyu.github.io/">home</a></h4>
+</section>
+
+<footer class="text-center footer">
+  <hr />
+  
+  <h6 class="text-center copyright">© 2025. SLY. <a href="http://creativecommons.org/licenses/by/3.0/">Some Rights Reserved</a>.</h6>
+  
+  <h6 class="text-center powered"><a href="https://gohugo.io/">Hugo</a> <a
+      href="https://github.com/shenoydotme/hugo-goa">Goa</a> by <a href="https://shenoy.me">shenoydotme</a> and <a
+      href="https://incirclemedia.com">Incircle Media</a></h6>
+  
+  
+  <h6>
+    <a href="https://sunlongyu.github.io/index.xml" aria-label="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+  </h6>
+  
+  
+
+</footer>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+
+<script>hljs.highlightAll();</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/js/custom.js"></script>
+</body>
+
+</html>
+
