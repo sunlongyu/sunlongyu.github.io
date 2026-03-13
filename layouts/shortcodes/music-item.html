@@ -1,0 +1,40 @@
+{{/* 音乐项目 shortcode */}}
+{{/* 参数: title, artist, description, duration, date, cover, netease_id, netease_url */}}
+
+<div class="music-item" data-song-id="{{ .Get "id" | default "1" }}">
+  <div class="music-cover">
+    <img src="{{ .Get "cover" | default "/images/music/default-cover.svg" }}" 
+         alt="歌曲封面" 
+         onerror="this.src='/images/music/default-cover.svg'">
+    <div class="play-overlay">
+      <i class="fas fa-play play-btn"></i>
+    </div>
+  </div>
+  
+  <div class="music-info">
+    <h3 class="song-title">{{ .Get "title" }}</h3>
+    <p class="artist-name">{{ .Get "artist" }}</p>
+    <p class="song-description">{{ .Get "description" }}</p>
+    <div class="song-meta">
+      <span class="duration">{{ .Get "duration" }}</span>
+      <span class="release-date">{{ .Get "date" }}</span>
+    </div>
+  </div>
+  
+  <div class="music-actions">
+    {{ if .Get "netease_id" }}
+    <div class="netease-player-inline">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" 
+              width="100%" height="86" 
+              src="//music.163.com/outchain/player?type=2&id={{ .Get "netease_id" }}&auto=0&height=66">
+      </iframe>
+    </div>
+    {{ end }}
+    
+    {{ if .Get "netease_url" }}
+    <a href="{{ .Get "netease_url" }}" target="_blank" class="netease-link">
+      <i class="fas fa-external-link-alt"></i> 在网易云音乐中打开
+    </a>
+    {{ end }}
+  </div>
+</div>
