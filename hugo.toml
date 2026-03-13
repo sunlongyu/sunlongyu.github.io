@@ -35,7 +35,7 @@ enableRobotsTXT = true
 author = "SLY"
 intro = "CS Master Student"
 description = "Welcome To SLY'S World"
-authorimage = "sly.png"
+authorimage = "profile/sly.png"
 dateformat = "Jan 2, 2006"
 favicon="favicon.ico"
 
@@ -48,7 +48,7 @@ keywords = "minimalist,blog,goa,hugo,developer"
 [params.social]
 github = "https://github.com/sunlongyu"
 instagram = "https://www.instagram.com/sunlyuer_?igsh=MW42endvZGg2b3N1bQ%3D%3D&utm_source=qr"
-wechat = "/images/wechat.jpg"  # 您可以替换为微信二维码图片链接或个人微信页面
+wechat = "/images/social/wechat.jpg"  # 您可以替换为微信二维码图片链接或个人微信页面
 rednote = "https://www.xiaohongshu.com/user/profile/5fef0ba300000000010003ec?xsec_token=YBy1hfJTxceYHsrrFUSNBBJD4wuB6kb33-emFurNxQOPY=&xsec_source=app_share&xhsshare=CopyLink&appuid=5fef0ba300000000010003ec&apptime=1749434602&share_id=6cd16b53e63348f29996e70e8ad504a4"  # 您可以替换为小红书个人主页链接
 bilibili = "https://b23.tv/KJSQoy1"  # 请替换为您的哔哩哔哩UID
 netease = "https://y.music.163.com/m/user?id=406543726&dlt=0846&app_version=9.3.10"  # 网易云音乐个人主页

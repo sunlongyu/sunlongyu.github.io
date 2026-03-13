@@ -29,6 +29,12 @@ Edit `hugo.toml`.
 
 Put them in `static/`.
 
+Suggested locations:
+
+- article images: `static/images/blogs/`
+- social images: `static/images/social/`
+- profile image: `assets/images/profile/`
+
 ### Update page layout
 
 Edit files in `layouts/` or `themes/hugo-goa/`.
@@ -45,3 +51,4 @@ Edit files in `layouts/` or `themes/hugo-goa/`.
 - Do not edit generated HTML manually.
 - Do not commit `public/`.
 - The old `hugo-main` repository is no longer part of the deployment flow.
+- New post naming and content rules are in `docs/CONTENT_WORKFLOW.md`.
