@@ -1,24 +1,47 @@
 # sunlongyu.github.io
 
-This repository is now the single source of truth for the personal website.
+This repository is the only source of truth for the personal website.
 
-## What lives here
+## Project structure
 
-- `content/`: blog posts and page content
+- `hugo.toml`: main site config
+- `content/about/`: About page
+- `content/blogs/`: blog posts
+- `content/music/`: music page content
+- `content/vlogs/`: vlog page content
 - `static/`: files copied directly to the final site
-- `layouts/`: custom Hugo templates and shortcodes
-- `themes/hugo-goa/`: the site theme
-- `hugo.toml`: site configuration
+- `assets/`: Hugo processed assets
+- `layouts/`: custom templates and shortcodes
+- `themes/hugo-goa/`: current theme source
+- `docs/`: project notes and maintenance docs
 
-## Update workflow
+## Common tasks
 
-1. Edit content or site files in this repository.
+### Add a new blog post
+
+Create a new Markdown file under `content/blogs/`.
+
+### Update profile or site navigation
+
+Edit `hugo.toml`.
+
+### Update images or downloadable files
+
+Put them in `static/`.
+
+### Update page layout
+
+Edit files in `layouts/` or `themes/hugo-goa/`.
+
+## Publish workflow
+
+1. Edit files in this repository.
 2. Preview locally with `hugo server -D`.
 3. Commit and push to `main`.
-4. GitHub Actions builds the site and deploys it to GitHub Pages automatically.
+4. GitHub Actions deploys the site automatically.
 
-## Important notes
+## Rules
 
-- Do not edit generated HTML files manually.
-- `public/` is a build output and should not be committed.
-- After GitHub Pages is switched to `GitHub Actions` as the source, the old `hugo-main` repository is no longer needed.
+- Do not edit generated HTML manually.
+- Do not commit `public/`.
+- The old `hugo-main` repository is no longer part of the deployment flow.
