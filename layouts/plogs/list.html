@@ -12,13 +12,15 @@
     {{ $hasChildren := gt (len .Pages) 0 }}
     {{ $imageDir := printf "static/images/%s" .File.Dir }}
     {{ $cover := "" }}
-    {{ $photoCount := 0 }}
+    {{ $mediaCount := 0 }}
     {{ if not $hasChildren }}
       {{ $cover = partial "plogs-city-cover.html" $imageDir }}
       {{ $entries := readDir $imageDir }}
       {{ range $entries }}
-        {{ if and (not .IsDir) (or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP")) }}
-          {{ $photoCount = add $photoCount 1 }}
+        {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
+        {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
+        {{ if and (not .IsDir) (or $isImage $isVideo) }}
+          {{ $mediaCount = add $mediaCount 1 }}
         {{ end }}
       {{ end }}
     {{ end }}
@@ -35,7 +37,7 @@
       {{ end }}
       {{ if $isRoot }}<span class="plogs-region-eyebrow">Region</span>{{ end }}
       <h2>{{ .Title }}</h2>
-      <p>{{ if $hasChildren }}{{ len .Pages }} places{{ else }}{{ $photoCount }} photos{{ end }}</p>
+      <p>{{ if $hasChildren }}{{ len .Pages }} places{{ else }}{{ $mediaCount }} items{{ end }}</p>
       {{ if not $isRoot }}
       </div>
       {{ end }}
@@ -50,11 +52,13 @@
 {{ if not $isChinaProvince }}
   {{ $entries = readDir $imageDir }}
 {{ end }}
-{{ $photoCount := 0 }}
+{{ $mediaCount := 0 }}
 {{ if not $isChinaProvince }}
   {{ range $entries }}
-    {{ if and (not .IsDir) (or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP")) }}
-      {{ $photoCount = add $photoCount 1 }}
+    {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
+    {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
+    {{ if and (not .IsDir) (or $isImage $isVideo) }}
+      {{ $mediaCount = add $mediaCount 1 }}
     {{ end }}
   {{ end }}
 {{ end }}
@@ -64,7 +68,7 @@
     <h2>No cities yet</h2>
     <p>Add city pages under <code>{{ .File.Dir }}</code> when you are ready to expand this province.</p>
   </section>
-  {{ else if eq $photoCount 0 }}
+  {{ else if eq $mediaCount 0 }}
   <section class="plogs-empty">
     <h2>No photos yet</h2>
     <p>Upload photos to <code>{{ $imageDir }}/</code>. Use <code>cover.jpg</code> if you want a city cover on the previous page.</p>
@@ -72,12 +76,21 @@
   {{ else }}
   <div class="plogs-photo-grid">
     {{ range $entries }}
-      {{ if and (not .IsDir) (or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP")) }}
+      {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
+      {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
+      {{ if and (not .IsDir) $isImage }}
       {{ $photoURL := printf "/images/%s%s" $.File.Dir .Name }}
       <figure class="plogs-photo-card">
         <button class="plogs-photo-trigger" type="button" data-plogs-photo="{{ $photoURL }}" data-plogs-alt="{{ $.Title }} photo">
           <img src="{{ $photoURL }}" alt="{{ $.Title }} photo">
         </button>
+      </figure>
+      {{ else if and (not .IsDir) $isVideo }}
+      {{ $videoURL := printf "/images/%s%s" $.File.Dir .Name }}
+      <figure class="plogs-photo-card plogs-video-card">
+        <video controls playsinline preload="metadata">
+          <source src="{{ $videoURL }}">
+        </video>
       </figure>
       {{ end }}
     {{ end }}

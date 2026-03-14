@@ -377,6 +377,12 @@
   cursor: zoom-in;
 }
 
+.plogs-video-card video {
+  width: 100%;
+  display: block;
+  background: #000;
+}
+
 .plogs-lightbox {
   position: fixed;
   inset: 0;
