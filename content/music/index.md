@@ -1,5 +1,4 @@
 +++
-categories = ["音乐"]
 comments = false
 date = "2024-12-15T15:00:00+08:00"
 draft = false
@@ -195,23 +194,3 @@ showpagemeta = true
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="150" src="//music.163.com/outchain/player?type=2&id=2606387759&auto=0&height=120"></iframe>
   </div>
 </div> -->
-
----
-
-## 🎤 关于我的音乐
-
-我热爱音乐创作，擅长将生活中的感悟融入旋律中。我的音乐风格多样，从R&B到嘻哈，每一首作品都是我内心世界的真实表达。
-
-### 🎹 创作理念
-- **真实表达**：用音乐记录生活中的点点滴滴
-- **情感共鸣**：希望我的音乐能触动听众的心灵
-- **持续创新**：不断尝试新的音乐风格和制作技巧
-
-### 📱 在哪里可以听到我的音乐
-- **网易云音乐**：[个人主页](https://music.163.com/#/artist?id=56638256)
-<!-- - **QQ音乐**：即将上线
-- **酷狗音乐**：即将上线 -->
-
----
-
-*如果你喜欢我的音乐，欢迎在网易云音乐上关注我，与我交流音乐心得！*

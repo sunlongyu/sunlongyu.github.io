@@ -77,6 +77,7 @@
 .home-bio {
   margin: 1.25rem auto 0;
   max-width: 680px;
+  text-align: justify;
 }
 
 .home-bio p {
@@ -84,6 +85,7 @@
   font-size: 1rem;
   line-height: 1.8;
   color: #5f6470;
+  text-align: justify;
 }
 
 .home-bio p:last-child {
@@ -733,12 +735,17 @@
 .bilibili-player {
   position: relative;
   width: 100%;
+  min-height: 450px;
   margin-bottom: 2rem;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
   z-index: 1;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bilibili-player:hover {
@@ -752,6 +759,33 @@
   border: none;
   display: block;
   transition: all 0.3s ease;
+}
+
+.bilibili-player iframe:not([src]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.video-activate-btn {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(10px);
+}
+
+.bilibili-player.is-active .video-activate-btn {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .video-actions {

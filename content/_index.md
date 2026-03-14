@@ -5,5 +5,3 @@ I love to create music after studying, my style involves pop, R&B, hiphop, rock 
 My blogs mainly focuses on the computer field, and most of it is about what I have learned in the process of learning, hoping to improve myself and help others at the same time. I am deeply passionate about this field, and I hope to share my insights and experiences through my blog, which will hopefully be of value to everyone. In addition to this, I hope you will also see my music as well as video work posted on other platforms.
 
 If you have any questions, suggestions or want to share your thoughts with me, you can contact me via email. Also, you can follow me on my social media platforms.
-
-Thank you for visiting my blog! I'm looking forward to sharing interesting content and experiences with you.
