@@ -37,7 +37,11 @@
 
   <section class="blog-card-grid" id="blogCardGrid">
     {{ range .RegularPages.ByDate.Reverse }}
-    <article class="blog-card" data-search="{{ lower (printf "%s %s %s %s" .Title .Description (delimit .Params.categories " ") (delimit .Params.tags " ")) }}">
+    {{ $categories := "" }}
+    {{ with .Params.categories }}{{ $categories = delimit . " " }}{{ end }}
+    {{ $tags := "" }}
+    {{ with .Params.tags }}{{ $tags = delimit . " " }}{{ end }}
+    <article class="blog-card" data-search="{{ lower (printf "%s %s %s %s" .Title .Description $categories $tags) }}">
       <div class="blog-card-top">
         <p class="blog-card-date">{{ if not .Date.IsZero }}{{ .Date.Format "2006-01-02" }}{{ end }}</p>
         <h2 class="blog-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
