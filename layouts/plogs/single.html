@@ -1,0 +1,38 @@
+{{ partial "header.html" . }}
+
+<header class="text-start title">
+  <h1 class="title">{{ .Title }}</h1>
+  {{ with .Description }}
+  <p class="blogs-intro">{{ . }}</p>
+  {{ end }}
+</header>
+
+<section id="content-pane">
+  <div class="text-justify content">
+    {{ .Content }}
+  </div>
+</section>
+
+{{ with .Params.photos }}
+<section class="plogs-grid">
+  {{ range . }}
+  <article class="plog-card">
+    <img src="{{ .image }}" alt="{{ .title }}">
+    <div class="plog-card-body">
+      <h3>{{ .title }}</h3>
+      {{ with .date }}<p class="plog-meta">{{ . }}</p>{{ end }}
+      {{ with .location }}<p class="plog-meta">{{ . }}</p>{{ end }}
+      {{ with .description }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </article>
+  {{ end }}
+</section>
+{{ else }}
+<section class="plogs-empty">
+  <h2>Plogs is ready</h2>
+  <p>Upload your favorite photos to <code>static/images/plogs/</code>, then add entries to this page when you want captions, dates, or locations.</p>
+</section>
+{{ end }}
+
+{{ partial "menu.html" . }}
+{{ partial "footer.html" . }}

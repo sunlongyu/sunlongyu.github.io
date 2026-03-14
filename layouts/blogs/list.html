@@ -1,0 +1,107 @@
+{{ partial "header.html" . }}
+
+<header class="text-start title">
+  <h1 class="title">Blogs</h1>
+  <p class="blogs-intro">
+    Technical notes, learning summaries, and project writeups. Use the search box and category shortcuts instead of scrolling through everything.
+  </p>
+</header>
+
+<section class="blog-explorer">
+  <div class="blog-toolbar">
+    <input id="blogFilterInput" class="blog-filter-input" type="search" placeholder="Search by title, category, tag, or keyword">
+    <p class="blog-counter"><span id="blogVisibleCount">{{ len .RegularPages }}</span> posts visible</p>
+  </div>
+
+  {{ with site.Taxonomies.categories }}
+  {{ $categoryNames := slice }}
+  {{ range $name, $_ := . }}
+  {{ $categoryNames = $categoryNames | append $name }}
+  {{ end }}
+  <section class="blog-taxonomy-group">
+    <h2 class="blog-taxonomy-title">Browse by category</h2>
+    <div class="blog-chip-list">
+      {{ range sort $categoryNames }}
+      <a class="blog-chip" href="{{ "categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with site.Taxonomies.tags }}
+  {{ $tagNames := slice }}
+  {{ range $name, $_ := . }}
+  {{ $tagNames = $tagNames | append $name }}
+  {{ end }}
+  <section class="blog-taxonomy-group">
+    <h2 class="blog-taxonomy-title">Browse by tag</h2>
+    <div class="blog-chip-list">
+      {{ range sort $tagNames }}
+      <a class="blog-chip blog-chip-muted" href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="blog-card-grid" id="blogCardGrid">
+    {{ range .RegularPages.ByDate.Reverse }}
+    <article class="blog-card" data-search="{{ lower (printf "%s %s %s %s" .Title .Description (delimit .Params.categories " ") (delimit .Params.tags " ")) }}">
+      <div class="blog-card-top">
+        <p class="blog-card-date">{{ if not .Date.IsZero }}{{ .Date.Format "2006-01-02" }}{{ end }}</p>
+        <h2 class="blog-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      </div>
+
+      {{ with .Description }}
+      <p class="blog-card-description">{{ . }}</p>
+      {{ end }}
+
+      {{ with .Params.categories }}
+      <div class="blog-card-meta">
+        {{ range . }}
+        <a class="blog-mini-chip" href="{{ "categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{ with .Params.tags }}
+      <div class="blog-card-meta">
+        {{ range first 4 . }}
+        <a class="blog-mini-chip blog-mini-chip-muted" href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <a class="blog-read-link" href="{{ .RelPermalink }}">Read article</a>
+    </article>
+    {{ end }}
+  </section>
+</section>
+
+{{ partial "menu.html" . }}
+{{ partial "footer.html" . }}
+
+<script>
+  (() => {
+    const input = document.getElementById("blogFilterInput");
+    const cards = Array.from(document.querySelectorAll(".blog-card"));
+    const counter = document.getElementById("blogVisibleCount");
+
+    if (!input || !counter) return;
+
+    const update = () => {
+      const query = input.value.trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const haystack = card.dataset.search || "";
+        const match = !query || haystack.includes(query);
+        card.style.display = match ? "" : "none";
+        if (match) visible += 1;
+      });
+
+      counter.textContent = String(visible);
+    };
+
+    input.addEventListener("input", update);
+  })();
+</script>

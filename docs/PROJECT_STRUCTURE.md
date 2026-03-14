@@ -4,7 +4,7 @@
 
 - Site config: `hugo.toml`
 - Blog posts: `content/blogs/`
-- About page: `content/about/index.md`
+- Plogs page: `content/plogs/index.md`
 - Music page: `content/music/index.md`
 - Vlog page: `content/vlogs/index.md`
 - Static files: `static/`

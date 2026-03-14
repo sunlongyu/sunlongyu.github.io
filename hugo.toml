@@ -39,6 +39,16 @@ authorimage = "profile/sly.png"
 dateformat = "Jan 2, 2006"
 favicon="favicon.ico"
 
+[params.home]
+summary = """
+I am Sun Longyu, a master's student focused on AI, LLMs, and practical machine learning systems. This site is where I organize my technical notes, music works, vlogs, and selected photos from daily life.
+"""
+highlights = [
+  "AI / LLM / RAG notes",
+  "Original music",
+  "Vlogs and selected photo moments"
+]
+
 ## Site Meta Settings
 [params.meta]
 description = "Simple minimalist theme"
@@ -99,23 +109,23 @@ displayrssicon = true
 
 ## Main Menu
 [[menu.main]]
-name = "About"
-identifier = "About"
+name = "PLOGS"
+identifier = "Plogs"
 weight = 200
-url = "/about/"
+url = "/plogs/"
 [[menu.main]]
-name = "Blogs"
+name = "BLOGS"
 weight = 100
 identifier = "Blogs"
 url = "/blogs/"
 
 [[menu.main]]
-name = "Vlogs"
+name = "VLOGS"
 identifier = "Vlogs"
 weight = 300
 url = "/vlogs/"
 [[menu.main]]
-name = "Music"
+name = "MUSIC"
 identifier = "Music"
 weight = 300
 url = "/music/"

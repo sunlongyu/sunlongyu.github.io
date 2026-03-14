@@ -1,0 +1,22 @@
+<section id="info-pane" class="text-center info">
+  {{ with .Site.Params.intro }}
+  <h3 class="intro">{{ . | markdownify }}</h3>
+  {{ end }}
+  {{ with .Site.Params.description }}
+  <h4 class="description">{{ . | markdownify }}</h4>
+  {{ end }}
+
+  {{ with .Site.Params.home.summary }}
+  <div class="home-bio">
+    <p>{{ . | markdownify }}</p>
+  </div>
+  {{ end }}
+
+  {{ with .Site.Params.home.highlights }}
+  <div class="home-highlights">
+    {{ range . }}
+    <span class="home-highlight">{{ . }}</span>
+    {{ end }}
+  </div>
+  {{ end }}
+</section>

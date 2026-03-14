@@ -96,7 +96,7 @@ showpagemeta = true
     <div class="netease-player-inline">
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2063028431&auto=0&height=66"></iframe>
     </div>
-    <a href="https://music.163.com/song?id=2063028431&uct2=U2FsdGVkX1+UNuLnE/0v7E8tYV0kPpwwZFFHGFneioU=
+    <a href="https://music.163.com/song?id=2063028431" target="_blank" class="netease-link-small">
       <i class="fas fa-external-link-alt"></i> 在网易云音乐中打开
     </a>
   </div>
@@ -121,7 +121,7 @@ showpagemeta = true
     <div class="netease-player-inline">
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2060963543&auto=0&height=66"></iframe>
     </div>
-    <a href="https://music.163.com/song?id=2060963543&uct2=U2FsdGVkX19A3vVO/tUij/lNKYYGGC95lbW0aUaggKw=
+    <a href="https://music.163.com/song?id=2060963543" target="_blank" class="netease-link-small">
       <i class="fas fa-external-link-alt"></i> 在网易云音乐中打开
     </a>
   </div>
@@ -146,7 +146,7 @@ showpagemeta = true
     <div class="netease-player-inline">
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2047634879&auto=0&height=66"></iframe>
     </div>
-    <a href="https://music.163.com/song?id=2047634879&uct2=U2FsdGVkX19Dihso1rD9PnKIxPnlJ5SqS8GLNFxCRsQ=
+    <a href="https://music.163.com/song?id=2047634879" target="_blank" class="netease-link-small">
       <i class="fas fa-external-link-alt"></i> 在网易云音乐中打开
     </a>
   </div>
@@ -171,7 +171,7 @@ showpagemeta = true
     <div class="netease-player-inline">
       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=2046186641&auto=0&height=66"></iframe>
     </div>
-    <a href="https://music.163.com/song?id=2046186641&uct2=U2FsdGVkX19S5TAvvLePjnIKmc5BuG5XlKehZKSrhaw=
+    <a href="https://music.163.com/song?id=2046186641" target="_blank" class="netease-link-small">
       <i class="fas fa-external-link-alt"></i> 在网易云音乐中打开
     </a>
   </div>

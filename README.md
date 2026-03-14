@@ -5,7 +5,7 @@ This repository is the only source of truth for the personal website.
 ## Project structure
 
 - `hugo.toml`: main site config
-- `content/about/`: About page
+- `content/plogs/`: Plogs page
 - `content/blogs/`: blog posts
 - `content/music/`: music page content
 - `content/vlogs/`: vlog page content
