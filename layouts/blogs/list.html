@@ -13,31 +13,23 @@
     <p class="blog-counter"><span id="blogVisibleCount">{{ len .RegularPages }}</span> posts visible</p>
   </div>
 
-  {{ with site.Taxonomies.categories }}
-  {{ $categoryNames := slice }}
-  {{ range $name, $_ := . }}
-  {{ $categoryNames = $categoryNames | append $name }}
-  {{ end }}
+  {{ with .Site.Taxonomies.categories }}
   <section class="blog-taxonomy-group">
     <h2 class="blog-taxonomy-title">Browse by category</h2>
     <div class="blog-chip-list">
-      {{ range sort $categoryNames }}
-      <a class="blog-chip" href="{{ "categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+      {{ range .Alphabetical }}
+      <a class="blog-chip" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
       {{ end }}
     </div>
   </section>
   {{ end }}
 
-  {{ with site.Taxonomies.tags }}
-  {{ $tagNames := slice }}
-  {{ range $name, $_ := . }}
-  {{ $tagNames = $tagNames | append $name }}
-  {{ end }}
+  {{ with .Site.Taxonomies.tags }}
   <section class="blog-taxonomy-group">
     <h2 class="blog-taxonomy-title">Browse by tag</h2>
     <div class="blog-chip-list">
-      {{ range sort $tagNames }}
-      <a class="blog-chip blog-chip-muted" href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+      {{ range .Alphabetical }}
+      <a class="blog-chip blog-chip-muted" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
       {{ end }}
     </div>
   </section>
