@@ -50,4 +50,7 @@
     </head>
 
     <body lang="{{ .Site.LanguageCode }}">
-        <div class="container my-auto">
+        <div class="site-shell">
+            {{ partial "main_menu.html" . }}
+            <main class="site-main">
+                <div class="container my-auto">

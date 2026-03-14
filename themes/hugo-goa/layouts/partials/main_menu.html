@@ -1,7 +1,37 @@
-{{ with .Site.Menus.main }}
-<section id="main-menu-pane" class="text-center main-menu home-top-nav">
-  {{ range sort . }}
-  <a class="menu-item home-top-nav-item" href="{{ .URL }}">{{ .Name }}</a>
-  {{ end }}
-</section>
+{{ $page := . }}
+{{ with $page.Site.Menus.main }}
+<aside id="main-menu-pane" class="site-sidebar-nav">
+  <a class="site-brand" href="{{ $page.Site.BaseURL }}">
+    <span class="site-brand-mark"><i class="fab fa-instagram" aria-hidden="true"></i></span>
+    <span class="site-brand-text">{{ $page.Site.Params.author }}</span>
+  </a>
+
+  <nav class="site-nav" aria-label="Primary">
+    {{ $current := $page.RelPermalink }}
+    <a class="site-nav-item {{ if eq $current "/" }}is-active{{ end }}" href="{{ $page.Site.BaseURL }}">
+      <span class="site-nav-icon"><i class="fas fa-house" aria-hidden="true"></i></span>
+      <span class="site-nav-label">Home</span>
+    </a>
+
+    {{ range sort . }}
+    {{ $label := lower .Name }}
+    <a class="site-nav-item {{ if eq $current .URL }}is-active{{ end }}" href="{{ .URL }}">
+      <span class="site-nav-icon">
+        {{ if eq $label "blogs" }}
+        <i class="fas fa-pen-nib" aria-hidden="true"></i>
+        {{ else if eq $label "plogs" }}
+        <i class="fas fa-camera-retro" aria-hidden="true"></i>
+        {{ else if eq $label "vlogs" }}
+        <i class="fas fa-film" aria-hidden="true"></i>
+        {{ else if eq $label "music" }}
+        <i class="fas fa-headphones" aria-hidden="true"></i>
+        {{ else }}
+        <i class="fas fa-compass" aria-hidden="true"></i>
+        {{ end }}
+      </span>
+      <span class="site-nav-label">{{ .Name }}</span>
+    </a>
+    {{ end }}
+  </nav>
+</aside>
 {{ end }}
