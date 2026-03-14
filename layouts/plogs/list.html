@@ -1,0 +1,93 @@
+{{ partial "header.html" . }}
+
+{{ $segments := split .File.Path "/" }}
+{{ $depth := len $segments }}
+
+<header class="text-start title plogs-page-header">
+  <h1 class="title">{{ .Title }}</h1>
+  {{ with .Description }}
+  <p class="blogs-intro">{{ . }}</p>
+  {{ end }}
+</header>
+
+{{ if eq $depth 2 }}
+<section class="plogs-directory">
+  <div class="plogs-section-intro">
+    <p>Choose a country or region to browse its city albums.</p>
+  </div>
+  <div class="plogs-region-grid">
+    {{ range .Pages.ByTitle }}
+    <a class="plogs-region-card" href="{{ .RelPermalink }}">
+      <span class="plogs-region-eyebrow">Region</span>
+      <h2>{{ .Title }}</h2>
+      <p>{{ len .Pages }} cities</p>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ else if eq $depth 3 }}
+<section class="plogs-directory">
+  <div class="plogs-section-intro">
+    <p>Choose a city to open its full photo collection.</p>
+  </div>
+  <div class="plogs-city-grid">
+    {{ range .Pages.ByTitle }}
+    {{ $imageDir := printf "static/images/%s" .File.Dir }}
+    {{ $cover := partial "plogs-city-cover.html" $imageDir }}
+    {{ $entries := readDir $imageDir }}
+    {{ $photoCount := 0 }}
+    {{ range $entries }}
+      {{ if and (not .IsDir) (or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP")) }}
+        {{ $photoCount = add $photoCount 1 }}
+      {{ end }}
+    {{ end }}
+    <a class="plogs-city-card" href="{{ .RelPermalink }}">
+      <div class="plogs-city-cover">
+        {{ if $cover }}
+        <img src="{{ printf "/images/%s%s" .File.Dir $cover }}" alt="{{ .Title }}">
+        {{ else }}
+        <div class="plogs-city-cover-placeholder">{{ slicestr .Title 0 1 }}</div>
+        {{ end }}
+      </div>
+      <div class="plogs-city-body">
+        <h2>{{ .Title }}</h2>
+        <p>{{ $photoCount }} photos</p>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ else }}
+{{ $imageDir := printf "static/images/%s" .File.Dir }}
+{{ $entries := readDir $imageDir }}
+{{ $photoCount := 0 }}
+{{ range $entries }}
+  {{ if and (not .IsDir) (or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP")) }}
+    {{ $photoCount = add $photoCount 1 }}
+  {{ end }}
+{{ end }}
+<section class="plogs-gallery-shell">
+  <div class="plogs-gallery-meta">
+    <p>All photos from {{ .Title }}.</p>
+  </div>
+  {{ if eq $photoCount 0 }}
+  <section class="plogs-empty">
+    <h2>No photos yet</h2>
+    <p>Upload photos to <code>{{ $imageDir }}/</code>. Use <code>cover.jpg</code> if you want a city cover on the previous page.</p>
+  </section>
+  {{ else }}
+  <div class="plogs-photo-grid">
+    {{ range $entries }}
+      {{ if and (not .IsDir) (or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP")) }}
+      <figure class="plogs-photo-card">
+        <img src="{{ printf "/images/%s%s" $.File.Dir .Name }}" alt="{{ $.Title }} photo">
+      </figure>
+      {{ end }}
+    {{ end }}
+  </div>
+  {{ end }}
+</section>
+{{ end }}
+
+{{ partial "menu.html" . }}
+{{ partial "footer.html" . }}

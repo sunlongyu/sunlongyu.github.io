@@ -1,0 +1,16 @@
+{{ $dir := . }}
+{{ $entries := readDir $dir }}
+{{ $cover := "" }}
+
+{{ range $entries }}
+  {{ if and (not .IsDir) (or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP")) }}
+    {{ $isCover := or (eq .Name "cover.jpg") (eq .Name "cover.jpeg") (eq .Name "cover.png") (eq .Name "cover.webp") (eq .Name "cover.JPG") (eq .Name "cover.JPEG") (eq .Name "cover.PNG") (eq .Name "cover.WEBP") }}
+    {{ if $isCover }}
+      {{ $cover = .Name }}
+    {{ else if eq $cover "" }}
+      {{ $cover = .Name }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $cover }}

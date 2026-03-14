@@ -254,6 +254,131 @@
   margin: 2rem 0;
 }
 
+.plogs-page-header {
+  margin-bottom: 1.5rem;
+}
+
+.plogs-directory,
+.plogs-gallery-shell {
+  margin-top: 1.5rem;
+}
+
+.plogs-section-intro,
+.plogs-gallery-meta {
+  margin-bottom: 1.2rem;
+  color: #6b7280;
+  font-size: 0.98rem;
+}
+
+.plogs-region-grid,
+.plogs-city-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.plogs-region-card,
+.plogs-city-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #ece4d8;
+  border-radius: 22px;
+  background: #fffdfa;
+  box-shadow: 0 10px 30px rgba(29, 17, 7, 0.05);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.plogs-region-card:hover,
+.plogs-city-card:hover,
+.plogs-region-card:focus,
+.plogs-city-card:focus {
+  transform: translateY(-3px);
+  border-color: #d6bfa7;
+  box-shadow: 0 20px 40px rgba(29, 17, 7, 0.09);
+  text-decoration: none;
+}
+
+.plogs-region-card {
+  padding: 1.5rem;
+}
+
+.plogs-region-eyebrow {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9a3412;
+}
+
+.plogs-region-card h2,
+.plogs-city-body h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.35rem;
+  color: #18181b;
+}
+
+.plogs-region-card p,
+.plogs-city-body p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.plogs-city-cover {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #fdf2e9 0%, #f8edeb 100%);
+}
+
+.plogs-city-cover img,
+.plogs-photo-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.plogs-city-cover-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #9a3412;
+}
+
+.plogs-city-body {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.plogs-photo-grid {
+  columns: 3 260px;
+  column-gap: 1rem;
+}
+
+.plogs-photo-card {
+  break-inside: avoid;
+  margin: 0 0 1rem 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 768px) {
+  .plogs-region-grid,
+  .plogs-city-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plogs-photo-grid {
+    columns: 2 160px;
+  }
+}
+
 .plog-card {
   overflow: hidden;
   border-radius: 18px;
