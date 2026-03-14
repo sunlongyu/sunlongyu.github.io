@@ -1,5 +1,40 @@
 /* Add custom CSS here. */
 
+.home-top-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin: 1rem auto 2rem;
+  max-width: 760px;
+}
+
+.home-top-nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid #eadbc8;
+  border-radius: 999px;
+  background: #fffaf3;
+  color: #7c2d12 !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.home-top-nav-item:hover,
+.home-top-nav-item:focus {
+  background: #fff3df;
+  box-shadow: 0 12px 26px rgba(124, 45, 18, 0.08);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
 .home-bio {
   margin: 1.25rem auto 0;
   max-width: 680px;
@@ -14,6 +49,19 @@
 
 .home-bio p:last-child {
   margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .home-top-nav {
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .home-top-nav-item {
+    min-width: 0;
+    width: calc(50% - 0.4rem);
+    font-size: 0.88rem;
+  }
 }
 
 .blogs-intro {

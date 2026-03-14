@@ -6,9 +6,9 @@
   <h4 class="description">{{ . | markdownify }}</h4>
   {{ end }}
 
-  {{ with .Site.Params.home.about }}
+  {{ with .Content }}
   <div class="home-bio">
-    {{ . | markdownify }}
+    {{ . }}
   </div>
   {{ end }}
 </section>

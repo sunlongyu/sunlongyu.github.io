@@ -1,7 +1,7 @@
 {{ with .Site.Menus.main }}
-<section id="main-menu-pane" class="text-center main-menu">
+<section id="main-menu-pane" class="text-center main-menu home-top-nav">
   {{ range sort . }}
-  <h4><a class="menu-item" href="{{ .URL }}">{{ .Name }}</a></h4>
+  <a class="menu-item home-top-nav-item" href="{{ .URL }}">{{ .Name }}</a>
   {{ end }}
 </section>
 {{ end }}
