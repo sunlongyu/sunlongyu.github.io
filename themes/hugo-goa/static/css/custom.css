@@ -11,53 +11,28 @@
   z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  width: 248px;
-  height: 100vh;
-  padding: 1.6rem 1rem 1.25rem;
-  border-right: 1px solid #ece4d8;
-  background: rgba(255, 252, 247, 0.96);
-  backdrop-filter: blur(16px);
-}
-
-.site-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 0.35rem 0.55rem;
-  color: #18181b !important;
-}
-
-.site-brand-mark {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #ffedd5, #fce7f3);
-  color: #7c2d12;
-  font-size: 1.15rem;
-}
-
-.site-brand-text {
-  font-family: "Roboto Slab", serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+  width: 220px;
+  height: 100vh;
+  padding: 1.25rem 0.9rem;
+  border-right: 1px solid #ece7de;
+  background: #fffdf9;
+  backdrop-filter: blur(16px);
 }
 
 .site-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.4rem;
 }
 
 .site-nav-item {
   display: flex;
   align-items: center;
   gap: 0.95rem;
-  padding: 0.85rem 0.9rem;
-  border-radius: 18px;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
   color: #27272a !important;
   transition: background-color 0.18s ease, transform 0.18s ease, color 0.18s ease;
 }
@@ -71,7 +46,7 @@
 }
 
 .site-nav-item.is-active {
-  background: #f4ede4;
+  background: #f3eee7;
   color: #7c2d12 !important;
 }
 
@@ -85,18 +60,18 @@
 
 .site-nav-label {
   font-family: "Lato", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .site-main {
-  margin-left: 248px;
+  margin-left: 220px;
   min-height: 100vh;
 }
 
 .site-main .container {
-  max-width: 920px;
-  padding: 0 2rem;
+  max-width: 980px;
+  padding: 0 2.5rem;
 }
 
 .home-bio {
@@ -115,13 +90,10 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .site-nav-label {
     font-size: 0.95rem;
   }
-}
-
-@media (max-width: 991px) {
   .site-sidebar-nav {
     position: sticky;
     width: 100%;

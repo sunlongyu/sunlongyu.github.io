@@ -1,11 +1,6 @@
 {{ $page := . }}
 {{ with $page.Site.Menus.main }}
 <aside id="main-menu-pane" class="site-sidebar-nav">
-  <a class="site-brand" href="{{ $page.Site.BaseURL }}">
-    <span class="site-brand-mark"><i class="fab fa-instagram" aria-hidden="true"></i></span>
-    <span class="site-brand-text">{{ $page.Site.Params.author }}</span>
-  </a>
-
   <nav class="site-nav" aria-label="Primary">
     {{ $current := $page.RelPermalink }}
     <a class="site-nav-item {{ if eq $current "/" }}is-active{{ end }}" href="{{ $page.Site.BaseURL }}">
