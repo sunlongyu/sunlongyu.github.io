@@ -19,34 +19,45 @@ static/images/plogs/
     phuket/
       .gitkeep
   china/
-    hong-kong/
-      .gitkeep
-    macau/
-      .gitkeep
-    guangzhou/
-      .gitkeep
-    kunming/
-      .gitkeep
-    dali/
-      .gitkeep
-    lijiang/
-      .gitkeep
-    xishuangbanna/
-      .gitkeep
-    puer/
-      .gitkeep
-    haikou/
-      .gitkeep
-    weizhou-island/
-      .gitkeep
-    zhoushan/
-      .gitkeep
+    guangdong/
+      guangzhou/
+        .gitkeep
+    yunnan/
+      kunming/
+        .gitkeep
+      dali/
+        .gitkeep
+      lijiang/
+        .gitkeep
+      xishuangbanna/
+        .gitkeep
+      puer/
+        .gitkeep
+    hainan/
+      haikou/
+        .gitkeep
+    guangxi/
+      weizhou-island/
+        .gitkeep
+    zhejiang/
+      zhoushan/
+        .gitkeep
+    hong-kong-sar/
+      hong-kong/
+        .gitkeep
+    macau-sar/
+      macau/
+        .gitkeep
+    jiangxi/
+    shanghai/
+    jiangsu/
+    liaoning/
 ```
 
 Recommended next step inside each city folder:
 
 ```text
-static/images/plogs/china/guangzhou/campus-walk-2026-03/
+static/images/plogs/china/guangdong/guangzhou/
   cover.jpg
   01.jpg
   02.jpg
@@ -57,4 +68,4 @@ Album naming rule:
 - `YYYY-MM-short-title`
 - keep filenames simple: `cover.jpg`, `01.jpg`, `02.jpg`
 
-This lets us build `Plogs` by region first, then by album.
+China uses one extra level: `country -> province -> city -> photos`.
