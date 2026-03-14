@@ -3,33 +3,22 @@
 <header class="text-start title">
   <h1 class="title">Blogs</h1>
   <p class="blogs-intro">
-    Technical notes, learning summaries, and project writeups. Use the search box and category shortcuts instead of scrolling through everything.
+    Browse posts by keyword or category. The goal here is simple access, not decoration.
   </p>
 </header>
 
 <section class="blog-explorer">
   <div class="blog-toolbar">
     <input id="blogFilterInput" class="blog-filter-input" type="search" placeholder="Search by title, category, tag, or keyword">
-    <p class="blog-counter"><span id="blogVisibleCount">{{ len .RegularPages }}</span> posts visible</p>
+    <p class="blog-counter"><span id="blogVisibleCount">{{ len .RegularPages }}</span> posts</p>
   </div>
 
   {{ with .Site.Taxonomies.categories }}
   <section class="blog-taxonomy-group">
-    <h2 class="blog-taxonomy-title">Browse by category</h2>
+    <h2 class="blog-taxonomy-title">Categories</h2>
     <div class="blog-chip-list">
       {{ range .Alphabetical }}
       <a class="blog-chip" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-      {{ end }}
-    </div>
-  </section>
-  {{ end }}
-
-  {{ with .Site.Taxonomies.tags }}
-  <section class="blog-taxonomy-group">
-    <h2 class="blog-taxonomy-title">Browse by tag</h2>
-    <div class="blog-chip-list">
-      {{ range .Alphabetical }}
-      <a class="blog-chip blog-chip-muted" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
       {{ end }}
     </div>
   </section>
@@ -60,11 +49,7 @@
       {{ end }}
 
       {{ with .Params.tags }}
-      <div class="blog-card-meta">
-        {{ range first 4 . }}
-        <a class="blog-mini-chip blog-mini-chip-muted" href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
-        {{ end }}
-      </div>
+      <p class="blog-card-tags">Tags: {{ delimit . ", " }}</p>
       {{ end }}
 
       <a class="blog-read-link" href="{{ .RelPermalink }}">Read article</a>

@@ -6,17 +6,9 @@
   <h4 class="description">{{ . | markdownify }}</h4>
   {{ end }}
 
-  {{ with .Site.Params.home.summary }}
+  {{ with .Site.Params.home.about }}
   <div class="home-bio">
-    <p>{{ . | markdownify }}</p>
-  </div>
-  {{ end }}
-
-  {{ with .Site.Params.home.highlights }}
-  <div class="home-highlights">
-    {{ range . }}
-    <span class="home-highlight">{{ . }}</span>
-    {{ end }}
+    {{ . | markdownify }}
   </div>
   {{ end }}
 </section>
