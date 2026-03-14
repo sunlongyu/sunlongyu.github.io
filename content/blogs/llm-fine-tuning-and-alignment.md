@@ -6,6 +6,8 @@ categories = ['微调', '对齐']
 #tags = ['微调', '对齐', 'LLM', 'RLHF', 'DPO']
 description = "大模型应用开发之微调与对齐"
 csdn_url = "https://blog.csdn.net/weixin_46516647/article/details/147539400"
+slug = "llm-fine-tuning-and-alignment"
+aliases = ["/blogs/llm-%E5%BE%AE%E8%B0%83%E4%B8%8E%E5%AF%B9%E9%BD%90/", "/blogs/llm-微调与对齐/"]
 +++
 
 # 一、指令微调 Instruction Tuning

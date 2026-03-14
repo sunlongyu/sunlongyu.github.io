@@ -6,6 +6,8 @@ categories = ['LLM']
 #tags = ['JavaScript', 'Go', 'Python', '编程语言']
 description = "深入了解大语言模型的预训练过程，包括数据准备、模型架构和训练策略"
 csdn_url = "https://blog.csdn.net/weixin_46516647/article/details/147539045"
+slug = "llm-pre-training"
+aliases = ["/blogs/llm-pre-training/"]
 +++
 
 # 预训练 - 研发大语言模型的第一个训练阶段

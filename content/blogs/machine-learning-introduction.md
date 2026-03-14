@@ -5,6 +5,8 @@ draft = false
 categories = ['人工智能', '机器学习']
 tags = ['AI', '数据科学', 'Python', '算法']
 description = "机器学习的基础概念和入门指南"
+slug = "machine-learning-introduction"
+aliases = ["/blogs/machine-learning-intro/"]
 +++
 
 # 机器学习入门指南

@@ -6,6 +6,7 @@
 - Example: `llm-pretraining-notes.md`
 - Avoid spaces in new file names
 - Avoid mixing uppercase and lowercase in directory names
+- Keep `slug` aligned with the file name when possible
 
 ## Where to place files
 
@@ -20,8 +21,10 @@
 1. Create a file in `content/blogs/`
 2. Copy the structure from `archetypes/blog.md`
 3. Set `title`, `date`, `categories`, `tags`, `description`
-4. If needed, put article images in `static/images/blogs/`
-5. Commit and push to `main`
+4. Set `slug` to a stable lowercase kebab-case value
+5. If you ever change a post URL, add the old path to `aliases`
+6. If needed, put article images in `static/images/blogs/`
+7. Commit and push to `main`
 
 ## Notes
 

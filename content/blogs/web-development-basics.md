@@ -5,6 +5,7 @@ draft = false
 categories = ['编程', 'Web开发']
 tags = ['HTML', 'CSS', 'JavaScript', '前端']
 description = "Web开发的基础知识，包括HTML、CSS和JavaScript"
+slug = "web-development-basics"
 +++
 
 # Web开发基础指南
