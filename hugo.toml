@@ -34,7 +34,7 @@ enableRobotsTXT = true
 [params]
 author = "SLY"
 intro = "CS Master Student"
-description = "Welcome To SLY'S World"
+# description = "Welcome To SLY'S World"
 authorimage = "profile/sly.png"
 dateformat = "Jan 2, 2006"
 favicon="favicon.ico"
