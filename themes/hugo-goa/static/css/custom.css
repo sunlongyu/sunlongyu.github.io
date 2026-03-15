@@ -1538,3 +1538,62 @@ body.plogs-lightbox-open {
     justify-content: center;
   }
 }
+
+.post-live-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.blog-metrics-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1rem 0 0.75rem;
+}
+
+.blog-metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.04);
+  color: #475569;
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
+.home-visitor-counter {
+  margin: 2.75rem 0 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.28);
+  text-align: center;
+}
+
+.post-comments-pane {
+  margin-top: 3rem;
+}
+
+.post-comments-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.post-comments-hint {
+  margin-bottom: 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+#waline-root[hidden] {
+  display: none !important;
+}
+
+#waline-root {
+  margin-top: 1.25rem;
+}

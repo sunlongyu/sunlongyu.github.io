@@ -57,6 +57,8 @@
       <p class="blog-card-tags">Tags: {{ delimit . ", " }}</p>
       {{ end }}
 
+      {{ partial "blog-metrics-inline.html" . }}
+
       <a class="blog-read-link" href="{{ .RelPermalink }}">Read article</a>
     </article>
     {{ end }}

@@ -20,6 +20,10 @@
       {{ end }}
       {{ end }}
       {{ end }}
+      {{ if .Site.Params.waline.serverURL }}
+      —
+      <span class="post-live-metric"><i class="fas fa-eye"></i> <span class="waline-pageview-count" data-path="{{ .RelPermalink }}">0</span></span>
+      {{ end }}
     </h6>
   </div>
   {{ end }}
@@ -33,6 +37,8 @@
     {{ .Content }}
   </div>
 </section>
+
+{{ partial "blog-metrics-inline.html" . }}
 
 <!-- CSDN链接部分 -->
 {{ if .Params.csdn_url }}
@@ -73,3 +79,10 @@
   </div>
   {{ end }}
 </section>
+
+{{ if and .Site.Params.waline.serverURL (eq .Section "blogs") }}
+<section id="comments-pane" class="post-comments-pane">
+  <h2 class="post-comments-title">Comments</h2>
+  <p class="post-comments-hint">阅读量与评论由 Waline 统计；反应栏可用作点赞 / 收藏。</p>
+</section>
+{{ end }}

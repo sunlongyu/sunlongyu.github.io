@@ -44,6 +44,15 @@ favicon="favicon.ico"
 description = "Simple minimalist theme"
 keywords = "minimalist,blog,goa,hugo,developer"
 
+[params.waline]
+serverURL = ""
+lang = "zh-CN"
+placeholder = "写下你的评论"
+login = "enable"
+avatar = "mp"
+requiredMeta = ["nick", "mail"]
+reaction = ["https://unpkg.com/@waline/emojis@1.1.0/weibo/heart.png", "https://unpkg.com/@waline/emojis@1.1.0/weibo/star.png", "https://unpkg.com/@waline/emojis@1.1.0/weibo/like.png"]
+
 ## Social Accounts
 [params.social]
 github = "https://github.com/sunlongyu"

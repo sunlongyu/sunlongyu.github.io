@@ -11,4 +11,8 @@
     {{ . }}
   </div>
   {{ end }}
+
+  {{ if .Site.Params.waline.serverURL }}
+  <p class="home-visitor-counter">visits <span class="waline-pageview-count" data-path="/">0</span></p>
+  {{ end }}
 </section>

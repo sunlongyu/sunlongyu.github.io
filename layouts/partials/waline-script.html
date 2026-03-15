@@ -1,0 +1,32 @@
+{{ with .Site.Params.waline.serverURL }}
+  {{ $hasWidget := and . $.IsPage (eq $.Section "blogs") }}
+  {{ $reaction := default (slice) $.Site.Params.waline.reaction }}
+  <script type="module">
+    import { init } from 'https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.js';
+
+    const walineRoot = document.getElementById('waline-root');
+
+    if (walineRoot) {
+      init({
+        el: '#waline-root',
+        serverURL: '{{ . }}',
+        lang: '{{ default "zh-CN" $.Site.Params.waline.lang }}',
+        path: walineRoot.dataset.path || window.location.pathname,
+        dark: 'body.dark',
+        pageview: true,
+        comment: true,
+        search: false,
+        reaction: {{ $reaction | jsonify }},
+        login: '{{ default "enable" $.Site.Params.waline.login }}',
+        avatar: '{{ default "mp" $.Site.Params.waline.avatar }}',
+        requiredMeta: {{ default (slice "nick" "mail") $.Site.Params.waline.requiredMeta | jsonify }},
+        placeholder: '{{ default "Write a comment..." $.Site.Params.waline.placeholder }}',
+        locale: {
+          reactionTitle: '点赞 / 收藏',
+          sofa: '还没有评论',
+          placeholder: '{{ default "Write a comment..." $.Site.Params.waline.placeholder }}'
+        }
+      });
+    }
+  </script>
+{{ end }}
