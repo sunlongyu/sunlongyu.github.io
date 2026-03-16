@@ -19,7 +19,8 @@
       {{ range $entries }}
         {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
         {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
-        {{ if and (not .IsDir) (or $isImage $isVideo) }}
+        {{ $isCover := or (eq .Name "cover.jpg") (eq .Name "cover.jpeg") (eq .Name "cover.png") (eq .Name "cover.webp") (eq .Name "cover.JPG") (eq .Name "cover.JPEG") (eq .Name "cover.PNG") (eq .Name "cover.WEBP") }}
+        {{ if and (not .IsDir) (or $isImage $isVideo) (not $isCover) }}
           {{ $mediaCount = add $mediaCount 1 }}
         {{ end }}
       {{ end }}
@@ -57,7 +58,8 @@
   {{ range $entries }}
     {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
     {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
-    {{ if and (not .IsDir) (or $isImage $isVideo) }}
+    {{ $isCover := or (eq .Name "cover.jpg") (eq .Name "cover.jpeg") (eq .Name "cover.png") (eq .Name "cover.webp") (eq .Name "cover.JPG") (eq .Name "cover.JPEG") (eq .Name "cover.PNG") (eq .Name "cover.WEBP") }}
+    {{ if and (not .IsDir) (or $isImage $isVideo) (not $isCover) }}
       {{ $mediaCount = add $mediaCount 1 }}
     {{ end }}
   {{ end }}
@@ -78,14 +80,15 @@
     {{ range $entries }}
       {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
       {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
-      {{ if and (not .IsDir) $isImage }}
+      {{ $isCover := or (eq .Name "cover.jpg") (eq .Name "cover.jpeg") (eq .Name "cover.png") (eq .Name "cover.webp") (eq .Name "cover.JPG") (eq .Name "cover.JPEG") (eq .Name "cover.PNG") (eq .Name "cover.WEBP") }}
+      {{ if and (not .IsDir) $isImage (not $isCover) }}
       {{ $photoURL := printf "/images/%s%s" $.File.Dir .Name }}
       <figure class="plogs-photo-card">
         <button class="plogs-photo-trigger" type="button" data-plogs-photo="{{ $photoURL }}" data-plogs-alt="{{ $.Title }} photo">
           <img src="{{ $photoURL }}" alt="{{ $.Title }} photo">
         </button>
       </figure>
-      {{ else if and (not .IsDir) $isVideo }}
+      {{ else if and (not .IsDir) $isVideo (not $isCover) }}
       {{ $videoURL := printf "/images/%s%s" $.File.Dir .Name }}
       <figure class="plogs-photo-card plogs-video-card">
         <video controls playsinline preload="metadata">
