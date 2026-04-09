@@ -8,7 +8,6 @@ description = "大模型应用开发之RAG"
 csdn_url = "https://blog.csdn.net/weixin_46516647/article/details/147849351"
 slug = "llm-rag"
 aliases = ["/blogs/llm%E5%BC%80%E5%8F%91%E4%B9%8Brag/", "/blogs/llm开发之rag/"]
-column = "大模型"
 +++
 
 # 一、RAG 概述

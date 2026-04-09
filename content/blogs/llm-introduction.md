@@ -8,7 +8,6 @@ description = "大语言模型入门指南，介绍LLM的基础概念和应用"
 csdn_url = "https://blog.csdn.net/weixin_46516647/article/details/147469835"
 slug = "llm-introduction"
 aliases = ["/blogs/llm%E5%85%A5%E9%97%A8/", "/blogs/llm入门/"]
-column = "大模型"
 +++
 
 # 一、大模型概述
