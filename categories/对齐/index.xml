@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>对齐 on Sun longyu</title>
+    <link>https://sunlongyu.github.io/categories/%E5%AF%B9%E9%BD%90/</link>
+    <description>Recent content in 对齐 on Sun longyu</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 01 Feb 2024 04:55:59 +0530</lastBuildDate>
+    <atom:link href="https://sunlongyu.github.io/categories/%E5%AF%B9%E9%BD%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM 微调与对齐</title>
+      <link>https://sunlongyu.github.io/blogs/llm-%E5%BE%AE%E8%B0%83%E4%B8%8E%E5%AF%B9%E9%BD%90/</link>
+      <pubDate>Thu, 01 Feb 2024 04:55:59 +0530</pubDate>
+      <guid>https://sunlongyu.github.io/blogs/llm-%E5%BE%AE%E8%B0%83%E4%B8%8E%E5%AF%B9%E9%BD%90/</guid>
+      <description>&lt;h1 id=&#34;一指令微调-instruction-tuning&#34;&gt;一、指令微调 Instruction Tuning&lt;/h1&gt;&#xA;&lt;h2 id=&#34;一指令数据&#34;&gt;（一）指令数据&lt;/h2&gt;&#xA;&lt;p&gt;大模型如同天赋异禀的学生，预训练阶段通过大量阅读积累知识，但缺乏交流和答题能力，此时指令数据便充当“教材和老师”的角色。&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-指令数据组成&#34;&gt;1. 指令数据组成&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;指令 (Instruction / Prompt)&lt;/strong&gt; ：清晰告知模型任务，如 “请回答法国的首都是哪里？”。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;可选的示例 (Demonstration / Example Input)&lt;/strong&gt; ：提供输入样例助模型理解格式，如问题 “巴西的首都是哪里？”。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;输入 (Input)&lt;/strong&gt; ：当前任务的具体输入，如 “中国的首都是哪里？”。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;输出 (Output)&lt;/strong&gt; ：模型应给出的正确答案或完成内容，如 “北京”。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-指令数据构建方法&#34;&gt;2. 指令数据构建方法&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;基于现有 NLP 任务数据集&lt;/strong&gt; ：利用学术界的高质量现成数据集，如机器翻译、文本摘要、文本分类等，为输入 - 输出对配上明确指令（PromptSource 平台是贡献和使用指令模板的平台）。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;基于对话数据构建&lt;/strong&gt; ：收集用户查询，由人类标注员编写高质量回答或从模型生成回答中挑选最佳，组成训练数据。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;基于合成数据构建&lt;/strong&gt; ：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Self-Instruct - “自己出题自己做”&lt;/strong&gt; ：准备少量种子指令，让种子模型生成更多指令及对应的输入和输出，过滤低质样本。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Evol-Instruct - “指令进化论”&lt;/strong&gt; ：通过 “演化提示” 改写已有指令，让模型生成对应输出。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;3-指令数据构建考虑因素&#34;&gt;3. 指令数据构建考虑因素&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;指令格式&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;指令数量&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;指令数据质量&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;任务多样性&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;二指令微调训练策略&#34;&gt;（二）指令微调训练策略&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-训练参数优化&#34;&gt;1. 训练参数优化&lt;/h3&gt;&#xA;&lt;p&gt;指令微调中的优化器设置、稳定训练技巧和训练技术与预训练阶段多数保持一致，不同之处如下：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;目标函数&lt;/strong&gt; ：作为有监督训练过程，通常采用序列到序列损失，仅计算输出部分损失。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;批次大小和学习率&lt;/strong&gt; ：此阶段使用较小批次大小和学习率对模型进行小幅调整。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;多轮对话高效训练&lt;/strong&gt; ：一次性将多轮对话内容输入模型，通过损失掩码实现仅对每轮对话输出部分计算损失，减少重复前缀计算开销。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-指令数据规划&#34;&gt;2. 指令数据规划&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;平衡数据分布&lt;/strong&gt; ：混合使用多个不同来源、类型的指令数据集。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;多阶段指令数据微调&lt;/strong&gt; ：先用大量通用 NLP 任务指令数据微调打基础，再用少量高质量对话指令数据进一步微调提升能力。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;结合预训练数据与指令微调数据&lt;/strong&gt; ：在指令微调阶段混合预训练数据，保持通用知识和语言建模能力，防止性能退化。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;三参数高效微调--轻量化微调-peft&#34;&gt;（三）参数高效微调 / 轻量化微调 (PEFT)&lt;/h2&gt;&#xA;&lt;p&gt;在微调时冻结大部分预训练模型参数，仅训练少量新增或选择参数，降低成本。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

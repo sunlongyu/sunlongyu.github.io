@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        
+        <meta name="description" content="Simple minimalist theme">
+        
+        <meta name="keywords" content="minimalist,blog,goa,hugo,developer">
+
+        <title>
+              Sun longyu - 大模型应用开发之Langchain 
+        </title>
+
+        <meta name="generator" content="Hugo 0.160.1">
+
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+        
+
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto+Slab:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/main.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/custom.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="theme-color" content="#ffffff"></head>
+
+    <body lang="zh-cn">
+        <div class="container my-auto">
+
+<header class="text-start title">
+  <h1 class="title">大模型应用开发之Langchain</h1>
+</header>
+
+<section id="category-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-start meta">
+       PUBLISHED ON MAY 31, 2025
+      
+      / 9 MIN READ
+      
+      
+      
+      —
+      
+      
+      <a class="meta"
+        href="/categories/llm">LLM</a>
+      
+      
+      
+    </h6>
+  </div>
+  
+</section>
+
+<section id="content-pane">
+  <div class="text-justify content">
+    
+    <h2 id="一框架简述">一、框架简述</h2>
+<p>Langchain 是一个用于构建和管理 LLM 应用的开发框架。它为开发者提供了工具和接口，以便于更轻松地将大语言模型集成到应用程序中，并处理语言模型生成的响应、管理对话状态、执行链式调用、处理多步任务等。</p>
+<h2 id="二langchain主要模块">二、Langchain主要模块</h2>
+<h3 id="1models提供各种ai大脑">1、Models&ndash;提供各种AI&quot;大脑&quot;</h3>
+<p>Models 主要分为 Language 和 TextEmbedding两大模块，分别处理语言生成和语义表示。
+Language的 LLM 和 Chat提供不同类型的语言生成，Embedding提供语义相似性的数值化表示。</p>
+<ol>
+<li>Language
+LLM:主要用于生成一般文本，接受输入后输出结果。常用于回答问题、生成段落、翻译等单一性任务，具有通用的文本生成能力。
+Chat:这是LLM 的一种变体，专为对话设计，能够更自然地处理多轮对话。这类模型不仅接收输入并生成输出，还能记忆上下文，使得交互更加人性化。</li>
+<li>TextEmbedding
+它将输入文本(如单词、句子或段落)转换成多维向量(如图中显示的 0.21，0.57，0.14，0.37 等数值)。这种数值表示可以应用于多种场景，如相似性匹配、聚类、信息检索等。
+特点:把文本映射到向量空间中，使得系统能够量化文本之间的相似性，从而实现知识库的功能。嵌入向量越相近，代表文本的语义越相似。</li>
+</ol>
+<h3 id="2chains流程设计师设计工作流程">2、Chains&ndash;&ldquo;流程设计师&quot;设计工作流程</h3>
+<p>由于单个任务可能无法完成多步骤或复杂任务Chain 就提供了这个框架解决这个问题。
+Chain 是连接组件、管理组件数据流的“包装器”。基于链式调用，LangChain 可以将其他模块组合起来，以实现复杂的多步操作。适用复杂任务，不适用小任务。</p>
+<h3 id="3memory档案管理员">3、Memory&ndash;&ldquo;档案管理员&rdquo;</h3>
+<p>Memory 是一种存储数据的方法，使得大型语言模型可以在后续的交互中访问该数据。这种数据可以包括之前Chain 执行的结果、当前对话的上下文信息以及 LLM 需要的任何其他信息。借助记忆模块，应用程序能够在对话过程中跟踪当前上下文，实现更连续和智能的交互。</p>
+<p>存储对话上下文:在多轮对话中，记忆模块保存上下文信息，使LLM 能够理解用户的连续提问，确保对话的连贯性。
+积累知识库:通过保存先前的链条结果，记忆模块能够建立一个知识库，使LLM 能够从过去的交互中学习，从而在相似话题上提供更优的回答。
+改进任务表现:当应用需要回答某个领域的复杂问题时(例如房地产问题)，记忆模块可以保留之前的答案或信息，从而在新问题出现时提供更高效、相关性更强的回答。</p>
+<h3 id="4tools-工程师团队开发业务功能">4、Tools&ndash; &ldquo;工程师团队&quot;开发业务功能</h3>
+<p>Tools 是功能库，支持代理完成具体的任务。每种tools 都是为特定任务设计的，比如数据处理、计算或信息检索。</p>
+<p>DataManipulator tool:用于处理数据的工具，支持清洗、转换或提取特征等操作，以便代理能够处理和分析数据。
+Search tool:用于在网络或数据库中查找信息，支持代理获取实时数据或现有知识库中的内容。</p>
+<h3 id="5agents项目经理实现智能决策">5、Agents&ndash;&ldquo;项目经理&quot;实现智能决策</h3>
+<p>Agents 是可以复用的组件，专门用于完成特定任务。能够自主判断所需的工具组合，因此具备一定的任务分解和执行能力。</p>
+<p>NewsGeneratoragent:用于生成新闻文章或标题的代理，能够根据输入内容生成符合新闻写作风格的文本。
+QuestionAnsweringagent:用于回答特定领域问题的代理，可以从数据库或网络中检索相关信息，提供准确的答案。</p>
+<h3 id="6prompts专业沟通专家-教ai如何理解任务">6、Prompts&ndash;专业&quot;沟通专家&rdquo;  教AI如何理解任务</h3>
+<p>Prompts 是用于引导大型语言模型生成所需输出的文本片段。提示的设计可以简单或复杂，目的是通过提供特定的指令或上下文来精确控制模型的输出。广泛应用于文本生成、语言翻译、问答等任务。</p>
+<h3 id="7indexes知识管理员处理知识库">7、Indexes&ndash;&ldquo;知识管理员&quot;处理知识库</h3>
+<p>Indexes 是用来存储数据内容信息的独特数据结构，方便在数据集中快速找到相关内容。索引可以包含文档中的关键词、文档在数据集中的位置、文档之间的关系等信息。索引模块的核心组件包括 向量存储(vectorstore)和 检索器(retriever)，用于实现数据的高效查找和检索。</p>
+<ol>
+<li>
+<p>向量存储(vectorstore)
+向量存储是一种数据结构，将数据集中词语的向量表示(如语义向量)存储起来。通过向量存储，系统可以根据查询内容在向量空间中找到语义相似的内容，比如“精灵”在《指环王》文档中被描述时的语义向量。</p>
+</li>
+<li>
+<p>检索器(retriever)
+检索器是一个接口，用于响应非结构化查询并返回最相关的文档。相比向量存储，检索器范围更广，可以利用多个索引(如关键词索引、关系索引)来找到最符合用户需求的文档。</p>
+</li>
+</ol>
+<h2 id="学习目标">学习目标</h2>
+<p>了解 LangChain 的核心概念，深入学习其核心组件</p>
+<p>能独立用LangChain接API、处理数据、搭出可用的AI工具。</p>
+<p>了解Llamalndex的基本概念和使用模式，尝试搭建一个简单的文档问答系统。</p>
+<p>能独立设计一个能自动完成任务的Agent</p>
+<p>了解 GPTs、Coze、Dify这3个框架的特点，使用它们搭建个AI应用。</p>
+
+  </div>
+</section>
+
+
+
+
+<section id="tag-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-end meta">
+      
+    </h6>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+<section id="menu-pane" class="menu text-center">
+  
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      
+      
+      <li class="menu-item">
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">&lt; prev</a>
+      </li>
+      
+
+      <li class="menu-item">
+        
+        <span class="menu-item">&nbsp;|&nbsp;</span>
+        
+        <a class="menu-item" href="/blogs">blogs</a>
+        
+      </li>
+
+      
+      
+    </ul>
+  </nav>
+  
+  <h4 class="text-center mt-3"><a class="menu-item" href="https://sunlongyu.github.io/">home</a></h4>
+</section>
+
+<footer class="text-center footer">
+  <hr />
+  
+  <h6 class="text-center copyright">© 2025. SLY. <a href="http://creativecommons.org/licenses/by/3.0/">Some Rights Reserved</a>.</h6>
+  
+  <h6 class="text-center powered"><a href="https://gohugo.io/">Hugo</a> <a
+      href="https://github.com/shenoydotme/hugo-goa">Goa</a> by <a href="https://shenoy.me">shenoydotme</a> and <a
+      href="https://incirclemedia.com">Incircle Media</a></h6>
+  
+  
+  <h6>
+    <a href="https://sunlongyu.github.io/index.xml" aria-label="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+  </h6>
+  
+  
+
+</footer>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+
+<script>hljs.highlightAll();</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/js/custom.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,21 @@
+{{/* 网易云音乐播放器 shortcode */}}
+{{/* 参数: type, id, height, auto */}}
+
+{{ $type := .Get "type" | default "2" }}
+{{ $id := .Get "id" }}
+{{ $height := .Get "height" | default "86" }}
+{{ $auto := .Get "auto" | default "0" }}
+{{ $iframe_height := add (int $height) 20 }}
+
+{{ if $id }}
+<div class="netease-player-wrapper">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" 
+          width="100%" height="{{ $iframe_height }}" 
+          src="//music.163.com/outchain/player?type={{ $type }}&id={{ $id }}&auto={{ $auto }}&height={{ $height }}">
+  </iframe>
+</div>
+{{ else }}
+<div class="netease-player-error">
+  <p>⚠️ 请提供有效的网易云音乐ID</p>
+</div>
+{{ end }}

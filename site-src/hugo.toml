@@ -1,0 +1,122 @@
+## Basic Configuration
+
+baseurl = "https://sunlongyu.github.io/"
+builddrafts = false
+canonifyurls = false
+languageCode = "zh-cn"
+
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+
+author = "sunlongyu"
+title = "Sun longyu"
+
+theme = "hugo-goa"
+
+## Taxonomies
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+## Hugo Built-in Features
+# disqusShortname = "discusShortname" # Enable if you want to use Disqus
+# googleAnalytics = "UA-XXXXXXXX-X" # Enable if you want to use Google Analytics
+enableRobotsTXT = true
+
+## Markup Configuration
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # 允许在 Markdown 中渲染 HTML
+
+## Site Settings
+[params]
+author = "SLY"
+intro = "CS Master Student"
+description = "Welcome To SLY'S World"
+authorimage = "sly.png"
+dateformat = "Jan 2, 2006"
+favicon="favicon.ico"
+
+## Site Meta Settings
+[params.meta]
+description = "Simple minimalist theme"
+keywords = "minimalist,blog,goa,hugo,developer"
+
+## Social Accounts
+[params.social]
+github = "https://github.com/sunlongyu"
+instagram = "https://www.instagram.com/sunlyuer_?igsh=MW42endvZGg2b3N1bQ%3D%3D&utm_source=qr"
+wechat = "static/images/wechat.jpg"  # 您可以替换为微信二维码图片链接或个人微信页面
+rednote = "https://www.xiaohongshu.com/user/profile/5fef0ba300000000010003ec?xsec_token=YBy1hfJTxceYHsrrFUSNBBJD4wuB6kb33-emFurNxQOPY=&xsec_source=app_share&xhsshare=CopyLink&appuid=5fef0ba300000000010003ec&apptime=1749434602&share_id=6cd16b53e63348f29996e70e8ad504a4"  # 您可以替换为小红书个人主页链接
+bilibili = "https://b23.tv/KJSQoy1"  # 请替换为您的哔哩哔哩UID
+netease = "https://y.music.163.com/m/user?id=406543726&dlt=0846&app_version=9.3.10"  # 网易云音乐个人主页
+twitter = "https://x.com/longyusun?s=21&t=S7mrTAFq-piNNph8cNkzSw"
+#linkedin = "<username>"
+#facebook = "<username>"
+#google = "<username>"
+#googlescholar = "<account_id>"
+orcid = "0009-0008-7802-9061"
+#stackoverflow = "<username>"
+#lastfm = "<username>"
+#goodreads = "<username>"
+#gitlab = "<username>"
+#bitbucket = "<username>"
+#fivehundredpx = "<username>"
+#flickr = "<username>"
+#foursquare = "<username>"
+#hackernews = "<username>"
+#kickstarter = "<username>"
+#patreon = "<username>"
+#pintrest = "<username>"
+#steam = "<username>"
+#reddit = "<username>"
+#snapchat = "<username>"
+#youtube = "<channelid>"
+#keybase = "<username>"
+#twitch = "<username>"
+#soundcloud = "<username>"
+#tumblr = "<username>"
+#strava = "<username>"
+#skype = "<username>"
+#telegram = "<username>"
+#whatsapp = "<username>"
+#buymeacoffee = "<username>"
+#kaggle = "<username>"
+#holopin = "<username>"
+email = "longyusun913@gmail.com"
+#pgp = "<key_fingerprint>"
+
+## Extras
+[params.extra]
+copyright = "© 2025. SLY. [Some Rights Reserved](http://creativecommons.org/licenses/by/3.0/)."
+poweredby = true
+highlightjs = true
+socialmarkup = true
+toc = true
+displayrssicon = true
+
+## Main Menu
+[[menu.main]]
+name = "About"
+identifier = "About"
+weight = 200
+url = "About/"
+
+[[menu.main]]
+name = "Blogs"
+weight = 100
+identifier = "Blogs"
+url = "Blogs/"
+
+[[menu.main]]
+name = "Vlogs"
+identifier = "Vlogs"
+weight = 300
+url = "Vlogs/"
+[[menu.main]]
+name = "Music"
+identifier = "Music"
+weight = 300
+url = "Music/"
