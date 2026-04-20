@@ -39,6 +39,15 @@
 </section>
 
 {{ if eq .Section "blogs" }}
+{{ $repoOwner := .Site.Params.repo.owner }}
+{{ $repoName := .Site.Params.repo.name }}
+{{ $repoBranch := .Site.Params.repo.branch }}
+{{ $contentBase := .Site.Params.repo.contentBase }}
+{{ $cmsAdminURL := .Site.Params.cms.adminURL }}
+{{ $editPath := "" }}
+{{ if and .File $repoOwner $repoName $repoBranch $contentBase }}
+  {{ $editPath = printf "https://github.com/%s/%s/edit/%s/%s/%s" $repoOwner $repoName $repoBranch $contentBase .File.Path }}
+{{ end }}
 <section class="blog-single-actions">
   <button
     class="blog-favorite-button blog-favorite-button-single"
@@ -52,6 +61,14 @@
     <i class="fa-solid fa-heart favorite-icon-solid" aria-hidden="true"></i>
     <span class="favorite-label">收藏本文</span>
   </button>
+  <div class="blog-editor-actions">
+    {{ if $editPath }}
+    <a class="blog-editor-link" href="{{ $editPath }}" target="_blank" rel="noreferrer">编辑此文</a>
+    {{ end }}
+    {{ if $cmsAdminURL }}
+    <a class="blog-editor-link blog-editor-link-secondary" href="{{ $cmsAdminURL }}" target="_blank" rel="noreferrer">后台管理</a>
+    {{ end }}
+  </div>
   <p class="blog-single-actions-copy">点击红心即可加入收藏，之后可在 Blogs 页面“收藏”栏查看。</p>
 </section>
 {{ end }}

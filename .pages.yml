@@ -1,0 +1,104 @@
+media:
+  - name: blog_images
+    label: Blog Images
+    input: site-src/static/images/blogs
+    output: /images/blogs
+    categories: [image]
+    rename: safe
+
+content:
+  - name: blog_posts
+    label: Blog Posts
+    type: collection
+    path: site-src/content/blogs
+    format: toml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, date, column, draft]
+      primary: title
+      sort: [date, title]
+      search: [title, description, column, categories, tags]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: date
+        label: 发布时间
+        type: date
+        required: true
+        options:
+          time: true
+      - name: draft
+        label: 草稿
+        type: boolean
+      - name: description
+        label: 摘要
+        type: text
+        options:
+          rows: 3
+      - name: column
+        label: 专栏
+        type: select
+        options:
+          creatable: true
+          values:
+            - 大模型
+            - 大模型相关
+            - 计算机基础
+            - 前端开发
+      - name: categories
+        label: 分类
+        type: string
+        list: true
+      - name: tags
+        label: 标签
+        type: string
+        list: true
+      - name: slug
+        label: 自定义链接
+        type: string
+      - name: aliases
+        label: 别名链接
+        type: string
+        list: true
+      - name: csdn_url
+        label: CSDN 链接
+        type: string
+      - name: csdn_views
+        label: CSDN 阅读数
+        type: number
+      - name: csdn_likes
+        label: CSDN 点赞数
+        type: number
+      - name: csdn_comments
+        label: CSDN 评论数
+        type: number
+      - name: csdn_favorites
+        label: CSDN 收藏数
+        type: number
+      - name: body
+        label: 正文
+        type: rich-text
+        options:
+          format: markdown
+          media: blog_images
+          path: .
+          categories: [image]
+          rename: safe
+          switcher: true
+
+settings:
+  content: true
+  commit:
+    identity: user
+    templates:
+      create: "feat(blog): create {path}"
+      update: "feat(blog): update {path}"
+      delete: "feat(blog): delete {path}"
+      rename: "feat(blog): rename {oldPath} -> {newPath}"

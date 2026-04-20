@@ -39,6 +39,16 @@ authorimage = "profile/sly.png"
 dateformat = "Jan 2, 2006"
 favicon="favicon.ico"
 
+[params.repo]
+owner = "sunlongyu"
+name = "sunlongyu.github.io"
+branch = "main"
+contentBase = "site-src/content"
+
+[params.cms]
+adminURL = "/admin/"
+providerURL = "https://pagescms.org/"
+
 ## Site Meta Settings
 [params.meta]
 description = "Simple minimalist theme"

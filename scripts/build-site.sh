@@ -26,6 +26,7 @@ rsync -a --delete \
   --exclude '.github/' \
   --exclude '.gitignore' \
   --exclude '.nojekyll' \
+  --exclude '.pages.yml' \
   --exclude '.DS_Store' \
   --exclude 'README.md' \
   --exclude 'scripts/' \
