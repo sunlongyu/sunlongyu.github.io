@@ -198,3 +198,115 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10000); // 10秒超时
     });
 });
+
+// 博客收藏功能
+(() => {
+    const FAVORITES_KEY = 'sly-blog-favorites';
+
+    function readFavorites() {
+        try {
+            const raw = window.localStorage.getItem(FAVORITES_KEY);
+            if (!raw) {
+                return [];
+            }
+            const parsed = JSON.parse(raw);
+            return Array.isArray(parsed) ? parsed.filter((item) => typeof item === 'string') : [];
+        } catch (error) {
+            console.error('Failed to read favorites from localStorage:', error);
+            return [];
+        }
+    }
+
+    function writeFavorites(favorites) {
+        try {
+            window.localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+        } catch (error) {
+            console.error('Failed to write favorites to localStorage:', error);
+        }
+    }
+
+    function getFavorites() {
+        return readFavorites();
+    }
+
+    function isFavorited(id) {
+        return getFavorites().includes(id);
+    }
+
+    function updateButtonState(button, active) {
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+
+        const label = button.querySelector('.favorite-label');
+        if (label) {
+            const singleMode = button.classList.contains('blog-favorite-button-single');
+            label.textContent = active ? (singleMode ? '已收藏本文' : '已收藏') : (singleMode ? '收藏本文' : '收藏');
+        }
+    }
+
+    function syncButtons() {
+        const favorites = new Set(getFavorites());
+        document.querySelectorAll('[data-favorite-button]').forEach((button) => {
+            const favoriteId = button.getAttribute('data-favorite-id');
+            updateButtonState(button, favoriteId ? favorites.has(favoriteId) : false);
+        });
+    }
+
+    function toggleFavorite(id) {
+        const favorites = new Set(getFavorites());
+        if (favorites.has(id)) {
+            favorites.delete(id);
+        } else {
+            favorites.add(id);
+        }
+        writeFavorites(Array.from(favorites));
+        syncButtons();
+        document.dispatchEvent(new CustomEvent('blog-favorites-change', {
+            detail: {
+                favorites: Array.from(favorites)
+            }
+        }));
+        return favorites.has(id);
+    }
+
+    function bindButtons(root = document) {
+        root.querySelectorAll('[data-favorite-button]').forEach((button) => {
+            if (button.dataset.favoriteBound === 'true') {
+                return;
+            }
+
+            button.dataset.favoriteBound = 'true';
+            button.addEventListener('click', () => {
+                const favoriteId = button.getAttribute('data-favorite-id');
+                if (!favoriteId) {
+                    return;
+                }
+                toggleFavorite(favoriteId);
+            });
+        });
+
+        syncButtons();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        bindButtons(document);
+    });
+
+    window.addEventListener('storage', (event) => {
+        if (event.key === FAVORITES_KEY) {
+            syncButtons();
+            document.dispatchEvent(new CustomEvent('blog-favorites-change', {
+                detail: {
+                    favorites: getFavorites()
+                }
+            }));
+        }
+    });
+
+    window.BlogFavorites = {
+        bindButtons,
+        getFavorites,
+        isFavorited,
+        toggleFavorite
+    };
+})();

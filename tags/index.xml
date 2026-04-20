@@ -114,10 +114,24 @@
       <description></description>
     </item>
     <item>
-      <title>About</title>
-      <link>https://sunlongyu.github.io/tags/about/</link>
+      <title>Life</title>
+      <link>https://sunlongyu.github.io/tags/life/</link>
       <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <guid>https://sunlongyu.github.io/tags/about/</guid>
+      <guid>https://sunlongyu.github.io/tags/life/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Photos</title>
+      <link>https://sunlongyu.github.io/tags/photos/</link>
+      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <guid>https://sunlongyu.github.io/tags/photos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Plogs</title>
+      <link>https://sunlongyu.github.io/tags/plogs/</link>
+      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <guid>https://sunlongyu.github.io/tags/plogs/</guid>
       <description></description>
     </item>
   </channel>

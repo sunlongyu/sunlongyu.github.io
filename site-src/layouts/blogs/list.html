@@ -1,0 +1,264 @@
+{{ partial "header.html" . }}
+
+{{ $pages := .RegularPages.ByDate.Reverse }}
+{{ $recentLimit := 10 }}
+{{ $presetColumns := slice "大模型相关" "计算机基础知识" "开发相关" }}
+{{ $columnScratch := newScratch }}
+
+{{ range $pages }}
+  {{ $column := "" }}
+  {{ $rawColumn := "" }}
+  {{ with .Params.column }}
+    {{ $rawColumn = . }}
+  {{ end }}
+
+  {{ if or (eq $rawColumn "大模型") (eq $rawColumn "大模型相关") }}
+    {{ $column = "大模型相关" }}
+  {{ else if or (eq $rawColumn "计算机网络") (eq $rawColumn "机器学习") (eq $rawColumn "学习笔记") (eq $rawColumn "计算机基础知识") }}
+    {{ $column = "计算机基础知识" }}
+  {{ else if or (eq $rawColumn "开发") (eq $rawColumn "开发相关") }}
+    {{ $column = "开发相关" }}
+  {{ else if ne $rawColumn "" }}
+    {{ $column = $rawColumn }}
+  {{ end }}
+
+  {{ if eq $column "" }}
+    {{ $title := lower .Title }}
+    {{ $categories := "" }}
+    {{ with .Params.categories }}
+      {{ $categories = delimit . " " }}
+    {{ end }}
+    {{ if or (in $title "llm") (in $title "rag") (in .Title "微调") (in .Title "对齐") (in .Title "预训练") (in $categories "LLM") (in $categories "RAG") (in $categories "微调") (in $categories "对齐") }}
+      {{ $column = "大模型相关" }}
+    {{ else if or (in $title "web") (in .Title "开发") (in $categories "Web开发") (in $categories "编程") (in $categories "前端") (in $categories "后端") }}
+      {{ $column = "开发相关" }}
+    {{ else if or (in .Title "机器学习") (in .Title "算法") (in .Title "计算机") (in $categories "人工智能") (in $categories "机器学习") }}
+      {{ $column = "计算机基础知识" }}
+    {{ else }}
+      {{ $column = "其他" }}
+    {{ end }}
+  {{ end }}
+  {{ $columnScratch.SetInMap "pageColumns" .RelPermalink $column }}
+  {{ $columnScratch.Add (printf "count:%s" $column) 1 }}
+{{ end }}
+
+<header class="text-start title">
+  <h1 class="title">Blogs</h1>
+</header>
+
+<section class="blog-explorer">
+  <nav class="blog-section-tabs" aria-label="Blog sections">
+    <button class="blog-section-tab is-active" type="button" data-blog-view="recent">
+      最近
+      <span class="blog-section-tab-count">{{ cond (lt (len $pages) $recentLimit) (len $pages) $recentLimit }}</span>
+    </button>
+    <button class="blog-section-tab" type="button" data-blog-view="articles">
+      文章
+      <span class="blog-section-tab-count">{{ len $pages }}</span>
+    </button>
+    <button class="blog-section-tab" type="button" data-blog-view="columns">
+      分栏
+      <span class="blog-section-tab-count">{{ len $presetColumns }}</span>
+    </button>
+    <button class="blog-section-tab" type="button" data-blog-view="favorites">
+      收藏
+      <span class="blog-section-tab-count" id="blogFavoriteCount">0</span>
+    </button>
+  </nav>
+
+  <section class="blog-column-selector" id="blogColumnSelector" hidden>
+    <div class="blog-column-chip-list">
+      {{ range $presetColumns }}
+        {{ $count := 0 }}
+        {{ with $columnScratch.Get (printf "count:%s" .) }}
+          {{ $count = . }}
+        {{ end }}
+      <button class="blog-column-chip" type="button" data-blog-column="{{ . }}">
+        {{ . }}
+        <span class="blog-column-chip-count">{{ $count }}</span>
+      </button>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="blog-card-grid" id="blogCardGrid">
+    {{ range $index, $page := $pages }}
+    {{ $categories := "" }}
+    {{ with $page.Params.categories }}{{ $categories = delimit . " " }}{{ end }}
+    {{ $tags := "" }}
+    {{ with $page.Params.tags }}{{ $tags = delimit . " " }}{{ end }}
+    {{ $column := index ($columnScratch.Get "pageColumns") $page.RelPermalink }}
+    <article
+      class="blog-card"
+      data-search="{{ lower (printf "%s %s %s %s %s" $page.Title $page.Description $categories $tags $column) }}"
+      data-rank="{{ add $index 1 }}"
+      data-column="{{ $column }}"
+      data-post-id="{{ $page.RelPermalink }}">
+      <div class="blog-card-top">
+        <div class="blog-card-heading">
+          <p class="blog-card-date">{{ if not $page.Date.IsZero }}{{ $page.Date.Format "2006-01-02" }}{{ end }}</p>
+          <h2 class="blog-card-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+        </div>
+        <button
+          class="blog-favorite-button"
+          type="button"
+          data-favorite-button
+          data-favorite-id="{{ $page.RelPermalink }}"
+          data-favorite-title="{{ $page.Title }}"
+          data-favorite-url="{{ $page.RelPermalink }}"
+          aria-pressed="false">
+          <i class="fa-regular fa-heart favorite-icon-outline" aria-hidden="true"></i>
+          <i class="fa-solid fa-heart favorite-icon-solid" aria-hidden="true"></i>
+          <span class="favorite-label">收藏</span>
+        </button>
+      </div>
+
+      {{ with $page.Description }}
+      <p class="blog-card-description">{{ . }}</p>
+      {{ end }}
+
+      <div class="blog-card-meta">
+        <span class="blog-column-tag">{{ $column }}</span>
+        {{ with $page.Params.categories }}
+          {{ range . }}
+          <a class="blog-mini-chip" href="{{ "categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      {{ with $page.Params.tags }}
+      <p class="blog-card-tags">Tags: {{ delimit . ", " }}</p>
+      {{ end }}
+
+      {{ partial "blog-metrics-inline.html" $page }}
+
+      <a class="blog-read-link" href="{{ $page.RelPermalink }}">Read article</a>
+    </article>
+    {{ end }}
+  </section>
+
+  <div class="blog-empty-state" id="blogEmptyState" hidden>
+    <h2 class="blog-empty-state-title">这里暂时还没有文章</h2>
+    <p class="blog-empty-state-copy" id="blogEmptyStateCopy">后续文章上传后，这里会自动展示对应内容。</p>
+  </div>
+</section>
+
+{{ partial "menu.html" . }}
+{{ partial "footer.html" . }}
+
+<script>
+  (() => {
+    const recentLimit = {{ $recentLimit }};
+    const cards = Array.from(document.querySelectorAll(".blog-card"));
+    const tabs = Array.from(document.querySelectorAll("[data-blog-view]"));
+    const columnButtons = Array.from(document.querySelectorAll("[data-blog-column]"));
+    const columnSelector = document.getElementById("blogColumnSelector");
+    const emptyState = document.getElementById("blogEmptyState");
+    const emptyStateCopy = document.getElementById("blogEmptyStateCopy");
+    const favoriteCount = document.getElementById("blogFavoriteCount");
+
+    if (!cards.length || !tabs.length || !emptyState || !emptyStateCopy || !favoriteCount) {
+      return;
+    }
+
+    const state = {
+      view: "recent",
+      column: "",
+    };
+
+    const getFavorites = () => {
+      if (!window.BlogFavorites || typeof window.BlogFavorites.getFavorites !== "function") {
+        return [];
+      }
+      return window.BlogFavorites.getFavorites();
+    };
+
+    const updateFavoriteCount = () => {
+      const validIds = new Set(cards.map((card) => card.dataset.postId || ""));
+      const count = getFavorites().filter((favoriteId) => validIds.has(favoriteId)).length;
+      favoriteCount.textContent = String(count);
+    };
+
+    const updateEmptyState = (visibleCount) => {
+      if (visibleCount > 0) {
+        emptyState.hidden = true;
+        return;
+      }
+
+      emptyState.hidden = false;
+      if (state.view === "favorites") {
+        emptyStateCopy.textContent = "你还没有收藏任何文章，点击文章卡片右上角的红心即可加入收藏。";
+        return;
+      }
+      if (state.view === "columns") {
+        if (!state.column) {
+          emptyStateCopy.textContent = "请选择一个分栏查看对应文章。";
+          return;
+        }
+        emptyStateCopy.textContent = "当前分栏下还没有文章，后续上传内容后会自动出现在这里。";
+        return;
+      }
+      emptyStateCopy.textContent = "这里暂时还没有文章，后续上传后会自动展示。";
+    };
+
+    const applyFilters = () => {
+      const favorites = new Set(getFavorites());
+      let visibleCount = 0;
+
+      tabs.forEach((tab) => {
+        tab.classList.toggle("is-active", tab.dataset.blogView === state.view);
+      });
+
+      columnButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.blogColumn === state.column);
+      });
+
+      if (columnSelector) {
+        columnSelector.hidden = state.view !== "columns";
+      }
+
+      cards.forEach((card) => {
+        const rank = Number(card.dataset.rank || "999");
+        const cardColumn = card.dataset.column || "";
+        const cardId = card.dataset.postId || "";
+        let visible = true;
+
+        if (state.view === "recent") {
+          visible = rank <= recentLimit;
+        } else if (state.view === "columns") {
+          visible = !!state.column && cardColumn === state.column;
+        } else if (state.view === "favorites") {
+          visible = favorites.has(cardId);
+        }
+
+        card.hidden = !visible;
+        if (visible) {
+          visibleCount += 1;
+        }
+      });
+
+      updateFavoriteCount();
+      updateEmptyState(visibleCount);
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        state.view = tab.dataset.blogView || "recent";
+        applyFilters();
+      });
+    });
+
+    columnButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        state.view = "columns";
+        state.column = button.dataset.blogColumn || "";
+        applyFilters();
+      });
+    });
+
+    document.addEventListener("blog-favorites-change", applyFilters);
+
+    updateFavoriteCount();
+    applyFilters();
+  })();
+</script>

@@ -1,0 +1,171 @@
+{{ partial "header.html" . }}
+{{ $isRoot := eq .File.Path "plogs/_index.md" }}
+
+<header class="text-start title plogs-page-header">
+  <h1 class="title">{{ .Title }}</h1>
+</header>
+
+{{ if gt (len .Pages) 0 }}
+<section class="plogs-directory">
+  <div class="plogs-region-grid">
+    {{ range .Pages.ByTitle }}
+    {{ $hasChildren := gt (len .Pages) 0 }}
+    {{ $imageDir := printf "static/images/%s" .File.Dir }}
+    {{ $cover := "" }}
+    {{ $mediaCount := 0 }}
+    {{ if not $hasChildren }}
+      {{ $cover = partial "plogs-city-cover.html" $imageDir }}
+      {{ $entries := readDir $imageDir }}
+      {{ range $entries }}
+        {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
+        {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
+        {{ $isCover := or (eq .Name "cover.jpg") (eq .Name "cover.jpeg") (eq .Name "cover.png") (eq .Name "cover.webp") (eq .Name "cover.JPG") (eq .Name "cover.JPEG") (eq .Name "cover.PNG") (eq .Name "cover.WEBP") }}
+        {{ if and (not .IsDir) (or $isImage $isVideo) (not $isCover) }}
+          {{ $mediaCount = add $mediaCount 1 }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    <a class="{{ if $isRoot }}plogs-region-card{{ else }}plogs-city-card{{ end }}" href="{{ .RelPermalink }}">
+      {{ if not $isRoot }}
+      <div class="plogs-city-cover">
+        {{ if $cover }}
+        <img src="{{ printf "/images/%s%s" .File.Dir $cover }}" alt="{{ .Title }}">
+        {{ else }}
+        <div class="plogs-city-cover-placeholder">{{ slicestr .Title 0 1 }}</div>
+        {{ end }}
+      </div>
+      <div class="plogs-city-body">
+      {{ end }}
+      {{ if $isRoot }}<span class="plogs-region-eyebrow">Region</span>{{ end }}
+      <h2>{{ .Title }}</h2>
+      <p>{{ if $hasChildren }}{{ len .Pages }} places{{ else }}{{ $mediaCount }} items{{ end }}</p>
+      {{ if not $isRoot }}
+      </div>
+      {{ end }}
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ else }}
+{{ $isChinaProvince := and .Parent (eq .Parent.File.Path "plogs/china/_index.md") }}
+{{ $imageDir := printf "static/images/%s" .File.Dir }}
+{{ $entries := slice }}
+{{ if not $isChinaProvince }}
+  {{ $entries = readDir $imageDir }}
+{{ end }}
+{{ $mediaCount := 0 }}
+{{ if not $isChinaProvince }}
+  {{ range $entries }}
+    {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
+    {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
+    {{ $isCover := or (eq .Name "cover.jpg") (eq .Name "cover.jpeg") (eq .Name "cover.png") (eq .Name "cover.webp") (eq .Name "cover.JPG") (eq .Name "cover.JPEG") (eq .Name "cover.PNG") (eq .Name "cover.WEBP") }}
+    {{ if and (not .IsDir) (or $isImage $isVideo) (not $isCover) }}
+      {{ $mediaCount = add $mediaCount 1 }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<section class="plogs-gallery-shell">
+  {{ if $isChinaProvince }}
+  <section class="plogs-empty">
+    <h2>No cities yet</h2>
+    <p>Add city pages under <code>{{ .File.Dir }}</code> when you are ready to expand this province.</p>
+  </section>
+  {{ else if eq $mediaCount 0 }}
+  <section class="plogs-empty">
+    <h2>No photos yet</h2>
+    <p>Upload photos to <code>{{ $imageDir }}/</code>. Use <code>cover.jpg</code> if you want a city cover on the previous page.</p>
+  </section>
+  {{ else }}
+  <div class="plogs-photo-grid">
+    {{ range $entries }}
+      {{ $isImage := or (hasSuffix .Name ".jpg") (hasSuffix .Name ".jpeg") (hasSuffix .Name ".png") (hasSuffix .Name ".webp") (hasSuffix .Name ".JPG") (hasSuffix .Name ".JPEG") (hasSuffix .Name ".PNG") (hasSuffix .Name ".WEBP") }}
+      {{ $isVideo := or (hasSuffix .Name ".mp4") (hasSuffix .Name ".mov") (hasSuffix .Name ".m4v") (hasSuffix .Name ".MP4") (hasSuffix .Name ".MOV") (hasSuffix .Name ".M4V") }}
+      {{ $isCover := or (eq .Name "cover.jpg") (eq .Name "cover.jpeg") (eq .Name "cover.png") (eq .Name "cover.webp") (eq .Name "cover.JPG") (eq .Name "cover.JPEG") (eq .Name "cover.PNG") (eq .Name "cover.WEBP") }}
+      {{ if and (not .IsDir) $isImage (not $isCover) }}
+      {{ $photoURL := printf "/images/%s%s" $.File.Dir .Name }}
+      <figure class="plogs-photo-card">
+        <button class="plogs-photo-trigger" type="button" data-plogs-photo="{{ $photoURL }}" data-plogs-alt="{{ $.Title }} photo">
+          <img src="{{ $photoURL }}" alt="{{ $.Title }} photo">
+        </button>
+      </figure>
+      {{ else if and (not .IsDir) $isVideo (not $isCover) }}
+      {{ $videoURL := printf "/images/%s%s" $.File.Dir .Name }}
+      <figure class="plogs-photo-card plogs-video-card">
+        <video controls playsinline preload="metadata">
+          <source src="{{ $videoURL }}">
+        </video>
+      </figure>
+      {{ end }}
+    {{ end }}
+  </div>
+
+  <div class="plogs-lightbox" id="plogsLightbox" hidden>
+    <button class="plogs-lightbox-close" type="button" aria-label="Close photo viewer">&times;</button>
+    <button class="plogs-lightbox-nav plogs-lightbox-prev" type="button" aria-label="Previous photo">&#10094;</button>
+    <figure class="plogs-lightbox-stage">
+      <img id="plogsLightboxImage" src="" alt="">
+    </figure>
+    <button class="plogs-lightbox-nav plogs-lightbox-next" type="button" aria-label="Next photo">&#10095;</button>
+  </div>
+
+  <script>
+    (() => {
+      const triggers = Array.from(document.querySelectorAll(".plogs-photo-trigger"));
+      const lightbox = document.getElementById("plogsLightbox");
+      const image = document.getElementById("plogsLightboxImage");
+      if (!triggers.length || !lightbox || !image) return;
+
+      const closeButton = lightbox.querySelector(".plogs-lightbox-close");
+      const prevButton = lightbox.querySelector(".plogs-lightbox-prev");
+      const nextButton = lightbox.querySelector(".plogs-lightbox-next");
+      let currentIndex = 0;
+
+      const photos = triggers.map((trigger) => ({
+        src: trigger.dataset.plogsPhoto,
+        alt: trigger.dataset.plogsAlt || "Photo"
+      }));
+
+      const render = (index) => {
+        currentIndex = (index + photos.length) % photos.length;
+        image.src = photos[currentIndex].src;
+        image.alt = photos[currentIndex].alt;
+      };
+
+      const open = (index) => {
+        render(index);
+        lightbox.hidden = false;
+        document.body.classList.add("plogs-lightbox-open");
+      };
+
+      const close = () => {
+        lightbox.hidden = true;
+        image.src = "";
+        document.body.classList.remove("plogs-lightbox-open");
+      };
+
+      triggers.forEach((trigger, index) => {
+        trigger.addEventListener("click", () => open(index));
+      });
+
+      prevButton.addEventListener("click", () => render(currentIndex - 1));
+      nextButton.addEventListener("click", () => render(currentIndex + 1));
+      closeButton.addEventListener("click", close);
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) close();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (lightbox.hidden) return;
+        if (event.key === "Escape") close();
+        if (event.key === "ArrowLeft") render(currentIndex - 1);
+        if (event.key === "ArrowRight") render(currentIndex + 1);
+      });
+    })();
+  </script>
+  {{ end }}
+</section>
+{{ end }}
+
+{{ partial "menu.html" . }}
+{{ partial "footer.html" . }}

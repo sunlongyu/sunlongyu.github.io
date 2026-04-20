@@ -1,0 +1,21 @@
+{{ $hasStatic := or .Params.csdn_views (or .Params.csdn_likes (or .Params.csdn_comments .Params.csdn_favorites)) }}
+{{ $hasWaline := .Site.Params.waline.serverURL }}
+{{ if or $hasStatic $hasWaline }}
+<div class="blog-metrics-inline">
+  {{ with .Params.csdn_views }}
+  <span class="blog-metric-pill"><i class="fas fa-fire"></i>{{ . }} reads</span>
+  {{ end }}
+  {{ with .Params.csdn_likes }}
+  <span class="blog-metric-pill"><i class="fas fa-heart"></i>{{ . }} likes</span>
+  {{ end }}
+  {{ with .Params.csdn_favorites }}
+  <span class="blog-metric-pill"><i class="fas fa-star"></i>{{ . }} favorites</span>
+  {{ end }}
+  {{ with .Params.csdn_comments }}
+  <span class="blog-metric-pill"><i class="fas fa-comment-dots"></i>{{ . }} comments</span>
+  {{ end }}
+  {{ if $hasWaline }}
+  <span class="blog-metric-pill"><i class="fas fa-eye"></i><span class="waline-pageview-count" data-path="{{ .RelPermalink }}">0</span> views</span>
+  {{ end }}
+</div>
+{{ end }}

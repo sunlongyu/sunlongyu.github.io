@@ -35,11 +35,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="{{ "css/main.css" | absURL }}">
         <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
+        {{ partial "waline-head.html" . }}
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
+        <link rel="icon" href="{{ "favicon.ico" | absURL }}" sizes="any">
+        <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
         <meta name="theme-color" content="#ffffff">
         {{- with .OutputFormats.Get "RSS" -}}
         <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}" />
@@ -50,4 +49,7 @@
     </head>
 
     <body lang="{{ .Site.LanguageCode }}">
-        <div class="container my-auto">
+        <div class="site-shell">
+            {{ partial "main_menu.html" . }}
+            <main class="site-main">
+                <div class="container my-auto">

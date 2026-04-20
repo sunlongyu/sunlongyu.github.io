@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://sunlongyu.github.io/</loc>
+    <lastmod>2025-05-31T12:06:36+08:00</lastmod>
+  </url><url>
     <loc>https://sunlongyu.github.io/blogs/</loc>
     <lastmod>2025-05-31T12:06:36+08:00</lastmod>
   </url><url>
@@ -9,9 +12,6 @@
     <lastmod>2025-05-31T12:06:36+08:00</lastmod>
   </url><url>
     <loc>https://sunlongyu.github.io/categories/llm/</loc>
-    <lastmod>2025-05-31T12:06:36+08:00</lastmod>
-  </url><url>
-    <loc>https://sunlongyu.github.io/</loc>
     <lastmod>2025-05-31T12:06:36+08:00</lastmod>
   </url><url>
     <loc>https://sunlongyu.github.io/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E4%B9%8Blangchain/</loc>
@@ -35,7 +35,7 @@
     <loc>https://sunlongyu.github.io/blogs/llm-pre-training/</loc>
     <lastmod>2025-02-01T04:55:54+05:30</lastmod>
   </url><url>
-    <loc>https://sunlongyu.github.io/blogs/llm%E5%85%A5%E9%97%A8/</loc>
+    <loc>https://sunlongyu.github.io/blogs/llm-introduction/</loc>
     <lastmod>2025-01-14T07:07:07+01:00</lastmod>
   </url><url>
     <loc>https://sunlongyu.github.io/tags/</loc>
@@ -53,9 +53,6 @@
     <loc>https://sunlongyu.github.io/tags/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2024-12-15T16:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://sunlongyu.github.io/categories/%E8%A7%86%E9%A2%91/</loc>
-    <lastmod>2024-12-15T16:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://sunlongyu.github.io/tags/%E8%A7%86%E9%A2%91/</loc>
     <lastmod>2024-12-15T16:00:00+08:00</lastmod>
   </url><url>
@@ -68,13 +65,10 @@
     <loc>https://sunlongyu.github.io/tags/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</loc>
     <lastmod>2024-12-15T15:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://sunlongyu.github.io/categories/%E9%9F%B3%E4%B9%90/</loc>
-    <lastmod>2024-12-15T15:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://sunlongyu.github.io/tags/%E9%9F%B3%E4%B9%90/</loc>
     <lastmod>2024-12-15T15:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://sunlongyu.github.io/blogs/llm%E5%BC%80%E5%8F%91%E4%B9%8Brag/</loc>
+    <loc>https://sunlongyu.github.io/blogs/llm-rag/</loc>
     <lastmod>2024-12-15T12:00:00+08:00</lastmod>
   </url><url>
     <loc>https://sunlongyu.github.io/categories/rag/</loc>
@@ -122,7 +116,7 @@
     <loc>https://sunlongyu.github.io/categories/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2024-12-15T10:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://sunlongyu.github.io/blogs/llm-%E5%BE%AE%E8%B0%83%E4%B8%8E%E5%AF%B9%E9%BD%90/</loc>
+    <loc>https://sunlongyu.github.io/blogs/llm-fine-tuning-and-alignment/</loc>
     <lastmod>2024-02-01T04:55:59+05:30</lastmod>
   </url><url>
     <loc>https://sunlongyu.github.io/categories/%E5%AF%B9%E9%BD%90/</loc>
@@ -131,15 +125,84 @@
     <loc>https://sunlongyu.github.io/categories/%E5%BE%AE%E8%B0%83/</loc>
     <lastmod>2024-02-01T04:55:59+05:30</lastmod>
   </url><url>
-    <loc>https://sunlongyu.github.io/about/</loc>
+    <loc>https://sunlongyu.github.io/tags/life/</loc>
     <lastmod>2024-01-14T07:07:07+01:00</lastmod>
   </url><url>
-    <loc>https://sunlongyu.github.io/categories/about/</loc>
+    <loc>https://sunlongyu.github.io/tags/photos/</loc>
     <lastmod>2024-01-14T07:07:07+01:00</lastmod>
   </url><url>
-    <loc>https://sunlongyu.github.io/tags/about/</loc>
+    <loc>https://sunlongyu.github.io/plogs/</loc>
     <lastmod>2024-01-14T07:07:07+01:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/tags/plogs/</loc>
+    <lastmod>2024-01-14T07:07:07+01:00</lastmod>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/thailand/bangkok/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/south-korea/busan/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/yunnan/dali/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/guangdong/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/guangxi/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/guangdong/guangzhou/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/hainan/haikou/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/hainan/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/hong-kong-sar/hong-kong/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/hong-kong-sar/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/jiangsu/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/jiangxi/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/malaysia/kuala-lumpur/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/yunnan/kunming/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/liaoning/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/yunnan/lijiang/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/macau-sar/macau/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/macau-sar/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/malaysia/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/thailand/phuket/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/yunnan/puer/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/south-korea/seoul/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/shanghai/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/singapore/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/singapore/singapore/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/south-korea/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/thailand/</loc>
   </url><url>
     <loc>https://sunlongyu.github.io/true/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/guangxi/weizhou-island/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/yunnan/xishuangbanna/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/yunnan/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/zhejiang/</loc>
+  </url><url>
+    <loc>https://sunlongyu.github.io/plogs/china/zhejiang/zhoushan/</loc>
   </url>
 </urlset>

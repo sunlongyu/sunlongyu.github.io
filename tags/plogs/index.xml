@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plogs on Sun longyu</title>
+    <link>https://sunlongyu.github.io/tags/plogs/</link>
+    <description>Recent content in Plogs on Sun longyu</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 14 Jan 2024 07:07:07 +0100</lastBuildDate>
+    <atom:link href="https://sunlongyu.github.io/tags/plogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Plogs</title>
+      <link>https://sunlongyu.github.io/plogs/</link>
+      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <guid>https://sunlongyu.github.io/plogs/</guid>
+      <description>&lt;p&gt;Plogs is organized as &lt;code&gt;country -&amp;gt; city -&amp;gt; photos&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
