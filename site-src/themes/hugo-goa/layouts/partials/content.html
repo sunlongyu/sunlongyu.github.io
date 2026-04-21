@@ -38,9 +38,12 @@
   </div>
 </section>
 
-{{ if eq .Section "blogs" }}
 {{ $cmsAdminURL := .Site.Params.cms.adminURL }}
+{{ $showFavorite := eq .Section "blogs" }}
+{{ $showAdmin := and .IsPage $cmsAdminURL }}
+{{ if or $showFavorite $showAdmin }}
 <section class="blog-single-actions">
+  {{ if $showFavorite }}
   <button
     class="blog-favorite-button blog-favorite-button-single"
     type="button"
@@ -53,11 +56,12 @@
     <i class="fa-solid fa-heart favorite-icon-solid" aria-hidden="true"></i>
     <span class="favorite-label">收藏本文</span>
   </button>
+  {{ end }}
+  {{ if $showAdmin }}
   <div class="blog-editor-actions">
-    {{ if $cmsAdminURL }}
     <a class="blog-editor-link" href="{{ $cmsAdminURL }}" target="_blank" rel="noreferrer">后台管理</a>
-    {{ end }}
   </div>
+  {{ end }}
 </section>
 {{ end }}
 
