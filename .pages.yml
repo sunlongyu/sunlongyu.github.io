@@ -12,6 +12,8 @@ content:
     type: collection
     path: site-src/content/blogs
     format: toml-frontmatter
+    delimiters: "+++"
+    subfolders: false
     filename:
       template: "{primary}.md"
       field: create
@@ -48,47 +50,21 @@ content:
         options:
           creatable: true
           values:
+            - 开发
             - 大模型
             - 大模型相关
             - 计算机基础
             - 前端开发
-      - name: categories
-        label: 分类
-        type: string
-        list: true
-      - name: tags
-        label: 标签
-        type: string
-        list: true
       - name: slug
         label: 自定义链接
         type: string
-      - name: aliases
-        label: 别名链接
-        type: string
-        list: true
-      - name: csdn_url
-        label: CSDN 链接
-        type: string
-      - name: csdn_views
-        label: CSDN 阅读数
-        type: number
-      - name: csdn_likes
-        label: CSDN 点赞数
-        type: number
-      - name: csdn_comments
-        label: CSDN 评论数
-        type: number
-      - name: csdn_favorites
-        label: CSDN 收藏数
-        type: number
       - name: body
         label: 正文
         type: rich-text
         options:
           format: markdown
           media: blog_images
-          path: .
+          path: site-src/static/images/blogs
           categories: [image]
           rename: safe
           switcher: true
