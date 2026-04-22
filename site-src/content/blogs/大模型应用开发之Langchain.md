@@ -1,8 +1,8 @@
 +++
-title = '大模型应用开发之Langchain'
+title = 'LLM开发之Langchain'
 date = '2026-04-22T16:42'
 draft = false
-description = 'LLM应用开发之 Langchain'
+description = ' Langchain'
 column = '大模型'
 +++
 ## 一、框架简述
