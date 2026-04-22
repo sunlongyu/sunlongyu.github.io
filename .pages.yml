@@ -50,11 +50,10 @@ content:
         options:
           creatable: true
           values:
-            - 开发
             - 大模型
             - 大模型相关
             - 计算机基础
-            - 前端开发
+            - 开发
       - name: slug
         label: 自定义链接
         type: string

@@ -2,44 +2,22 @@
 
 {{ $pages := .RegularPages.ByDate.Reverse }}
 {{ $recentLimit := 10 }}
-{{ $presetColumns := slice "大模型相关" "计算机基础知识" "开发相关" }}
+{{ $columns := slice }}
 {{ $columnScratch := newScratch }}
 
 {{ range $pages }}
   {{ $column := "" }}
-  {{ $rawColumn := "" }}
   {{ with .Params.column }}
-    {{ $rawColumn = . }}
+    {{ $column = . }}
   {{ end }}
-
-  {{ if or (eq $rawColumn "大模型") (eq $rawColumn "大模型相关") }}
-    {{ $column = "大模型相关" }}
-  {{ else if or (eq $rawColumn "计算机网络") (eq $rawColumn "机器学习") (eq $rawColumn "学习笔记") (eq $rawColumn "计算机基础知识") }}
-    {{ $column = "计算机基础知识" }}
-  {{ else if or (eq $rawColumn "开发") (eq $rawColumn "开发相关") }}
-    {{ $column = "开发相关" }}
-  {{ else if ne $rawColumn "" }}
-    {{ $column = $rawColumn }}
-  {{ end }}
-
   {{ if eq $column "" }}
-    {{ $title := lower .Title }}
-    {{ $categories := "" }}
-    {{ with .Params.categories }}
-      {{ $categories = delimit . " " }}
-    {{ end }}
-    {{ if or (in $title "llm") (in $title "rag") (in .Title "微调") (in .Title "对齐") (in .Title "预训练") (in $categories "LLM") (in $categories "RAG") (in $categories "微调") (in $categories "对齐") }}
-      {{ $column = "大模型相关" }}
-    {{ else if or (in $title "web") (in .Title "开发") (in $categories "Web开发") (in $categories "编程") (in $categories "前端") (in $categories "后端") }}
-      {{ $column = "开发相关" }}
-    {{ else if or (in .Title "机器学习") (in .Title "算法") (in .Title "计算机") (in $categories "人工智能") (in $categories "机器学习") }}
-      {{ $column = "计算机基础知识" }}
-    {{ else }}
-      {{ $column = "其他" }}
-    {{ end }}
+    {{ $column = "未分类" }}
   {{ end }}
   {{ $columnScratch.SetInMap "pageColumns" .RelPermalink $column }}
   {{ $columnScratch.Add (printf "count:%s" $column) 1 }}
+  {{ if not (in $columns $column) }}
+    {{ $columns = $columns | append $column }}
+  {{ end }}
 {{ end }}
 
 <header class="text-start title">
@@ -58,7 +36,7 @@
     </button>
     <button class="blog-section-tab" type="button" data-blog-view="columns">
       分栏
-      <span class="blog-section-tab-count">{{ len $presetColumns }}</span>
+      <span class="blog-section-tab-count">{{ len $columns }}</span>
     </button>
     <button class="blog-section-tab" type="button" data-blog-view="favorites">
       收藏
@@ -68,7 +46,7 @@
 
   <section class="blog-column-selector" id="blogColumnSelector" hidden>
     <div class="blog-column-chip-list">
-      {{ range $presetColumns }}
+      {{ range $columns }}
         {{ $count := 0 }}
         {{ with $columnScratch.Get (printf "count:%s" .) }}
           {{ $count = . }}
