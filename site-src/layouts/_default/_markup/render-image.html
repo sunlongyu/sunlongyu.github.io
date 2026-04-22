@@ -1,0 +1,10 @@
+{{- $src := .Destination -}}
+{{- $isExternal := or (hasPrefix $src "http://") (hasPrefix $src "https://") -}}
+<img
+  src="{{ $src | safeURL }}"
+  alt="{{ .Text }}"
+  loading="lazy"
+  decoding="async"
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+  {{- if $isExternal }} referrerpolicy="no-referrer"{{ end -}}
+>

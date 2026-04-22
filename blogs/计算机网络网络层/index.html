@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        
+        <meta name="description" content="Simple minimalist theme">
+        
+        <meta name="keywords" content="minimalist,blog,goa,hugo,developer">
+
+        <title>
+              Sun longyu - 计算机网络网络层 
+        </title>
+
+        <meta name="generator" content="Hugo 0.160.1">
+
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+        
+
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto+Slab:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/main.css">
+        <link rel="stylesheet" href="https://sunlongyu.github.io/css/custom.css">
+        
+
+
+        <link rel="icon" href="https://sunlongyu.github.io/favicon.ico" sizes="any">
+        <link rel="shortcut icon" href="https://sunlongyu.github.io/favicon.ico">
+        <meta name="theme-color" content="#ffffff"></head>
+
+    <body lang="zh-cn">
+        <div class="site-shell">
+            
+
+<aside id="main-menu-pane" class="site-sidebar-nav">
+  <nav class="site-nav" aria-label="Primary">
+    
+    <a class="site-nav-item " href="https://sunlongyu.github.io/">
+      <span class="site-nav-icon"><i class="fas fa-house" aria-hidden="true"></i></span>
+      <span class="site-nav-label">Home</span>
+    </a>
+
+    
+    
+    <a class="site-nav-item " href="/blogs/">
+      <span class="site-nav-icon">
+        
+        <i class="fas fa-pen-nib" aria-hidden="true"></i>
+        
+      </span>
+      <span class="site-nav-label">BLOGS</span>
+    </a>
+    
+    
+    <a class="site-nav-item " href="/plogs/">
+      <span class="site-nav-icon">
+        
+        <i class="fas fa-camera-retro" aria-hidden="true"></i>
+        
+      </span>
+      <span class="site-nav-label">PLOGS</span>
+    </a>
+    
+    
+    <a class="site-nav-item " href="/music/">
+      <span class="site-nav-icon">
+        
+        <i class="fas fa-headphones" aria-hidden="true"></i>
+        
+      </span>
+      <span class="site-nav-label">MUSIC</span>
+    </a>
+    
+    
+    <a class="site-nav-item " href="/vlogs/">
+      <span class="site-nav-icon">
+        
+        <i class="fas fa-film" aria-hidden="true"></i>
+        
+      </span>
+      <span class="site-nav-label">VLOGS</span>
+    </a>
+    
+  </nav>
+</aside>
+
+
+            <main class="site-main">
+                <div class="container my-auto">
+
+
+<header class="text-start title">
+  <h1 class="title">计算机网络网络层</h1>
+</header>
+
+<section id="category-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-start meta">
+       PUBLISHED ON APR 21, 2026
+      
+      / 37 MIN READ
+      
+      
+    </h6>
+  </div>
+  
+</section>
+
+<section id="content-pane">
+  <div class="text-justify content">
+    
+    <h1 id="41-ipv4ipv6"><strong>4.1 IPv4&amp;IPv6</strong></h1>
+<h2 id="411-ipv4分组"><strong>4.1.1 IPv4分组</strong></h2>
+<p>一个IP数据报由首部和数据部分组成，首部由固定部分和可变部分组成，固定部分共20B，所有IP数据报所必须的，可变部分长度可变，用来提供错误检测和安全机制等</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-01-2e753f7b50.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><strong>·IP数据报格式</strong></p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-02-229ea710ff.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>①版本 占4比特，表示IP协议的版本，通信双方使用的IP协议的版本必须一致。</p>
+<p>②首部长度 占4比特，表示IP数据报首部的长度。<strong>以4字节为单位</strong>，最小十进制取值为5，表示IP数据报首部只有20字节固定部分；最大十进制取值为15，表示IP数据报首部包含20字节固定部分和最大40字节可变部分。</p>
+<p>③总长度 占16比特，表示IP数据报的总长度(首部+数据载荷)，最大取值为十进制的65535,<strong>以字节为单位</strong>。</p>
+<p>【首部长度与总长度的计算】：</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-03-f92bc96c22.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>④标识 占16比特，属于同一个数据报的各分片数据报应具有相同的标识。IP软件维持一个计数器，每产生一个数据报,计数器值加1,并将此值赋给标识字段。</p>
+<p>⑤标志 占3比特，字段中间位为DF: 1表示不允许分片，0表示允许分片；标志最低段为MF: 1表示“后面还有分片”，0表示”这是最后一个分片”</p>
+<p>⑥片偏移 占13比特，指出分片数据报的数据载荷部分偏移其在原数据报位置有多少个单位。<strong>片偏移以8个字节为单位</strong>。</p>
+<p>【注】：除最后一个分片外，每个分片的数据载荷的长度都必须是8字节的整数倍。否则，会造成其相邻后续分片的片偏移不是整数。</p>
+<p>⑦生存时间TTL 占8比特，现以“跳数”为单位,路由器转发IP数据报时，将IP数据报首部中的该字段的值减1,若不为0就转发，否则就丢弃。</p>
+<p>⑧协议 占8位。指出此分组携带的数据使用何种协议，即分组的数据部分应上交给哪个协议进行处理，如TCP、UDP等。其中值为6表示TCP,值为17表示UDP.</p>
+<p>⑨首部校验和 占16位。首部校验和只校验分组的首部，而不校验数据部分</p>
+<p>⑩源地址字段 占4B标识发送方的IP地址；目的地址字段 占4B标识接收方的IP地址</p>
+<p><strong>·IP数据报分片</strong></p>
+<p>由于IP数据报封装在数据链路层数据报中，而数据链路层的<strong>最大传送单元MTU</strong>（一个数据链路层数据报能承载的最大数据量）严格的限制着IP数据报的长度，且各段链路可能使用不同的数据链路层协议，MTU不同，所以需要将IP数据报分装在多个较小的IP数据报里，称为<strong>片</strong></p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-04-0aa353719b.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><strong>·IP数据报发送转发过程</strong></p>
+<p> 直接交付：相同网络间的通信；间接交付：不同网络间的通信，需要路由器中转</p>
+<p>【问】：</p>
+<p>源主机如何判断目的主机与自己处在同一网络中？</p>
+<p>答：将源主机地址的子网掩码与目的主机地址相与，得到目的主机网络地址，判断其与源主机的网络地址是否相等，若不等则不在同一网络中，属于间接交付</p>
+<p>主机如何如何知道路由器的存在？</p>
+<p>答：用户为了本网络的主机能和其他网络的主机通信，就必须指定本网络中的一个路由器进行转发，这个路由器也称为默认网关</p>
+<p>路由器收到IP数据报后如何转发?</p>
+<p>答：1）检查IP数据报首部是否出错:若出错，则直接丢弃该IP数据报并通告源主机若没有出错,则进行转发 2）根据IP数据报的目的地址在路由表中查找匹配的条目，若找到匹配的条目，则转发给条目中指示的下一跳，若找不到，则丢弃该IP数据报并通告源主机</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-05-1aba01b6d9.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>​ 编辑</p>
+<h2 id="412-ipv4地址的分类方式"><strong>4.1.2 IPv4地址的分类方式</strong></h2>
+<p>IP地址由网络号和主机号了两部分组成，其中网络号标志主机或路由器连接到的网络，主机号标志该主机或路由器，一个IP地址在整个因特网范围内是唯一的</p>
+<p><strong>·分类编址</strong></p>
+<p>传统的IP地址是分类的地址，共有ABCDE五类</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-06-a845665b4d.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p> 【注】：</p>
+<p>①只有A类、B类和C类地址可分配给网络中的主机或路由器的各接口</p>
+<p>②主机号为“全0”的地址是网络地址，“全1”的地址是广播地址，不能分配给主机或路由器的各接口</p>
+<p>③A类地址中最大网络号127作为本地回环测试地址，既可作为源地址使用，也可以作为目的地址使用，但不会出现在任何网络上</p>
+<p>【一般不使用的特殊IP地址】：</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-07-ad5efa02bf.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p> <strong>·划分子网&amp;子网掩码</strong></p>
+<p>由于两级IP地址空间利用率有时很低且不够灵活，从而引入子网划分的三级IP地址，在原基础上增加一**个子网号字段，**即把IP地址的主机号再划分，借用其若干比特作为子网号</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-08-c9f191af25.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>​ 编辑</p>
+<p>这个过程只在单位内部进行，因次仅从IP地址本身无法判断该网络是否进行了子网划分，所以为告诉主机或路由器对网络进行子网划分，使用<strong>子网掩码</strong>表示对原网络主机号的借位</p>
+<p>子网掩码是一个与IP地址相对应长的二进制串，用连续的比特1来对应网络号和子网号，用连续的比特0来对应主机号，用子网掩码与IP地址进行逻辑与运算就可得到所在子网的网络地址</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-09-f34e9369b7.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>​ 编辑</p>
+<p> 【注】：因特网标准规定所有的网络都必须使用子网掩码，如果一个网络未划分子网，那么就采用默认子网掩码。ABC类地址的默认子网掩码分别为255.0.0.0、255.255.0.0、255.255.255.0。</p>
+<p>【例1】：某主机的IP地址为180.80.77.55,子网掩码为255.255.252.0, 如该主机向其所在子网发送广播分组，则目的地址可以是</p>
+<p>A.180.80.76.0    B.180.80.76.255   C.180.80.77.255    D.180.80.79.255</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-10-3e4c07b823.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p> <strong>·无分类编址CIDR</strong></p>
+<p>无分类域间路由选择CIDR是在变长子网掩码的基础上提出的一种消除传统A、B、C类网络划分，并且可以在软件的支持下实现超网构造的一种IP地址的划分方法。CIDR使用斜线记法。即在IPv4地址后面加上斜线/，并在斜线后面写上网络前缀所占的比特数量</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-11-b93c4839cd.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p> CIDR实际上是将<strong>网络前缀都相同的连续的IP地址组成一个”CIDR地址块”</strong>。一个CIDR地址块可以表示很多地址，这种地址的聚合称为路由聚合（构成超网）。路由聚合使得路由表中的一个项目可以表示多个原来传统分类地址的路由，有利于减少路由器之间的信息的交换，从而提高网络性能</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-12-8723a689a2.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>只要知道CIDR地址块中的任何一个地址，就可以知道该地址块的全部细节</p>
+<p>【例】：请给出CIDR地址块206.0.64.8/1 8的全部细节</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-13-89ce619e5e.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<h2 id="413-ip地址的规划问题"><strong>4.1.3 IP地址的规划问题</strong></h2>
+<p><strong>·定长的子网掩码FLSM</strong>  使用同一个子网掩码来划分子网，每个子网所分配的IP地址数量相同，造成IP地址的浪费</p>
+<p>【例1】**：**假设申请到的C类网络为218.75.230.0,使用定长的子网掩码给所示的小型互联网中的各设备分配IP地址</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-14-924d6aa7ae.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>​</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-15-b229967132.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-16-b5b0869921.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>​</p>
+<p><strong>·变长的子网掩码VLSM</strong>  使用不同的子网掩码来划分子网，每个子网所分配的IP地址数量可以不同，尽可能减少对IP地址的浪费</p>
+<p>【例2】：设申请到的地址块为218.75.230.0/24，在上例基础上使用变长的子网掩码给其分配地址</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-17-d87592f1a0.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-18-615ae804a1.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<h2 id="412-网络地址转换nat"><strong>4.1.2 网络地址转换NAT</strong></h2>
+<p><strong>·工作原理</strong></p>
+<p>为缓解了IPv4地址空间即将耗尽的问题，提出了一种网络地址转换NAT的方法，通过将专用网络地址转换为公用地址，从而对外隐藏内部管理的IP地址。使得整个专用网只需要一个全球IP地址就可以与因特网连通，由于专用网本地IP地址是可重用的，所以NAT大大节省了IP地址的消耗。同时它隐藏了内部网络结构，从而降低了内部网络受到攻击的风险。</p>
+<p>私有的IP地址网段有：</p>
+<p>1个A类网段，即<strong>10</strong>.0.0.0~<strong>10</strong>.255.255.255。</p>
+<p>16个B类网段，即<strong>172.16</strong>.0.0~<strong>172.31</strong>.255.255。</p>
+<p>256个C类网段，即<strong>192.168</strong>.0.0~ <strong>192.168</strong>.255.255</p>
+<p><strong>·工作过程</strong></p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-19-36cba6d8be.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>这样如果NAT路由器具有N个全球IP地址，那么至多只能有N个内网主机能够同时和因特网上的主机通信。</p>
+<p>解决方法是利用运输层的端口号和IP地址一起进行转换。由于绝大多数的网络应用都是使用运输层协议TCP或UDP来传送数据这样，用一个全球IP地址就可以使多个拥有本地地址的主机同时和因特网上的主机进行通信。这种将端口号和IP地址一起进行转换的技术叫作网络地址与端口号转换NAPT</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-20-cb248be7e2.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<h2 id="415-地址解析协议arp"><strong>4.1.5 地址解析协议ARP</strong></h2>
+<p>如何通过IP地址找到相应的MAC地址，这就是地址解析协议ARP所要实现的主要功能，每台主机都设有一个ARP高速缓存，用来存放本局域网上各主机和路由器的IP地址到MAC地址的映射表，称ARP表。</p>
+<p><strong>·工作过程</strong></p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-21-8496bf6767.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-22-b9cf72092f.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<h2 id="416-动态主机配置协议dhcp"><strong>4.1.6 动态主机配置协议DHCP</strong></h2>
+<p> DHCP常用于给主机动态地分配IP地址，它提供了即插即用的联网机制，这种机制允许一台计算机加入新的网络和获取IP 地址而不用手工参与。DHCP是基于UDP的应用层协议。</p>
+<p><strong>·工作原理</strong> </p>
+<p>使用客户/服务器模式。需要IP地址的主机在启动时就向DHCP服务器广播发送发现报文，这时该主机就成为DHCP客户。本地网络上所有主机都能收到此广播报文，但只有DHCP服务器才回答此广播报文。DHCP服务器先在其数据库中查找该计算机的配置信息。若找到，则返回找到的信息。若找不到，则从服务器的IP地址池中取一个地址分配给该计算机。DHCP服务器的回答报文称为提供报文。</p>
+<h2 id="417-网际控制报文协议icmp"><strong>4.1.7 网际控制报文协议ICMP</strong></h2>
+<p>为提高IP数据报交付成功的机会，在网络层使用ICMP来让主机或路由器报告差错和异常情况。ICMP报文作为数据部分封装在IP数据报中发送</p>
+<p><strong>· ICMP差错报告报文</strong> </p>
+<p>用于目标主机或到目标主机路径上的路由器向源主机报告差错和异常情况，共有五种类型：</p>
+<p>1）终点不可达 当路由器或主机不能交付数据报时，就向源点发送终点不可达报文。</p>
+<p>2）源点抑制  当路由器或主机由于拥塞而丢弃数据报时，就向源点发送源点抑制报文，使源点知道应当把数据报的发送速率放慢。</p>
+<p>3）时间超过 当路由器收到生存时间TTL=0的数据报时(路由器收到目的IP地址不是自己的IP数据报TTL-1），除丢弃该数据报外，还要向源点发送时间超过报文。当终点在预先规定的时间内不能收到一个数据报的全部数据报片时，就把已收到的数据报片都丢弃，并向源点发送时间超过报文</p>
+<p>4）参数问题 当路由器或目的主机收到数据报的首部中有字段的值不正确时，丢弃该数据报，并向源点发送参数问题报文。</p>
+<p>5）改变路由（重定向）路由器把改变路由报文发送给主机，让主机知道下次应将数据报发送给另外的路由器。</p>
+<p>【注】：</p>
+<p>对ICMP差错报告报文不再发送ICMP差错报告报文</p>
+<p>对第一个分片的数据报片的所有后续数据报片都不发送ICMP差错报告报文</p>
+<p>对具有多播地址或特殊地址(127.0.0.0或0.0.0.0)的数据报都不发送ICMP差错报告报文</p>
+<p><strong>·ICMP询问报文</strong></p>
+<p>1）回送请求和回答报文</p>
+<p>由主机或路由器向特定的目的主机发出的询问，用来测试目的站是否可达及了解其有关状态。</p>
+<p>2）时间戳请求和回答</p>
+<p>请求某个主机或路由器回答当前的日期和时间，用来进行时钟同步和测量时间。</p>
+<p><strong>·ICMP应用</strong></p>
+<p><strong>1）分组网间探测PING</strong></p>
+<p>用来测试主机或路由器间的连通性，工作在应用层，不通过运输层直接使用网络层的ICMP**** </p>
+<p><strong>2）跟踪路由Traceroute</strong></p>
+<p>用来测试IP数据报从源主机到达目的主机要经过哪些路由器。对于Windows版本为 tracert命令，应用层直接使用网际层ICMP，使用了ICMP回送请求和回答报文以及差错报告报文；对于Unix版本为 traceroute命令，在运输层使用UDP协议，仅使用ICMP差错报告报文</p>
+<h2 id="418-ipv6"><strong>4.1.8 IPv6</strong></h2>
+<p>为解决IP地址耗尽问题可采用无类别编址CIDR,使IP地址的分配更加合理;也可采用网络地址转换NAT方法以节省全球IP地址，这两种方法只是延长了IPv4 地址分配完毕的时间；只有采用具有更大地址空间的新版本的IPv6才从根本上解决了IP地址的耗尽问题。</p>
+<p><strong>·主要特点</strong></p>
+<p>1)更大的地址空间。从IPv4的32位增大到了128位。字节数为16B是IPv4字节数的平方</p>
+<p>2)扩展的地址层次结构。</p>
+<p>3)灵活的首部格式。</p>
+<p>4)改进的选项。</p>
+<p>5)允许协议继续扩充。</p>
+<p>6)支持即插即用(即自动配置)。</p>
+<p>7)支持资源的预分配。</p>
+<ol start="8">
+<li>
+<p>IPv6只有在包的源结点才能分片，是端到端的，传输路径中的路由器不能分片，所以从一般意义上说， IPv6 不允许类似IPv4的路由分片。</p>
+</li>
+<li>
+<p>IPv6首部长度必须是8B的整数倍，而IPv4首部是4B的整数倍。</p>
+</li>
+</ol>
+<p>10)增大了安全性。具有身份验证和保密功能</p>
+<p><strong>·IPv6地址</strong></p>
+<p>IPv6标准把地址中的每4位用一个十六进制数表示，用冒号分隔每16位如：4BF5:AA12:0216:FEBC:BA5F:039A:BE9A:2170</p>
+<p>通常当16 位域的开头有一些 0时，可采用一种缩写表示，但在域中必须至少有一个数字。比如可把地址4BF5:0000:0000:0000:BA5F:039A:000A:2176→4BF5:0:0:0:BA5F:39A:A:2176。当有相继的0值域时，还可将这些域可以用双冒号缩写(::)如4BF5::BA5F:39A:A:2176。不过一个地址中仅能出现一次， 因为0值域的个数没有编码，需要从指定的总的域的个数来推算。</p>
+<h1 id="42-路由协议"><strong>4.2 路由协议</strong></h1>
+<h2 id="421-路由协议概述"><strong>4.2.1 路由协议概述</strong></h2>
+<p>因特网采用分层次的路由选择协议，将整个因特网划分为许多较小的<strong>自治系统AS，<strong>AS内部的路由选择称为</strong>域内路由选择</strong>，使用的协议称为<strong>内部网关协议IGP</strong>，如RIP&amp;OSPF；AS之间的路由选择称为<strong>域间路由选择，<strong>使用的协议为</strong>外部网关协议EGP</strong>，如BGP-4</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-23-1b19e7f8cd.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p> 常见的路由选择协议有：</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-24-1a3ef2cee9.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<h2 id="422-路由信息协议rip"><strong>4.2.2 路由信息协议RIP</strong></h2>
+<p><strong>·工作原理</strong></p>
+<p>RIP是一种分布式的<strong>基于距离向量</strong>的路由选择协议，距离也称跳数，规定从一个路由器到直连网络的距离为1，到非直连网络的距离定义为经过的路由器数加1。RIP允许一条路径最多只包含15个路由器，距离为16时相当于不可达，因此只适用于小型互联网</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-25-43a479bc8f.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>RIP<strong>基于跳数选择路径</strong>，认为好的路由就是所通过路由器数量最少的路由。当到达同一目的网络有多条”距离相等”的路由时，可以进行等价负载均衡</p>
+<p><strong>·工作过程</strong></p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-26-821144d09a.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>路由器刚开始工作时，只知道自己到直连网络的距离为1，仅和相邻路由器周期性地交并更新路由信息。</p>
+<p>同理经过若干次交换和更新后，每个路由器都知道整个IP网络的路由表，即到达本AS内各网络的最短距离和下一跳地址，称为<strong>收敛</strong>。</p>
+<p> <strong>·更新过程</strong></p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-27-1db8e03d92.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><strong>·特点</strong></p>
+<p>①仅和<strong>相邻路由器</strong>交换信息；</p>
+<p>②交换的信息为当前<strong>路由器的全部信息</strong>，即路由表</p>
+<p>③交换按固定的时间<strong>周期性交换</strong></p>
+<p><strong>·坏消息传的慢问题</strong></p>
+<p>又称为路由环路或距离无穷计数问题，这是距离向量算法的一个固有问题。</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-28-0551c6d32a.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>减少出现该问题概率的措施有：</p>
+<p>①限制最大路径距离为15 (16表示不可达)</p>
+<p>②当路由表发生变化时就立即发送更新报文(即“触发更新”)，而不仅是周期性发送</p>
+<p>③让路由器记录收到某特定路由信息的接口，而不让同一路由信息再通过此接口向反方向传送(即“水平分割”)</p>
+<p><strong>·RIP的缺陷</strong></p>
+<p>①能使用的最大距离为15，限制了网络的规模</p>
+<p>②更新交换的是路由器中完整的路由表，浪费了网络资源</p>
+<p>③网络故障时会出现收敛慢的现象，即坏消息传的慢</p>
+<h2 id="423-开放最短路径优先ospf"><strong>4.2.3 开放最短路径优先OSPF</strong></h2>
+<p><strong>·链路状态</strong> 指本路由器都和哪些路由器相邻，以及相应链路的代价&ndash;距离、时延、带宽等。下图所示的链路代价为100Mbps/链路带宽100Mbps=1（小于1的仍记为1）</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-29-0030d6b4f5.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><strong>·工作原理</strong> OSPF使用分布式链路状态路由算法，向本自治系统中所有路由器发送与本路由器相邻的所有路由器的链路状态，收敛以后，每个路由器的链路数据状态库将达到一致。然后根据这个链路状态，使用Dijkstra独立计算到各目的网络的最优路径，构建路由表</p>
+<p>【注】：OSPF使用洪泛法发送信息，即当某个路由器链路状态发生变化时，该路由器便使用链路状态更新分组，收到链路状态更新分组的路由器将从自己所有接口转发该分组，从而传递给系统中所有路由器</p>
+<p><strong>·五种分组</strong></p>
+<p>①问候分组  用来发现和维护邻居路由器的可达性</p>
+<p>②数据库描述分组  向邻居路由器给出自己的链路状态数据库中的所有链路状态项目的摘要信息</p>
+<p>③链路状态请求分组  向邻居路由器请求发送某些链路状态项目的详细信息</p>
+<p>④链路状态更新分组  路由器使用这种分组将其链路状态进行洪泛发送，即用洪泛法对全网更新链路状态</p>
+<p>⑤链路状态确认分组  对链路状态更新分组的确认</p>
+<p><strong>·工作过程</strong></p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-30-94adf88ec9.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><strong>·OSPF与RIP的区别</strong></p>
+<p>1）OSPF向本自治系统中的所有路由器发送信息，而RIP仅向自相邻的路由器发送信息</p>
+<p>2）OSPF发送的信息是与本路由器相邻的所有路由器的链路状态，只是路由器所知道的部分信息—本路由器和哪些路由器相邻及该链路的“度量”(或代价)；而在RIP中发送的信息是本路由器所知道的全部信息，即整个路由表。</p>
+<p>3）只有当链路状态发生变化时，路由器才用洪泛法向所有路由器发送此信息，且更新过</p>
+<p>程收敛得快，不会出现“坏消息传得慢”的问题；而在RIP中不管网络拓扑是否发生变化，路由器之间都会定期交换路由表的信息。</p>
+<p>4）OSPF是网络层协议，它不使用UDP或TCP，而直接用IP数据报传送(其IP数据报首部的协议字段为89)；而RIP是应用层协议，它在传输层使用UDP。</p>
+<h2 id="424-边界网关协议bgp"><strong>4.2.4 边界网关协议BGP</strong></h2>
+<p>在不同自治系统内，度量路由的代价(距离、带宽、时延等)可能不同，因此对于自治系统之间的路由选择，使用“代价”作为度量来寻找最佳路由是不行的；并且AS之间的路由选择还必须考虑有关策略（政治、经济、安全等）。综上，<strong>BGP只能是力求寻找一条能够到达目的网络且比较好的路由 (不能兜圈子)，而并非要寻找一条最佳路由</strong></p>
+<p><strong>·工作原理</strong>  BGP采用的是路径向量路由选择协议，与距离向量协议和链路状态协议有很大的区别。</p>
+<p>    每个自治系统的管理员要选择至少一个路由器作为该自治系统的“BGP发言人”。一个BGP发言人与其他自治系统中的BGP发言人要交换路由信息，就要先建立TCP连接（BGP报文是通过TCP传送的，BGP报文是TCP报文的数据部分，可见BGP是应用层协议，它是基于TCP的），然后在此连接上交换BGP报文以建立BGP会话，再利用BGP会话交换路由信息。当所有BGP发言人都相互交换网络可达性的信息后，各BGP发言人就可找出到达各个自治系统的较好路由。</p>
+<p>    每个BGP发言人还必须运行该AS所用的内部网关协议，如OSPF或RIP。</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-31-e4d627fc91.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p><strong>·BGP-4的4种报文</strong></p>
+<p>①OPEN打开报文:用来与相邻的另一个BGP发言人建立关系，使通信初始化。</p>
+<p>②UPDATE更新报文:用来通告某一路由的信息，以及列出要撤销的多条路由。</p>
+<p>③KEEPALIVE保活报文:用来周期性地证实邻站的连通性。</p>
+<p>④NOTIFICATION通知报文:用来发送检测到的差错。</p>
+<p><strong>·BGP协议特点</strong></p>
+<p>1）BGP交换路由信息的结点数量是自治系统的数量，要比这些自治系统中的网络数少很多。</p>
+<p>2）每个自治系统中BGP发言人(边界路由器)的数目很少，这样就使得自治系统之间的路由选择不致过分复杂。</p>
+<p>3）BGP支持CIDR，因此BGP的路由表包括目的网络前缀、下一跳路由器，以及到达该目的网络所要经过的各个自治系统序列。</p>
+<p>4）在BGP刚运行时，BGP的邻站交换整个路由表，但以后只需在发生变化时更新有变化的部分。这样可以节省网络带宽和减少路由器的处理开销</p>
+<h1 id="43-网络层设备"><strong>4.3 网络层设备</strong></h1>
+<h2 id="431-路由器"><strong>4.3.1 路由器</strong></h2>
+<p>   路由器是一种具有多个输入输出端口的专用计算机，其任务是连接不同网络完成路由转发</p>
+<p>**·基本结构：**路由器由路由选择和分组转发两大部分构成</p>
+<p><img
+  src="/images/blogs/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%bd%91%e7%bb%9c%e5%b1%82/image-32-21493c5657.png"
+  alt=""
+  loading="lazy"
+  decoding="async">
+</p>
+<p>1）路由选择部分的核心是路由选择处理机，根据所选定的路由选择协议构造出路由表，同时定期的和相邻路由器交换路由信息从而不断更新维护路由表；</p>
+<p>2）分组转发由交换结构、输入端口和输出端口组成。交换结构是路由器的关键部件，根据转发表对分组进行处理，使其从合适的端口转发出去输入与输出端口执行相反的操作</p>
+<p>【路由器与网桥的区别】：</p>
+<p>网桥与高层协议无关，而路由器是面向协议的，它依据网络地址进行操作，并进行路径选择、分段、帧格式转换、对数据报的生存时间和流量进行控制等。现今的路由器一般都提供多种协议的支持，包括OSI、TCP/IP、IPX等</p>
+<h2 id="432-路由表与路由转发"><strong>4.3.2 路由表与路由转发</strong></h2>
+<p><strong>·路由表</strong> 标准的路由表有4个项目：目的网络IP地址、子网掩码、下一跳IP地址和接口</p>
+<p><strong>·转发表</strong> 转发表由路由表得出，表项和路由表项有直接的对应关系。但格式和路由表格式不同，其结构应使查找过程最优化(而路由表则需对网络拓扑变化的计算最优化)。转发表中含有一个分组将要发往的目的地址，以及分组的下一跳(即下一步接收者的目的地址，实际为MAC地址)。为了减少转发表的重复项目，可以使用一个默认路由代替所有具有相同下一跳的项目，并将默认路由设置得比其他项目的优先级低。路由表用软件来实；转发表可以用软件来实现，也可以用特殊的硬件来实现。</p>
+<p>【转发和路由选择的区别】：转发是路由器根据转发表把收到的IP数据报从合适的端口转发出去，它仅涉及一个路由器；</p>
+<p>路由选择则涉及很多路由器，路由表是许多路由器协同工作的结果。这些路由器按照复杂的路由算法，根据从各相邻路由器得到的关于网络拓扑的变化情况，动态地改变所选择的路由，并由此构造出整个路由表。</p>
+<p>​</p>
+
+  </div>
+</section>
+
+
+
+
+
+<section class="blog-single-actions">
+  
+  <button
+    class="blog-favorite-button blog-favorite-button-single"
+    type="button"
+    data-favorite-button
+    data-favorite-id="/blogs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/"
+    data-favorite-title="计算机网络网络层"
+    data-favorite-url="/blogs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/"
+    aria-pressed="false">
+    <i class="fa-regular fa-heart favorite-icon-outline" aria-hidden="true"></i>
+    <i class="fa-solid fa-heart favorite-icon-solid" aria-hidden="true"></i>
+    <span class="favorite-label">收藏本文</span>
+  </button>
+  
+  
+  <div class="blog-editor-actions">
+    <a class="blog-editor-link" href="/admin/" target="_blank" rel="noreferrer">后台管理</a>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="tag-pane" class="meta">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between">
+    <h6 class="text-end meta">
+      
+    </h6>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="menu-pane" class="menu text-center">
+  
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      
+      
+      <li class="menu-item">
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">&lt; prev</a>
+      </li>
+      
+
+      <li class="menu-item">
+        
+        <span class="menu-item">&nbsp;|&nbsp;</span>
+        
+        <a class="menu-item" href="/blogs">blogs</a>
+        
+      </li>
+
+      
+      
+    </ul>
+  </nav>
+  
+</section>
+
+
+<footer class="text-center footer">
+  <hr />
+  
+  <h6 class="text-center copyright">© 2025. SLY. <a href="http://creativecommons.org/licenses/by/3.0/">Some Rights Reserved</a>.</h6>
+  
+  <h6 class="text-center powered"><a href="https://gohugo.io/">Hugo</a> <a
+      href="https://github.com/shenoydotme/hugo-goa">Goa</a> by <a href="https://shenoy.me">shenoydotme</a> and <a
+      href="https://incirclemedia.com">Incircle Media</a></h6>
+  
+  
+  <h6>
+    <a href="https://sunlongyu.github.io/index.xml" aria-label="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+  </h6>
+  
+  
+
+</footer>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+
+<script>hljs.highlightAll();</script>
+
+
+
+
+</div>
+</main>
+</div>
+<div id="waline-root" data-path="/blogs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/" ></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/js/custom.js"></script>
+
+
+</body>
+
+</html>
+
+

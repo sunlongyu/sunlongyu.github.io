@@ -172,11 +172,21 @@
 </nav>
     
     <h2 id="一评估指标">一、评估指标</h2>
-<p><img src="/images/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91%E4%B9%8B%E8%AF%84%E4%BC%B0/image-01-c27dd97480.png" alt="大模型开发之评估 配图 1"></p>
+<p><img
+  src="/images/blogs/%e5%a4%a7%e6%a8%a1%e5%9e%8b%e5%bc%80%e5%8f%91%e4%b9%8b%e8%af%84%e4%bc%b0/image-01-c27dd97480.png"
+  alt="大模型开发之评估 配图 1"
+  loading="lazy"
+  decoding="async">
+</p>
 <h3 id="1分类任务评估指标">1、分类任务评估指标</h3>
 <p>分类任务 (Classification)要求模型将输入划分到预定义的类别中，例如判断邮件是“垃圾邮件”还是“正常邮件”，或者判断文本情感是“积极”还是“消极”。</p>
 <p>以基础的二分类任务为例，如下混淆矩阵，真正例（True Positive, TP）表示预测类别为正的正样本、假正例（False Positive, FP）表示预测类别为正的负样本、真负例（True Negative, TN）表示预测类别为负的负样本、假负（FalseNegative, FN）表示预测类别为负的正样本。
-<img src="/images/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91%E4%B9%8B%E8%AF%84%E4%BC%B0/image-02-ebbc3900fd.png" alt="大模型开发之评估 配图 2"></p>
+<img
+  src="/images/blogs/%e5%a4%a7%e6%a8%a1%e5%9e%8b%e5%bc%80%e5%8f%91%e4%b9%8b%e8%af%84%e4%bc%b0/image-02-ebbc3900fd.png"
+  alt="大模型开发之评估 配图 2"
+  loading="lazy"
+  decoding="async">
+</p>
 <p>在此基础上，分类任务通常采用精确率（Precision）、召回率（Recall）、F1 分数（F1 Score）等评测指标来评估模型的分类结果。</p>
 <ol>
 <li>
@@ -280,7 +290,12 @@
 <p>自增强偏置 (Self-enhancement Bias): 如果用模型自己来评估自己的输出（或者评估与自己相似的模型），它可能倾向于给自己打高分。</p>
 <p>能力限制： “AI考官”本身的能力也会限制评估的准确性。如果任务过于复杂（如复杂数学推理），“AI考官”自己都做不好，怎么能准确评估别人呢？</p>
 <h2 id="三大语言模型基础能力评估">三、大语言模型基础能力评估</h2>
-<p><img src="/images/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91%E4%B9%8B%E8%AF%84%E4%BC%B0/image-03-0fa6459392.png" alt="大模型开发之评估 配图 3"></p>
+<p><img
+  src="/images/blogs/%e5%a4%a7%e6%a8%a1%e5%9e%8b%e5%bc%80%e5%8f%91%e4%b9%8b%e8%af%84%e4%bc%b0/image-03-0fa6459392.png"
+  alt="大模型开发之评估 配图 3"
+  loading="lazy"
+  decoding="async">
+</p>
 <h3 id="1语言生成">1、语言生成</h3>
 <p>语言生成是所有任务的基础，模型得先会“说话”，才能做别的事。我们把它细分成三个小方向：</p>
 <ol>
@@ -356,7 +371,12 @@
 <p>挑战： 数学推理对模型的逻辑严谨性和计算准确性要求极高。模型很容易在中间步骤出错。</p>
 <p>提升方法： 思维链 (Chain-of-Thought) 提示、让模型生成解题步骤并进行验证 (Self-consistency, Verifier) 等。</p>
 <h2 id="四大语言模型高级能力评估">四、大语言模型高级能力评估</h2>
-<p><img src="/images/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91%E4%B9%8B%E8%AF%84%E4%BC%B0/image-04-9a5f57608b.png" alt="大模型开发之评估 配图 4"></p>
+<p><img
+  src="/images/blogs/%e5%a4%a7%e6%a8%a1%e5%9e%8b%e5%bc%80%e5%8f%91%e4%b9%8b%e8%af%84%e4%bc%b0/image-04-9a5f57608b.png"
+  alt="大模型开发之评估 配图 4"
+  loading="lazy"
+  decoding="async">
+</p>
 <h3 id="1人类对齐">1、人类对齐</h3>
 <p>评估模型生成的行为是否符合人类的价值观和需求，也就是我们之前反复强调的“有用 (Helpful)、诚实 (Honest)、无害 (Harmless) - 3H”标准。这是大模型能否被广泛接受和安全应用的前提。</p>
 <h3 id="2环境交互">2、环境交互</h3>
@@ -489,7 +509,7 @@
       
       
       <li class="menu-item">
-        <a class="menu-item" href="https://sunlongyu.github.io/blogs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">&lt; prev</a>
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/llm-pre-training/">&lt; prev</a>
       </li>
       
 
@@ -505,7 +525,7 @@
 
       
       <li class="menu-item">
-        <a class="menu-item" href="https://sunlongyu.github.io/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%B9%8B%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">next &gt;</a>
+        <a class="menu-item" href="https://sunlongyu.github.io/blogs/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E4%B9%8Blangchain/">next &gt;</a>
       </li>
       
       

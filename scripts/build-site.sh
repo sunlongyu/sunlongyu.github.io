@@ -19,6 +19,8 @@ else
   exit 1
 fi
 
+python3 "$ROOT_DIR/scripts/localize_blog_images.py"
+
 "$HUGO_BIN" --source "$SOURCE_DIR" --destination "$TMP_DIR" "$@"
 
 rsync -a --delete \
