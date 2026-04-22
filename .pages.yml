@@ -46,14 +46,9 @@ content:
           rows: 3
       - name: column
         label: 专栏
-        type: select
+        type: string
         options:
-          creatable: true
-          values:
-            - 大模型
-            - 大模型相关
-            - 计算机基础
-            - 开发
+          maxlength: 40
       - name: slug
         label: 自定义链接
         type: string
