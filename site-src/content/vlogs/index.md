@@ -14,6 +14,11 @@ showadmin = false
 +++
 
 <div class="video-player-container">
+  <div class="playlist-header">
+    <h2>🎬 我的视频作品集</h2>
+    <p class="playlist-description">在哔哩哔哩分享我的创作内容和生活记录</p>
+  </div>
+
   <div class="video-list">
 
 <div class="video-item" data-video-id="1">
@@ -26,7 +31,7 @@ showadmin = false
     </div>
   </div>
   <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1LjUbYvEhr&page=1&autoplay=1">
+    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1LjUbYvEhr&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
       <iframe title="【GAI 进化论】再次全体起立 | 「重庆魂」" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
@@ -48,7 +53,7 @@ showadmin = false
     </div>
   </div>
   <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1cpt8emEiT&page=1&autoplay=1">
+    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1cpt8emEiT&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
       <iframe title="视频作品 2" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
@@ -70,7 +75,7 @@ showadmin = false
     </div>
   </div>
   <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1jj421X7FE&page=1&autoplay=1">
+    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1jj421X7FE&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
       <iframe title="视频作品 3" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
@@ -92,7 +97,7 @@ showadmin = false
     </div>
   </div>
   <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1da4y117Zb&page=1&autoplay=1">
+    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1da4y117Zb&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
       <iframe title="视频作品 4" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
@@ -114,7 +119,7 @@ showadmin = false
     </div>
   </div>
   <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1RT4y1H75M&page=1&autoplay=1">
+    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1RT4y1H75M&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
       <iframe title="视频作品 5" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
@@ -136,7 +141,7 @@ showadmin = false
     </div>
   </div>
   <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1vY4y1D71S&page=1&autoplay=1">
+    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1vY4y1D71S&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
       <iframe title="视频作品 6" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
@@ -158,7 +163,7 @@ showadmin = false
     </div>
   </div>
   <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1zM4y197ir&page=1&autoplay=1">
+    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1zM4y197ir&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
       <iframe title="视频作品 7" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
@@ -180,7 +185,7 @@ showadmin = false
     </div>
   </div>
   <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV14v4y1v7ba&page=1&autoplay=1">
+    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV14v4y1v7ba&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
       <iframe title="视频作品 8" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>

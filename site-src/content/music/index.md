@@ -15,6 +15,11 @@ showadmin = false
 +++
 
 <div class="music-player-container">
+  <div class="playlist-header">
+    <h2>🎼 我的原创作品集</h2>
+    <p class="playlist-description">点击播放按钮即可在线试听</p>
+  </div>
+
   <div class="music-list">
 
 <div class="music-item" data-song-id="1">
