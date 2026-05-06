@@ -24,7 +24,6 @@ showadmin = false
 <div class="video-item" data-video-id="1">
   <div class="video-info">
     <h3 class="video-title">【GAI 进化论】再次全体起立 | 「重庆魂」</h3>
-    <p class="video-description">我的原创视频作品，记录生活中的美好瞬间和创作灵感。</p>
     <div class="video-meta">
       <span class="duration">📺 时长 03:11</span>
       <span class="upload-date">📅 2024-11-19</span>
@@ -45,8 +44,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="2">
   <div class="video-info">
-    <h3 class="video-title">视频作品</h3>
-    <p class="video-description">探索创作的无限可能，分享我的视频制作心得和技巧。</p>
+    <h3 class="video-title">视频作品 2</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-25</span>
@@ -67,8 +65,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="3">
   <div class="video-info">
-    <h3 class="video-title">视频作品</h3>
-    <p class="video-description">用镜头记录生活的点点滴滴，传递正能量和美好情感。</p>
+    <h3 class="video-title">视频作品 3</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-20</span>
@@ -89,8 +86,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="4">
   <div class="video-info">
-    <h3 class="video-title">视频作品</h3>
-    <p class="video-description">创意无限，每一帧都是用心制作的艺术作品。</p>
+    <h3 class="video-title">视频作品 4</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-15</span>
@@ -111,8 +107,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="5">
   <div class="video-info">
-    <h3 class="video-title">视频作品</h3>
-    <p class="video-description">探索不同的拍摄角度和剪辑风格，展现独特的视觉效果。</p>
+    <h3 class="video-title">视频作品 5</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-10</span>
@@ -133,8 +128,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="6">
   <div class="video-info">
-    <h3 class="video-title">视频作品</h3>
-    <p class="video-description">用心记录每一个精彩瞬间，分享生活中的感动和思考。</p>
+    <h3 class="video-title">视频作品 6</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-05</span>
@@ -155,8 +149,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="7">
   <div class="video-info">
-    <h3 class="video-title">视频作品</h3>
-    <p class="video-description">创作路上的新尝试，融合多种元素打造独特的视觉体验。</p>
+    <h3 class="video-title">视频作品 7</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-10-30</span>
@@ -177,8 +170,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="8">
   <div class="video-info">
-    <h3 class="video-title">视频作品</h3>
-    <p class="video-description">最新的创作成果，展现我在视频制作方面的成长和进步。</p>
+    <h3 class="video-title">视频作品 8</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-10-25</span>
