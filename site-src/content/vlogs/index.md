@@ -126,27 +126,6 @@ showadmin = false
   </div>
 </div>
 
-<div class="video-item" data-video-id="6">
-  <div class="video-info">
-    <h3 class="video-title">BV1vY4y1D71S</h3>
-    <div class="video-meta">
-      <span class="duration">📺 时长待更新</span>
-      <span class="upload-date">📅 2024-11-05</span>
-    </div>
-  </div>
-  <div class="video-player-wrapper">
-    <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1vY4y1D71S&page=1&autoplay=0">
-      <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
-      <iframe title="BV1vY4y1D71S" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
-    </div>
-    <div class="video-actions">
-      <a href="https://www.bilibili.com/video/BV1vY4y1D71S" target="_blank" class="bilibili-link-small">
-        <i class="fas fa-external-link-alt"></i> 在哔哩哔哩中打开
-      </a>
-    </div>
-  </div>
-</div>
-
 <div class="video-item" data-video-id="7">
   <div class="video-info">
     <h3 class="video-title">【大理&amp;丽江 Vlog】那种一见钟情的景色～真的永远治愈</h3>
