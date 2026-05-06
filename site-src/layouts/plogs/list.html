@@ -1,14 +1,25 @@
 {{ partial "header.html" . }}
 {{ $isRoot := eq .File.Path "plogs/_index.md" }}
+{{ $isChinaIndex := eq .File.Path "plogs/china/_index.md" }}
+{{ $directoryPages := .Pages.ByTitle }}
+{{ if $isChinaIndex }}
+  {{ $chinaCities := slice }}
+  {{ range .Pages.ByTitle }}
+    {{ range .Pages.ByTitle }}
+      {{ $chinaCities = $chinaCities | append . }}
+    {{ end }}
+  {{ end }}
+  {{ $directoryPages = sort $chinaCities "Title" }}
+{{ end }}
 
 <header class="text-start title plogs-page-header">
   <h1 class="title">{{ .Title }}</h1>
 </header>
 
-{{ if gt (len .Pages) 0 }}
+{{ if gt (len $directoryPages) 0 }}
 <section class="plogs-directory">
   <div class="plogs-region-grid">
-    {{ range .Pages.ByTitle }}
+    {{ range $directoryPages }}
     {{ $hasChildren := gt (len .Pages) 0 }}
     {{ $imageDir := printf "static/images/%s" .File.Dir }}
     {{ $cover := "" }}
