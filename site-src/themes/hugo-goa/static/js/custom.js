@@ -2,110 +2,96 @@
 
 // 音乐播放器功能
 document.addEventListener('DOMContentLoaded', function() {
-    // 音乐数据 - 您需要替换为真实的音乐文件URL或网易云音乐API
-    const musicData = {
-        1: {
-            title: "夜空中最亮的星",
-            artist: "SLY",
-            // 注意：这里需要替换为实际的音频文件URL
-            // 由于版权限制，网易云音乐不提供直接的音频文件链接
-            audioUrl: "/audio/song1.mp3", // 您需要上传音频文件到static/audio/目录
-            cover: "/images/music/cover1.jpg"
-        },
-        2: {
-            title: "时光倒流",
-            artist: "SLY",
-            audioUrl: "/audio/song2.mp3",
-            cover: "/images/music/cover2.jpg"
-        },
-        3: {
-            title: "城市漫步",
-            artist: "SLY",
-            audioUrl: "/audio/song3.mp3",
-            cover: "/images/music/cover3.jpg"
-        }
-    };
-
-    // 创建音频播放器
-    let currentAudio = null;
     let currentPlayingItem = null;
 
-    // 获取所有音乐项目
     const musicItems = document.querySelectorAll('.music-item');
+    if (!musicItems.length) {
+        return;
+    }
+
+    const getItemIframe = (item) => item.querySelector('.netease-player-inline iframe');
+    const withAutoplay = (src) => {
+        if (!src) {
+            return '';
+        }
+        if (src.includes('auto=0')) {
+            return src.replace('auto=0', 'auto=1');
+        }
+        if (src.includes('auto=1')) {
+            return src;
+        }
+        return src.includes('?') ? `${src}&auto=1` : `${src}?auto=1`;
+    };
+
+    const withPausedState = (src) => {
+        if (!src) {
+            return '';
+        }
+        if (src.includes('auto=1')) {
+            return src.replace('auto=1', 'auto=0');
+        }
+        return src;
+    };
+
+    musicItems.forEach((item) => {
+        const iframe = getItemIframe(item);
+        if (!iframe) {
+            return;
+        }
+
+        const initialSrc = iframe.getAttribute('src') || '';
+        iframe.dataset.playerSrc = withPausedState(initialSrc);
+    });
+
+    function stopItem(itemElement) {
+        if (!itemElement) {
+            return;
+        }
+
+        const iframe = getItemIframe(itemElement);
+        if (iframe) {
+            iframe.setAttribute('src', iframe.dataset.playerSrc || '');
+        }
+        updatePlayButton(itemElement, false);
+    }
+
+    function stopOtherItems(exceptItem = null) {
+        musicItems.forEach((item) => {
+            if (item !== exceptItem) {
+                stopItem(item);
+            }
+        });
+    }
 
     musicItems.forEach(item => {
         const playBtn = item.querySelector('.play-btn');
-        const songId = item.getAttribute('data-song-id');
-
-        if (playBtn && songId && musicData[songId]) {
+        if (playBtn) {
             playBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                togglePlay(songId, item);
+                e.stopPropagation();
+                togglePlay(item);
             });
         }
     });
 
-    function togglePlay(songId, itemElement) {
-        const songData = musicData[songId];
-
-        if (!songData) {
-            console.error('Song data not found for ID:', songId);
+    function togglePlay(itemElement) {
+        const iframe = getItemIframe(itemElement);
+        if (!iframe) {
             return;
         }
 
-        // 如果当前有音乐在播放，先停止
-        if (currentAudio && !currentAudio.paused) {
-            if (currentPlayingItem === itemElement) {
-                // 如果点击的是当前播放的歌曲，则暂停
-                currentAudio.pause();
-                updatePlayButton(currentPlayingItem, false);
-                return;
-            } else {
-                // 如果点击的是其他歌曲，先停止当前播放
-                currentAudio.pause();
-                updatePlayButton(currentPlayingItem, false);
-            }
+        const nextSrc = withAutoplay(iframe.dataset.playerSrc || iframe.getAttribute('src') || '');
+
+        if (currentPlayingItem === itemElement) {
+            stopItem(itemElement);
+            currentPlayingItem = null;
+            return;
         }
 
-        // 创建新的音频对象
-        currentAudio = new Audio(songData.audioUrl);
+        stopOtherItems(itemElement);
+        iframe.setAttribute('src', nextSrc);
         currentPlayingItem = itemElement;
-
-        // 设置音频事件监听器
-        currentAudio.addEventListener('loadstart', function() {
-            console.log('开始加载音频:', songData.title);
-        });
-
-        currentAudio.addEventListener('canplay', function() {
-            console.log('音频可以播放:', songData.title);
-        });
-
-        currentAudio.addEventListener('error', function(e) {
-            console.error('音频加载失败:', songData.title, e);
-            alert('抱歉，音频文件加载失败。请检查文件是否存在或尝试访问网易云音乐链接。');
-            updatePlayButton(currentPlayingItem, false);
-        });
-
-        currentAudio.addEventListener('ended', function() {
-            updatePlayButton(currentPlayingItem, false);
-            currentPlayingItem = null;
-        });
-
-        // 尝试播放音频
-        currentAudio.play().then(() => {
-            updatePlayButton(itemElement, true);
-            console.log('开始播放:', songData.title);
-        }).catch(error => {
-            console.error('播放失败:', error);
-            // 如果本地音频播放失败，提示用户访问网易云音乐
-            const neteaseLink = itemElement.querySelector('.netease-link');
-            if (neteaseLink) {
-                if (confirm('本地音频播放失败，是否前往网易云音乐收听？')) {
-                    window.open(neteaseLink.href, '_blank');
-                }
-            }
-            updatePlayButton(itemElement, false);
-        });
+        updatePlayButton(itemElement, true);
     }
 
     function updatePlayButton(itemElement, isPlaying) {
