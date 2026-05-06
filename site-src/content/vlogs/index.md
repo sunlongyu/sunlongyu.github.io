@@ -8,15 +8,12 @@ title = "我的视频作品"
 description = "展示我在哔哩哔哩平台上的视频作品和生活记录"
 layout = "single"
 type = "vlogs"
-showpagemeta = true
+showpagemeta = false
+showtitle = false
+showadmin = false
 +++
 
 <div class="video-player-container">
-  <div class="playlist-header">
-    <h2>🎬 我的视频作品集</h2>
-    <p class="playlist-description">在哔哩哔哩分享我的创作内容和生活记录</p>
-  </div>
-
   <div class="video-list">
 
 <div class="video-item" data-video-id="1">

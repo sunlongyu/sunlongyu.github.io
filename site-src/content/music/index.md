@@ -9,21 +9,12 @@ description = "展示我在网易云音乐平台上的原创音乐作品"
 layout = "single"
 type = "music"
 
-showpagemeta = true
+showpagemeta = false
+showtitle = false
+showadmin = false
 +++
 
-# 🎵 我的音乐世界
-
-欢迎来到我的音乐空间！这里收录了我在网易云音乐平台上发布的原创作品。每一首歌都承载着不同的情感和故事，希望能与你产生共鸣。
-
----
-
 <div class="music-player-container">
-  <div class="playlist-header">
-    <h2>🎼 我的原创作品集</h2>
-    <p class="playlist-description">点击播放按钮即可在线试听</p>
-  </div>
-
   <div class="music-list">
 
 <div class="music-item" data-song-id="1">

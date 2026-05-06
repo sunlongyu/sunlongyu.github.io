@@ -1,6 +1,8 @@
+{{ if ne .Params.showtitle false }}
 <header class="text-start title">
   <h1 class="title">{{ .Title }}</h1>
 </header>
+{{ end }}
 
 <section id="category-pane" class="meta">
   {{ if ne .Params.showpagemeta false }}
@@ -40,7 +42,7 @@
 
 {{ $cmsAdminURL := .Site.Params.cms.adminURL }}
 {{ $showFavorite := eq .Section "blogs" }}
-{{ $showAdmin := and .IsPage $cmsAdminURL }}
+{{ $showAdmin := and .IsPage $cmsAdminURL (ne .Params.showadmin false) }}
 {{ if or $showFavorite $showAdmin }}
 <section class="blog-single-actions">
   {{ if $showFavorite }}
