@@ -44,7 +44,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="2">
   <div class="video-info">
-    <h3 class="video-title">视频作品 2</h3>
+    <h3 class="video-title">【泰国Vlog】曼谷普吉的库存发一发～～</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-25</span>
@@ -53,7 +53,7 @@ showadmin = false
   <div class="video-player-wrapper">
     <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1cpt8emEiT&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
-      <iframe title="视频作品 2" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
+      <iframe title="【泰国Vlog】曼谷普吉的库存发一发～～" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
     <div class="video-actions">
       <a href="https://www.bilibili.com/video/BV1cpt8emEiT" target="_blank" class="bilibili-link-small">
@@ -65,7 +65,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="3">
   <div class="video-info">
-    <h3 class="video-title">视频作品 3</h3>
+    <h3 class="video-title">【大马&新加坡Vlog】在大马街头，在新家坡海滩，找自由</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-20</span>
@@ -74,7 +74,7 @@ showadmin = false
   <div class="video-player-wrapper">
     <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1jj421X7FE&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
-      <iframe title="视频作品 3" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
+      <iframe title="【大马&新加坡Vlog】在大马街头，在新家坡海滩，找自由" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
     <div class="video-actions">
       <a href="https://www.bilibili.com/video/BV1jj421X7FE" target="_blank" class="bilibili-link-small">
@@ -86,7 +86,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="4">
   <div class="video-info">
-    <h3 class="video-title">视频作品 4</h3>
+    <h3 class="video-title">【华语专辑】2023 个人华语年度十佳专辑｜摇滚 流行 说唱 R&amp;B</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-15</span>
@@ -95,7 +95,7 @@ showadmin = false
   <div class="video-player-wrapper">
     <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1da4y117Zb&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
-      <iframe title="视频作品 4" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
+      <iframe title="【华语专辑】2023 个人华语年度十佳专辑｜摇滚 流行 说唱 R&B" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
     <div class="video-actions">
       <a href="https://www.bilibili.com/video/BV1da4y117Zb" target="_blank" class="bilibili-link-small">
@@ -107,7 +107,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="5">
   <div class="video-info">
-    <h3 class="video-title">视频作品 5</h3>
+    <h3 class="video-title">【澳门Vlog】澳门City Walk</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-10</span>
@@ -116,7 +116,7 @@ showadmin = false
   <div class="video-player-wrapper">
     <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1RT4y1H75M&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
-      <iframe title="视频作品 5" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
+      <iframe title="【澳门Vlog】澳门City Walk" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
     <div class="video-actions">
       <a href="https://www.bilibili.com/video/BV1RT4y1H75M" target="_blank" class="bilibili-link-small">
@@ -128,7 +128,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="6">
   <div class="video-info">
-    <h3 class="video-title">视频作品 6</h3>
+    <h3 class="video-title">BV1vY4y1D71S</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-11-05</span>
@@ -137,7 +137,7 @@ showadmin = false
   <div class="video-player-wrapper">
     <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1vY4y1D71S&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
-      <iframe title="视频作品 6" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
+      <iframe title="BV1vY4y1D71S" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
     <div class="video-actions">
       <a href="https://www.bilibili.com/video/BV1vY4y1D71S" target="_blank" class="bilibili-link-small">
@@ -149,7 +149,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="7">
   <div class="video-info">
-    <h3 class="video-title">视频作品 7</h3>
+    <h3 class="video-title">【大理&amp;丽江 Vlog】那种一见钟情的景色～真的永远治愈</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-10-30</span>
@@ -158,7 +158,7 @@ showadmin = false
   <div class="video-player-wrapper">
     <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV1zM4y197ir&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
-      <iframe title="视频作品 7" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
+      <iframe title="【大理&丽江 Vlog】那种一见钟情的景色～真的永远治愈" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
     <div class="video-actions">
       <a href="https://www.bilibili.com/video/BV1zM4y197ir" target="_blank" class="bilibili-link-small">
@@ -170,7 +170,7 @@ showadmin = false
 
 <div class="video-item" data-video-id="8">
   <div class="video-info">
-    <h3 class="video-title">视频作品 8</h3>
+    <h3 class="video-title">【卧室live】幸存者联盟/幼稚园杀手《我的世界》cover ｜你得长大去学会辨别这世界的奸诈</h3>
     <div class="video-meta">
       <span class="duration">📺 时长待更新</span>
       <span class="upload-date">📅 2024-10-25</span>
@@ -179,7 +179,7 @@ showadmin = false
   <div class="video-player-wrapper">
     <div class="bilibili-player" data-embed="//player.bilibili.com/player.html?bvid=BV14v4y1v7ba&page=1&autoplay=0">
       <button class="video-activate-btn" type="button">Hover or scroll here to preview</button>
-      <iframe title="视频作品 8" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
+      <iframe title="【卧室live】幸存者联盟/幼稚园杀手《我的世界》cover ｜你得长大去学会辨别这世界的奸诈" loading="lazy" scrolling="no" border="0" frameborder="no" framespacing="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe>
     </div>
     <div class="video-actions">
       <a href="https://www.bilibili.com/video/BV14v4y1v7ba" target="_blank" class="bilibili-link-small">
