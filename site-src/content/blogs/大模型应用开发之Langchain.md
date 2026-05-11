@@ -3,7 +3,7 @@ title = 'LLM开发之Langchain'
 date = '2026-04-22T16:42'
 draft = false
 description = ' Langchain'
-column = '大模型'
+column = 'AI/大模型'
 +++
 ## 一、框架简述
 
