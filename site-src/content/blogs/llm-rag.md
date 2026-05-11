@@ -3,7 +3,7 @@ title = 'LLM开发之RAG'
 date = '2026-04-22T16:59'
 draft = false
 description = '大模型应用开发之RAG'
-column = '大模型'
+column = 'AI/大模型'
 slug = 'llm-rag'
 +++
 # 一、RAG 概述
