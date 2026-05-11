@@ -4,13 +4,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SOURCE_DIR="$ROOT_DIR/site-src"
-TMP_DIR="$(mktemp -d)"
-
-cleanup() {
-  rm -rf "$TMP_DIR"
-}
-
-trap cleanup EXIT
+OUTPUT_DIR="$ROOT_DIR/_site"
 
 if command -v hugo >/dev/null 2>&1; then
   HUGO_BIN="$(command -v hugo)"
@@ -21,20 +15,11 @@ fi
 
 python3 "$ROOT_DIR/scripts/localize_blog_images.py"
 
-"$HUGO_BIN" --source "$SOURCE_DIR" --destination "$TMP_DIR" "$@"
+rm -rf "$OUTPUT_DIR"
+mkdir -p "$OUTPUT_DIR"
 
-rsync -a --delete \
-  --exclude '.git/' \
-  --exclude '.github/' \
-  --exclude '.gitignore' \
-  --exclude '.nojekyll' \
-  --exclude '.pages.yml' \
-  --exclude '.DS_Store' \
-  --exclude 'README.md' \
-  --exclude 'scripts/' \
-  --exclude 'site-src/' \
-  "$TMP_DIR"/ "$ROOT_DIR"/
+"$HUGO_BIN" --source "$SOURCE_DIR" --destination "$OUTPUT_DIR" "$@"
 
-touch "$ROOT_DIR/.nojekyll"
+touch "$OUTPUT_DIR/.nojekyll"
 
-echo "Site rebuilt into $ROOT_DIR"
+echo "Site built into $OUTPUT_DIR"
