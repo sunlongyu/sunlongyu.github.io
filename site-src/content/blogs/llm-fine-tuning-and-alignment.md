@@ -3,7 +3,7 @@ title = 'LLM 微调与对齐'
 date = '2026-04-22T16:58'
 draft = false
 description = '大模型应用开发之微调与对齐'
-column = '大模型'
+column = 'AI/大模型'
 slug = 'llm-fine-tuning-and-alignment'
 +++
 # 一、指令微调 Instruction Tuning
