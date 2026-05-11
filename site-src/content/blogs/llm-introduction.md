@@ -3,7 +3,7 @@ title = 'LLM入门'
 date = '2026-04-22T16:58'
 draft = false
 description = '大语言模型入门指南，介绍LLM的基础概念和应用'
-column = '大模型'
+column = 'AI/大模型'
 slug = 'llm-introduction'
 +++
 # 一、大模型概述
